@@ -1,0 +1,179 @@
+[gd_scene load_steps=23 format=3 uid="uid://08ys5xca31gt"]
+
+[ext_resource type="Texture2D" uid="uid://j325jhul6ci6" path="res://images/mario/mario1_end.png" id="1_yi2v6"]
+[ext_resource type="Texture2D" uid="uid://cqe74uxkx65av" path="res://images/mario/mario1_end1.png" id="2_mujd3"]
+[ext_resource type="Texture2D" uid="uid://lpx4br5caidn" path="res://images/mario/mario1_jump.png" id="3_5672y"]
+[ext_resource type="Texture2D" uid="uid://bfhakbrtqoo3k" path="res://images/mario/mario1.png" id="4_ancdr"]
+[ext_resource type="Texture2D" uid="uid://qp2636f71e5j" path="res://images/mario/mario1_move0.png" id="5_rw866"]
+[ext_resource type="Texture2D" uid="uid://datlxd6fbd8j8" path="res://images/mario/mario1_move1.png" id="6_jksk1"]
+[ext_resource type="Texture2D" uid="uid://dew6evkf4qili" path="res://images/mario/mario1_move2.png" id="7_os8es"]
+[ext_resource type="Texture2D" uid="uid://cu2ty2y51s43" path="res://images/mario/mario1_st.png" id="8_v242x"]
+[ext_resource type="Texture2D" uid="uid://i5n21l8nribn" path="res://images/mario/mario_death.png" id="9_gf086"]
+[ext_resource type="Texture2D" uid="uid://6sfeg5arpk82" path="res://images/mario/mario2.png" id="10_pp7xj"]
+[ext_resource type="Texture2D" uid="uid://b8brig10qtr7" path="res://images/mario/mario_lvlup.png" id="11_vuti3"]
+[ext_resource type="Texture2D" uid="uid://dwj1f81i0de3k" path="res://images/mario/mario_end1.png" id="12_lr4ff"]
+[ext_resource type="Texture2D" uid="uid://ce1wrjygf01rw" path="res://images/mario/mario_end.png" id="13_1sfqc"]
+[ext_resource type="Texture2D" uid="uid://caw3qgcohsbe8" path="res://images/mario/mario_jump.png" id="14_o5m33"]
+[ext_resource type="Texture2D" uid="uid://5hi1wl6nl4c8" path="res://images/mario/mario.png" id="15_lf3up"]
+[ext_resource type="Texture2D" uid="uid://xr2pmwr08lhx" path="res://images/mario/mario_move0.png" id="16_7dnq1"]
+[ext_resource type="Texture2D" uid="uid://cmdjh8ull18y4" path="res://images/mario/mario_move1.png" id="17_mnvcj"]
+[ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
+[ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
+
+[sub_resource type="GDScript" id="GDScript_jm27j"]
+script/source = "extends \"res://scripts/mario.gd\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_173b7"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yi2v6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mujd3")
+}],
+"loop": true,
+"name": &"big_end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5672y")
+}],
+"loop": true,
+"name": &"big_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ancdr")
+}],
+"loop": true,
+"name": &"big_mario",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_rw866")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jksk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_os8es")
+}],
+"loop": true,
+"name": &"big_move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_v242x")
+}],
+"loop": true,
+"name": &"big_st",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_gf086")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_pp7xj")
+}],
+"loop": true,
+"name": &"fire_mario",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_vuti3")
+}],
+"loop": true,
+"name": &"level_up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_lr4ff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_1sfqc")
+}],
+"loop": true,
+"name": &"small_end",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_o5m33")
+}],
+"loop": true,
+"name": &"small_jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_lf3up")
+}],
+"loop": true,
+"name": &"small_mario",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_7dnq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_mnvcj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_ic7hh")
+}],
+"loop": true,
+"name": &"small_move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_jlahf")
+}],
+"loop": true,
+"name": &"small_st",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tsj2i"]
+
+[node name="player" type="CharacterBody2D"]
+script = SubResource("GDScript_jm27j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_173b7")
+animation = &"fire_mario"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_tsj2i")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="pipe_area" type="Area2D" parent="."]
