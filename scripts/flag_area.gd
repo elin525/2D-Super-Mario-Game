@@ -1,15 +1,4 @@
-extends Sprite2D
-
-var touched = false
-
-var initial_pos = position.y
-
-func _physics_process(delta):
-	if touched:
-		position.y += 5
-	if position.y > 300:
-		position.y = initial_pos
-		touched = false
+extends Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,3 +8,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func _on_body_entered(body: Node2D) -> void:
+	var flag = get_node("Flag")
+	flag.touched = true

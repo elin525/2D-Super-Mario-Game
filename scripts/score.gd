@@ -1,15 +1,11 @@
-extends Sprite2D
+extends CanvasLayer
 
-var touched = false
+signal start_game
 
-var initial_pos = position.y
+var clock: int = 400
 
-func _physics_process(delta):
-	if touched:
-		position.y += 5
-	if position.y > 300:
-		position.y = initial_pos
-		touched = false
+func update_time():
+	$Time.text = "TIME\n%s" % str(clock)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
