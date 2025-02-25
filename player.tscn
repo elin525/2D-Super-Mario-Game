@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://08ys5xca31gt"]
+[gd_scene load_steps=24 format=3 uid="uid://08ys5xca31gt"]
 
 [ext_resource type="Texture2D" uid="uid://j325jhul6ci6" path="res://images/mario/mario1_end.png" id="1_yi2v6"]
 [ext_resource type="Texture2D" uid="uid://cqe74uxkx65av" path="res://images/mario/mario1_end1.png" id="2_mujd3"]
@@ -29,17 +29,13 @@ const JUMP_VELOCITY = -7*32
 
 var gravity = 0.09*32
 
-var controllable = true
-
 @onready var animated_sprite_2d = $AnimatedSprite2D
 
 func _physics_process(delta):
 	
 	var time = get_node(\"../../HUD\")
 	
-	var flag = get_node(\"../../Area2D/Flag\")
-	
-	if time.clock > 0 and controllable == true:
+	if time.clock > 0:
 		if not is_on_floor():
 			velocity.y += gravity
 		else:
@@ -59,15 +55,8 @@ func _physics_process(delta):
 			
 		update_animation(direction)
 		move_and_slide()
-		
-		if is_on_wall() and position.x > 6240:
-			flag.initial_touched = true
 	
-	if flag.initial_touched == true:
-		controllable = false
-		animated_sprite_2d.play(\"small_end\")
-		position.x = 6275
-		position.y = -32
+	var flag = get_node(\"../../Area2D/Flag\")
 	
 
 func update_animation(direction):
@@ -78,15 +67,6 @@ func update_animation(direction):
 		animated_sprite_2d.play(\"small_move\")
 	else:
 		animated_sprite_2d.play(\"small_mario\")
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 "
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_173b7"]
@@ -215,9 +195,11 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8xhoh"]
-radius = 17.0
-height = 34.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvjl5"]
+size = Vector2(26, 31)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bsgbc"]
+size = Vector2(26, 32)
 
 [node name="player" type="CharacterBody2D"]
 script = SubResource("GDScript_jm27j")
@@ -225,12 +207,22 @@ script = SubResource("GDScript_jm27j")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"small_end"
+animation = &"small_mario"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.65, 1.65)
+limit_left = -65
+limit_top = -590
+limit_right = 6650
+limit_bottom = 65
+limit_smoothed = true
 
-[node name="pipe_area" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -17)
-shape = SubResource("CapsuleShape2D_8xhoh")
+[node name="AreaCollisionShape" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -16.5)
+shape = SubResource("RectangleShape2D_nvjl5")
+
+[node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_bsgbc")
