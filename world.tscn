@@ -147,7 +147,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ay6rm")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb3ca"]
-size = Vector2(32, 301)
+size = Vector2(32, 526)
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_l4ws2")
@@ -244,7 +244,7 @@ texture = ExtResource("6_jd3rq")
 script = ExtResource("7_58b55")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 118.5)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_cb3ca")
 
 [node name="HUD" parent="." instance=ExtResource("10_8v8g0")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://08ys5xca31gt"]
+[gd_scene load_steps=25 format=3 uid="uid://08ys5xca31gt"]
 
 [ext_resource type="Texture2D" uid="uid://j325jhul6ci6" path="res://images/mario/mario1_end.png" id="1_yi2v6"]
 [ext_resource type="Texture2D" uid="uid://cqe74uxkx65av" path="res://images/mario/mario1_end1.png" id="2_mujd3"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cmdjh8ull18y4" path="res://images/mario/mario_move1.png" id="17_mnvcj"]
 [ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
 [ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
+[ext_resource type="Script" path="res://scripts/camera.gd" id="20_c0a4k"]
 
 [sub_resource type="GDScript" id="GDScript_jm27j"]
 script/source = "extends CharacterBody2D
@@ -227,6 +228,7 @@ limit_top = -590
 limit_right = 6650
 limit_bottom = 65
 limit_smoothed = true
+script = ExtResource("20_c0a4k")
 
 [node name="Area2D" type="Area2D" parent="."]
 
