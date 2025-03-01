@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=25 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://d0ngqoded2uqf" path="res://canvas_layer.tscn" id="10_8v8g0"]
 [ext_resource type="Script" path="res://scripts/question_area.gd" id="12_2ah00"]
 [ext_resource type="Texture2D" uid="uid://chhc10f6fvi5a" path="res://images/questionblock.png" id="12_7odiw"]
+[ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="14_1066r"]
+[ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="15_os1b0"]
+[ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="16_rephp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
 size = Vector2(64, 64)
@@ -154,6 +157,23 @@ sources/0 = SubResource("TileSetAtlasSource_ay6rm")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb3ca"]
 size = Vector2(32, 526)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_3xe8l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_1066r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_os1b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_rephp")
+}],
+"loop": true,
+"name": &"block_coin",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h7rd"]
 size = Vector2(30, 4)
 
@@ -269,6 +289,13 @@ script = ExtResource("7_58b55")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_cb3ca")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.822891
 
 [node name="Question_Block1" type="Area2D" parent="."]
 script = ExtResource("12_2ah00")
