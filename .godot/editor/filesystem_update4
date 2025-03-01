@@ -1,3 +1,6 @@
 res://world.tscn
 res://player.tscn
-res://scripts/question_area.gd
+res://canvas_layer.tscn
+res://scripts/begin_game.gd
+res://scripts/player.gd
+res://scripts/flag_area.gd
