@@ -1,7 +1,7 @@
 extends Node2D
 
 func new_game():
-	var flag = get_node("TileMap/Area2D2/Flag")
+	var flag = get_node("Area2D/Flag")
 
 	while $HUD.clock > 0 and flag.initial_touched != true:
 		await get_tree().create_timer(0.4).timeout

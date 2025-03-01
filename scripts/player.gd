@@ -16,7 +16,7 @@ func _physics_process(delta):
 	
 	var time = get_node("../../HUD")
 	
-	var flag = get_node("../Area2D2/Flag")
+	var flag = get_node("../../Area2D/Flag")
 	
 	if time.clock > 0 and controllable == true:
 		if not is_on_floor():
