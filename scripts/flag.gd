@@ -4,16 +4,13 @@ var initial_touched = false
 
 var touched = false
 
-var initial_pos = position.y
-
 func _physics_process(delta):
 	if initial_touched:
 		touched = true
 	
 	if touched:
-		position.y += 5
-	if position.y > 300:
-		position.y = initial_pos
+		position.y += 1
+	if position.y >= 258.625:
 		touched = false
 		initial_touched = false
 

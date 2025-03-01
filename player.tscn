@@ -1,5 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://08ys5xca31gt"]
 
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_ox1jm"]
 [ext_resource type="Texture2D" uid="uid://j325jhul6ci6" path="res://images/mario/mario1_end.png" id="1_yi2v6"]
 [ext_resource type="Texture2D" uid="uid://cqe74uxkx65av" path="res://images/mario/mario1_end1.png" id="2_mujd3"]
 [ext_resource type="Texture2D" uid="uid://lpx4br5caidn" path="res://images/mario/mario1_jump.png" id="3_5672y"]
@@ -20,66 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
 [ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="20_c0a4k"]
-
-[sub_resource type="GDScript" id="GDScript_jm27j"]
-script/source = "extends CharacterBody2D
-
-var already_jumped = false
-
-const JUMP_VELOCITY = -7*32
-
-var gravity = 0.09*32
-
-var controllable = true
-
-@onready var animated_sprite_2d = $AnimatedSprite2D
-
-func _physics_process(delta):
-	
-	var time = get_node(\"../../HUD\")
-	
-	var flag = get_node(\"../../Area2D/Flag\")
-	
-	if time.clock > 0 and controllable == true:
-		if not is_on_floor():
-			velocity.y += gravity
-		else:
-			already_jumped = false
-			
-		if Input.is_action_just_pressed(\"ui_up\") and is_on_floor() and not already_jumped:
-			velocity.y = JUMP_VELOCITY
-			already_jumped = true
-			
-		var direction = Input.get_axis(\"ui_left\", \"ui_right\")
-		if direction > 0:
-			velocity.x = max(velocity.x + 0.038*32, 2.0*32)
-		elif direction < 0:
-			velocity.x = min(velocity.x - 0.038*32, -2.0*32)
-		else:
-			velocity.x = move_toward(velocity.x, 0, 0.06*32)
-			
-		update_animation(direction)
-		move_and_slide()
-		
-		if is_on_wall() and position.x > 6240:
-			flag.initial_touched = true
-	
-	if flag.initial_touched == true:
-		controllable = false
-		animated_sprite_2d.play(\"small_end\")
-		position.x = 6275
-		position.y = -32
-	
-
-func update_animation(direction):
-	if already_jumped:
-		animated_sprite_2d.play(\"small_jump\")
-	elif direction != 0:
-		animated_sprite_2d.flip_h = (direction < 0)
-		animated_sprite_2d.play(\"small_move\")
-	else:
-		animated_sprite_2d.play(\"small_mario\")
-"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_173b7"]
 resource_local_to_scene = true
@@ -214,7 +155,7 @@ size = Vector2(26, 31)
 size = Vector2(26, 32)
 
 [node name="player" type="CharacterBody2D"]
-script = SubResource("GDScript_jm27j")
+script = ExtResource("1_ox1jm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -224,9 +165,9 @@ animation = &"small_mario"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)
 limit_left = -65
-limit_top = -590
+limit_top = -470
 limit_right = 6650
-limit_bottom = 65
+limit_bottom = 48
 limit_smoothed = true
 script = ExtResource("20_c0a4k")
 

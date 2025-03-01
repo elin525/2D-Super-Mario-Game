@@ -4,8 +4,13 @@ signal start_game
 
 var clock: int = 400
 
+var score: int = 000000
+
 func update_time():
-	$Time.text = "TIME\n%s" % str(clock)
+	$Time.text = "TIME\n%d" % clock
+
+func update_score():
+	$Score.text = "MARIO\n%06d" % score
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

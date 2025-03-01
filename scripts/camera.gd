@@ -1,12 +1,15 @@
 extends Camera2D
+ 
+@export var target: CharacterBody2D
 
-@export var target: CharacterBody2D  
 @export var follow_speed: float = 5.0  
 
 func _ready():
 
 	# 
 	make_current()
+	
+	target = get_node("..") 
 
 func _process(delta):
 	if target:
