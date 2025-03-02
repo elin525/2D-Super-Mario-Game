@@ -15,8 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://chhc10f6fvi5a" path="res://images/questionblock.png" id="12_7odiw"]
 [ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="14_1066r"]
 [ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="14_p6vh3"]
+[ext_resource type="Script" path="res://brick_area.gd" id="15_hi7kc"]
 [ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="15_os1b0"]
-[ext_resource type="Script" path="res://scripts/brick_area.gd" id="15_oymlh"]
 [ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="16_rephp"]
 [ext_resource type="Texture2D" uid="uid://b3rwrudswjvmv" path="res://images/firework0.png" id="17_1pweh"]
 [ext_resource type="Texture2D" uid="uid://comdso7tphij6" path="res://images/firework1.png" id="18_6sy78"]
@@ -338,7 +338,7 @@ frame_progress = 0.76084
 
 [node name="Brick_Block1" type="Area2D" parent="."]
 position = Vector2(32, 0)
-script = ExtResource("15_oymlh")
+script = ExtResource("15_hi7kc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_Block1"]
 position = Vector2(562, -96)
@@ -357,7 +357,7 @@ shape = SubResource("RectangleShape2D_v0mtj")
 
 [node name="Brick_Block2" type="Area2D" parent="."]
 position = Vector2(96, 0)
-script = ExtResource("15_oymlh")
+script = ExtResource("15_hi7kc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_Block2"]
 position = Vector2(562, -96)
@@ -376,7 +376,7 @@ shape = SubResource("RectangleShape2D_v0mtj")
 
 [node name="Brick_Block3" type="Area2D" parent="."]
 position = Vector2(160, 0)
-script = ExtResource("15_oymlh")
+script = ExtResource("15_hi7kc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_Block3"]
 position = Vector2(562, -96)

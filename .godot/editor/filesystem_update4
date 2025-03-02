@@ -1,4 +1,4 @@
-res://world.tscn
-res://scripts/brick_area.gd
 res://player.tscn
 res://canvas_layer.tscn
+res://world.tscn
+res://brick_area.gd
