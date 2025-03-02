@@ -1,13 +1,14 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1740956235
-canvas_layer.tscn::PackedScene::8941213667640117821::1740956226::0::1::::<><>::res://scripts/score.gd<>uid://bpqaukui6hvul::::res://fonts/emulogic.ttf<>uid://e3t4e0y4837s::::res://images/coin_an1.png<>uid://34q27t0vrnxb::::res://images/coin_an0.png<>uid://c25eqsgarwx2s::::res://images/coin_an2.png<>uid://wa0rrulb65qp::::res://images/coin_an3.png
-player.tscn::PackedScene::1824336520274472999::1740956226::0::1::::<><>::res://scripts/player.gd<>uid://j325jhul6ci6::::res://images/mario/mario1_end.png<>uid://cqe74uxkx65av::::res://images/mario/mario1_end1.png<>uid://lpx4br5caidn::::res://images/mario/mario1_jump.png<>uid://bfhakbrtqoo3k::::res://images/mario/mario1.png<>uid://qp2636f71e5j::::res://images/mario/mario1_move0.png<>uid://datlxd6fbd8j8::::res://images/mario/mario1_move1.png<>uid://dew6evkf4qili::::res://images/mario/mario1_move2.png<>uid://cu2ty2y51s43::::res://images/mario/mario1_st.png<>uid://i5n21l8nribn::::res://images/mario/mario_death.png<>uid://6sfeg5arpk82::::res://images/mario/mario2.png<>uid://b8brig10qtr7::::res://images/mario/mario_lvlup.png<>uid://dwj1f81i0de3k::::res://images/mario/mario_end1.png<>uid://ce1wrjygf01rw::::res://images/mario/mario_end.png<>uid://caw3qgcohsbe8::::res://images/mario/mario_jump.png<>uid://5hi1wl6nl4c8::::res://images/mario/mario.png<>uid://xr2pmwr08lhx::::res://images/mario/mario_move0.png<>uid://cmdjh8ull18y4::::res://images/mario/mario_move1.png<>uid://blgq82qvtrrpk::::res://images/mario/mario_move2.png<>uid://3kh5q6rp3l6h::::res://images/mario/mario_st.png<>res://scripts/camera.gd
+::res://::1740956672
+brick_area.gd::GDScript::-1::1740956518::0::1::::<>Area2D<>::
+canvas_layer.tscn::PackedScene::8941213667640117821::1740956672::0::1::::<><>::res://scripts/score.gd<>uid://bpqaukui6hvul::::res://fonts/emulogic.ttf<>uid://e3t4e0y4837s::::res://images/coin_an1.png<>uid://34q27t0vrnxb::::res://images/coin_an0.png<>uid://c25eqsgarwx2s::::res://images/coin_an2.png<>uid://wa0rrulb65qp::::res://images/coin_an3.png
+player.tscn::PackedScene::1824336520274472999::1740956672::0::1::::<><>::res://scripts/player.gd<>uid://j325jhul6ci6::::res://images/mario/mario1_end.png<>uid://cqe74uxkx65av::::res://images/mario/mario1_end1.png<>uid://lpx4br5caidn::::res://images/mario/mario1_jump.png<>uid://bfhakbrtqoo3k::::res://images/mario/mario1.png<>uid://qp2636f71e5j::::res://images/mario/mario1_move0.png<>uid://datlxd6fbd8j8::::res://images/mario/mario1_move1.png<>uid://dew6evkf4qili::::res://images/mario/mario1_move2.png<>uid://cu2ty2y51s43::::res://images/mario/mario1_st.png<>uid://i5n21l8nribn::::res://images/mario/mario_death.png<>uid://6sfeg5arpk82::::res://images/mario/mario2.png<>uid://b8brig10qtr7::::res://images/mario/mario_lvlup.png<>uid://dwj1f81i0de3k::::res://images/mario/mario_end1.png<>uid://ce1wrjygf01rw::::res://images/mario/mario_end.png<>uid://caw3qgcohsbe8::::res://images/mario/mario_jump.png<>uid://5hi1wl6nl4c8::::res://images/mario/mario.png<>uid://xr2pmwr08lhx::::res://images/mario/mario_move0.png<>uid://cmdjh8ull18y4::::res://images/mario/mario_move1.png<>uid://blgq82qvtrrpk::::res://images/mario/mario_move2.png<>uid://3kh5q6rp3l6h::::res://images/mario/mario_st.png<>res://scripts/camera.gd
 README.md::TextFile::-1::1740956226::0::1::::<><>::
 readme.txt::TextFile::-1::1740956226::0::1::::<><>::
-world.tscn::PackedScene::4302159440885443032::1740956226::0::1::::<><>::uid://dtqgo7675xb4m::::res://images/reference/map1-1.png<>res://scripts/begin_game.gd<>uid://drlw3mmxv54fa::::res://worlds/1-1/tiles.png<>uid://d30t4yegd7237::::res://images/tube.png<>uid://buvdbe3hx4dty::::res://images/flag_pillar.png<>res://scripts/world.gd<>uid://08ys5xca31gt::::res://player.tscn<>uid://c573w8vxym5ro::::res://images/flag.png<>res://scripts/flag_area.gd<>res://scripts/flag.gd<>uid://d0ngqoded2uqf::::res://canvas_layer.tscn<>res://scripts/question_area.gd<>uid://chhc10f6fvi5a::::res://images/questionblock.png<>uid://34q27t0vrnxb::::res://images/coin_an0.png<>uid://wa0rrulb65qp::::res://images/coin_an3.png<>uid://e3t4e0y4837s::::res://images/coin_an1.png<>res://scripts/brick_area.gd<>uid://c25eqsgarwx2s::::res://images/coin_an2.png<>uid://b3rwrudswjvmv::::res://images/firework0.png<>uid://comdso7tphij6::::res://images/firework1.png<>uid://bt82tyobe5nm6::::res://images/firework2.png<>res://scripts/fireworks.gd<>uid://7att7m04xgp4::::res://images/Brick.png
-::res://fonts/::1740956226
+world.tscn::PackedScene::4302159440885443032::1740956688::0::1::::<><>::uid://dtqgo7675xb4m::::res://images/reference/map1-1.png<>res://scripts/begin_game.gd<>uid://drlw3mmxv54fa::::res://worlds/1-1/tiles.png<>uid://d30t4yegd7237::::res://images/tube.png<>uid://buvdbe3hx4dty::::res://images/flag_pillar.png<>res://scripts/world.gd<>uid://08ys5xca31gt::::res://player.tscn<>uid://c573w8vxym5ro::::res://images/flag.png<>res://scripts/flag_area.gd<>res://scripts/flag.gd<>uid://d0ngqoded2uqf::::res://canvas_layer.tscn<>res://scripts/question_area.gd<>uid://chhc10f6fvi5a::::res://images/questionblock.png<>uid://34q27t0vrnxb::::res://images/coin_an0.png<>uid://wa0rrulb65qp::::res://images/coin_an3.png<>res://brick_area.gd<>uid://e3t4e0y4837s::::res://images/coin_an1.png<>uid://c25eqsgarwx2s::::res://images/coin_an2.png<>uid://b3rwrudswjvmv::::res://images/firework0.png<>uid://comdso7tphij6::::res://images/firework1.png<>uid://bt82tyobe5nm6::::res://images/firework2.png<>res://scripts/fireworks.gd<>uid://7att7m04xgp4::::res://images/Brick.png
+::res://fonts/::1740956235
 emulogic.ttf::FontFile::3472319654741440815::1740956226::1740956235::1::::<><>::
-::res://images/::1740956226
+::res://images/::1740956235
 block_debris0.png::CompressedTexture2D::7479106088275668419::1740956226::1740956235::1::::<><>::
 block_debris1.png::CompressedTexture2D::4638881612266741866::1740956226::1740956235::1::::<><>::
 Brick.png::CompressedTexture2D::2247232249824200539::1740956226::1740956235::1::::<><>::
@@ -44,7 +45,7 @@ super_mario_bros.png::CompressedTexture2D::6211541910234436221::1740956226::1740
 tube.png::CompressedTexture2D::9177365794699041716::1740956226::1740956235::1::::<><>::
 UndergroundBlock.png::CompressedTexture2D::7317671978775386383::1740956226::1740956235::1::::<><>::
 UndergroundBrick.png::CompressedTexture2D::3113378474890779568::1740956226::1740956235::1::::<><>::
-::res://images/mario/::1740956226
+::res://images/mario/::1740956235
 mario1.png::CompressedTexture2D::2751833483770977418::1740956226::1740956235::1::::<><>::
 mario1_end1.png::CompressedTexture2D::5906116194886575733::1740956226::1740956235::1::::<><>::
 mario1_end.png::CompressedTexture2D::691195586926218015::1740956226::1740956235::1::::<><>::
@@ -97,7 +98,7 @@ mario_s1_move1.bmp::CompressedTexture2D::7503610100547324935::1740956226::174095
 mario_s1_move2.bmp::CompressedTexture2D::1042640593180161261::1740956226::1740956235::1::::<><>::
 mario_s1_st.bmp::CompressedTexture2D::5061531470214515950::1740956226::1740956235::1::::<><>::
 mario_st.png::CompressedTexture2D::1986410881228117377::1740956226::1740956235::1::::<><>::
-::res://images/reference/::1740956226
+::res://images/reference/::1740956235
 map1-1.png::CompressedTexture2D::8526271157469213506::1740956226::1740956235::1::::<><>::
 ::res://scripts/::1740956226
 begin_game.gd::GDScript::-1::1740956226::0::1::::<>Node2D<>::
@@ -118,7 +119,7 @@ score.gd::GDScript::-1::1740956226::0::1::::<>CanvasLayer<>::
 sound.gd::GDScript::-1::1740956226::0::1::::<>Node<>::
 tube.gd::GDScript::-1::1740956226::0::1::::<>Node<>::
 world.gd::GDScript::-1::1740956226::0::1::::<>TileMap<>::
-::res://sounds/::1740956226
+::res://sounds/::1740956236
 blockbreak.wav::AudioStreamWAV::2361203743861422891::1740956226::1740956235::1::::<><>::
 blockhit.wav::AudioStreamWAV::70958408648590711::1740956226::1740956235::1::::<><>::
 coin.wav::AudioStreamWAV::3540004253605300892::1740956226::1740956235::1::::<><>::
@@ -137,5 +138,5 @@ pipe.wav::AudioStreamWAV::1594986806908585221::1740956226::1740956235::1::::<><>
 scorering.wav::AudioStreamWAV::4943917286100181691::1740956226::1740956235::1::::<><>::
 shot.wav::AudioStreamWAV::6466307914065457491::1740956226::1740956235::1::::<><>::
 ::res://worlds/::1740956226
-::res://worlds/1-1/::1740956226
+::res://worlds/1-1/::1740956235
 tiles.png::CompressedTexture2D::8376566974182855870::1740956226::1740956235::1::::<><>::
