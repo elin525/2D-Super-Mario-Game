@@ -6,8 +6,13 @@ var clock: int = 400
 
 var score: int = 000000
 
+var coins: int = 0
+
 func update_time():
 	$Time.text = "TIME\n%d" % clock
+	
+func update_coins():
+	$"Coin Count".text = "x%d" % coins
 
 func update_score():
 	$Score.text = "MARIO\n%06d" % score
@@ -19,4 +24,4 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$"Coin Count/CoinAn1".play("default")

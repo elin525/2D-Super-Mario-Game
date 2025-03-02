@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0ngqoded2uqf"]
+[gd_scene load_steps=8 format=3 uid="uid://d0ngqoded2uqf"]
 
 [ext_resource type="Script" path="res://scripts/score.gd" id="1_qqp3s"]
 [ext_resource type="FontFile" uid="uid://bpqaukui6hvul" path="res://fonts/emulogic.ttf" id="2_boxfd"]
 [ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="3_hgbbp"]
+[ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="3_xnajb"]
+[ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="5_o1tlx"]
+[ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="6_25ew8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o2qrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xnajb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hgbbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_o1tlx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_25ew8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_qqp3s")
@@ -26,10 +49,10 @@ theme_override_fonts/font = ExtResource("2_boxfd")
 theme_override_font_sizes/font_size = 32
 text = "x0"
 
-[node name="CoinAn1" type="Sprite2D" parent="Coin Count"]
+[node name="CoinAn1" type="AnimatedSprite2D" parent="Coin Count"]
 position = Vector2(-16.5, 19.5)
 scale = Vector2(2.3125, 1.39286)
-texture = ExtResource("3_hgbbp")
+sprite_frames = SubResource("SpriteFrames_o2qrf")
 
 [node name="World 1-1" type="Label" parent="."]
 offset_left = 685.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=30 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -16,6 +16,10 @@
 [ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="14_1066r"]
 [ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="15_os1b0"]
 [ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="16_rephp"]
+[ext_resource type="Texture2D" uid="uid://b3rwrudswjvmv" path="res://images/firework0.png" id="17_1pweh"]
+[ext_resource type="Texture2D" uid="uid://comdso7tphij6" path="res://images/firework1.png" id="18_6sy78"]
+[ext_resource type="Texture2D" uid="uid://bt82tyobe5nm6" path="res://images/firework2.png" id="19_1u514"]
+[ext_resource type="Script" path="res://scripts/fireworks.gd" id="20_5htwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
 size = Vector2(64, 64)
@@ -179,6 +183,29 @@ size = Vector2(30, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xg0ji"]
 size = Vector2(30, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_muiwi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_1pweh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_6sy78")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1u514")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1u514")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_1u514")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="world" type="Node2D"]
 script = ExtResource("1_l4ws2")
@@ -557,6 +584,37 @@ position = Vector2(466, -113)
 shape = SubResource("RectangleShape2D_xg0ji")
 
 [node name="HUD" parent="." instance=ExtResource("10_8v8g0")]
+
+[node name="Fireworks1" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(6390, -276)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+script = ExtResource("20_5htwi")
+
+[node name="Fireworks2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(6353, -197)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks3" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(6591, -275)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks4" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(6606, -183)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks5" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(6485, -257)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks6" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(6353, -196)
+sprite_frames = SubResource("SpriteFrames_muiwi")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Question_Block1" method="_on_area_2d_body_entered"]
