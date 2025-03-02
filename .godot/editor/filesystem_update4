@@ -1,6 +1,4 @@
 res://world.tscn
+res://scripts/brick_area.gd
 res://player.tscn
 res://canvas_layer.tscn
-res://scripts/begin_game.gd
-res://scripts/player.gd
-res://scripts/flag_area.gd
