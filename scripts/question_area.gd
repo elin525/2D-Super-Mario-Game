@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var animated_coin = $"../Coin_Animation"
+@onready var animated_coin = $Coin_Animation
 var activate = true
 
 func _ready() -> void:
@@ -13,22 +13,12 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if activate == true:
 		var HUD = get_node("../HUD")
-		
-		animated_coin.position.x = position.x
-		animated_coin.position.x += 466
-		animated_coin.position.y = position.y
-		animated_coin.position.y -= 146
-		
 		HUD.score += 200
-		
 		HUD.update_score()
-		
 		HUD.coins += 1
-		
 		HUD.update_coins()
 		
 		activate = false
-		
 		coin_animation()
 		shift_block()
 

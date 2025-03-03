@@ -164,6 +164,12 @@ texture = ExtResource("1_mgtot")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ay6rm")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq08g"]
+size = Vector2(30, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0mtj"]
+size = Vector2(30, 29)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_3xe8l"]
 animations = [{
 "frames": [{
@@ -183,12 +189,6 @@ animations = [{
 "name": &"block_coin",
 "speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq08g"]
-size = Vector2(30, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0mtj"]
-size = Vector2(30, 29)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h7rd"]
 size = Vector2(30, 4)
@@ -329,13 +329,6 @@ safe_margin = 0.001
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TileMap/player"]
 
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="."]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.76084
-
 [node name="Brick_Block1" type="Area2D" parent="."]
 position = Vector2(32, 0)
 script = ExtResource("15_hi7kc")
@@ -396,6 +389,13 @@ shape = SubResource("RectangleShape2D_v0mtj")
 [node name="Question_Block1" type="Area2D" parent="."]
 script = ExtResource("12_2ah00")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block1"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.586713
+
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block1"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
@@ -415,6 +415,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 [node name="Question_Block2" type="Area2D" parent="."]
 position = Vector2(160, 0)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block2"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block2"]
 position = Vector2(466, -112)
@@ -436,6 +443,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(224, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block3"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
+
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block3"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
@@ -455,6 +469,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 [node name="Question_Block4" type="Area2D" parent="."]
 position = Vector2(192, -128)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block4"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.771058
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block4"]
 position = Vector2(466, -112)
@@ -476,6 +497,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(1984, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block5"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
+
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block5"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
@@ -495,6 +523,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 [node name="Question_Block6" type="Area2D" parent="."]
 position = Vector2(2496, -128)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block6"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block6"]
 position = Vector2(466, -112)
@@ -516,6 +551,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(2880, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block7"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.771058
+
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block7"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
@@ -535,6 +577,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 [node name="Question_Block8" type="Area2D" parent="."]
 position = Vector2(2976, 0)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block8"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.771058
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block8"]
 position = Vector2(466, -112)
@@ -556,6 +605,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(3072, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block9"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.771058
+
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block9"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
@@ -576,6 +632,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(2976, -128)
 script = ExtResource("12_2ah00")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block10"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.771058
+
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block10"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
@@ -593,8 +656,15 @@ position = Vector2(466, -113)
 shape = SubResource("RectangleShape2D_xg0ji")
 
 [node name="Question_Block11" type="Area2D" parent="."]
-position = Vector2(3648, -128)
+position = Vector2(3616, -128)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block11"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block11"]
 position = Vector2(466, -112)
@@ -613,8 +683,15 @@ position = Vector2(466, -113)
 shape = SubResource("RectangleShape2D_xg0ji")
 
 [node name="Question_Block12" type="Area2D" parent="."]
-position = Vector2(3616, -128)
+position = Vector2(3648, -128)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block12"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block12"]
 position = Vector2(466, -112)
@@ -635,6 +712,13 @@ shape = SubResource("RectangleShape2D_xg0ji")
 [node name="Question_Block13" type="Area2D" parent="."]
 position = Vector2(4928, 0)
 script = ExtResource("12_2ah00")
+
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block13"]
+position = Vector2(466, -143)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_3xe8l")
+animation = &"block_coin"
+frame_progress = 0.795323
 
 [node name="Sprite2D" type="Sprite2D" parent="Question_Block13"]
 position = Vector2(466, -112)
