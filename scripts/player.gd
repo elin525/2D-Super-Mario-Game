@@ -74,6 +74,8 @@ func _physics_process(delta):
 				await get_tree().create_timer(0.1).timeout
 				time.clock -= 1
 				time.update_time()
+				time.score += 50
+				time.update_score()
 			
 			await get_tree().create_timer(2.0).timeout
 			
