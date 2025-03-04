@@ -71,7 +71,7 @@ func _physics_process(delta):
 			var offset = time.clock
 			var fireworks = get_node("../../Fireworks1")
 			while time.clock != 0:
-				await get_tree().create_timer(0.1).timeout
+				await get_tree().create_timer(0.01).timeout
 				time.clock -= 1
 				time.update_time()
 				time.score += 50

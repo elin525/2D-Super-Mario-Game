@@ -2,6 +2,8 @@ extends AnimatedSprite2D
 
 func trigger(offset):
 	
+	offset = 6
+	
 	if offset % 10 == 1 or offset % 10 == 3 or offset % 10 == 6:
 		var score = get_node("../HUD")
 		
