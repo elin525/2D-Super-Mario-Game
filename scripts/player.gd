@@ -135,6 +135,3 @@ func _on_death() -> void:
 	l.triggered = true
 	
 	tree.root.remove_child(get_node("/root/world"))
-	
-func _ready():
-	position.x = 5500
