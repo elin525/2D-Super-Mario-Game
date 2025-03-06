@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var animated_coin = $Coin_Animation
+@onready var sound = get_node("../Animation Sounds")
 var activate = true
 
 func _ready() -> void:
@@ -31,7 +32,8 @@ func shift_block():
 	position.y += 10
 
 func coin_animation():
-	var sound = get_node("../Animation Sounds")
+	sound.stream = load("res://sounds/blockhit.wav")
+	sound.playing = true
 	sound.stream = load("res://sounds/coin.wav")
 	sound.playing = true
 	animated_coin.visible = true

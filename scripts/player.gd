@@ -99,7 +99,7 @@ func _physics_process(delta):
 			while time.clock != 0:
 				sounds.stream = load("res://sounds/scorering.wav")
 				sounds.playing = true
-				await get_tree().create_timer(0.134).timeout
+				await get_tree().create_timer(0.01).timeout
 				time.clock -= 1
 				time.update_time()
 				time.score += 50
