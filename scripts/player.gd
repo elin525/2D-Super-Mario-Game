@@ -6,7 +6,13 @@ var already_jumped = false
 
 const JUMP_VELOCITY = -7*32
 
+# Keep the below line for when the mushroom is implemented
+#const JUMP_VELOCITY = -350.0
+
 var gravity = 0.09*32
+
+# Keep the below line for when the mushroom is implemented
+#var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var controllable = true
 
@@ -19,6 +25,9 @@ var trigger_scene = false
 @onready var map = get_node("..")
 
 func _physics_process(delta):
+	
+	if position.x < 0:
+		position.x = 0
 	
 	var flag = get_node("../../Area2D/Flag")
 	
