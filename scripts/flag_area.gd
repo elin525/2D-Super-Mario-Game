@@ -11,8 +11,10 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+		
 	var flag = get_node("Flag")
 	var HUD = get_node("../HUD")
+	
 	if body.position.y <= -305:
 		HUD.score += 5000
 		HUD.update_score()
@@ -33,3 +35,11 @@ func _on_body_entered(body: Node2D) -> void:
 		HUD.update_score()
 	
 	flag.initial_touched = true
+	
+	var music = get_node("../AudioStreamPlayer2D")
+	music.stream = load("res://sounds/levelend.wav")
+	music.playing = true
+	
+	await music.finished
+	
+	music.playing = false

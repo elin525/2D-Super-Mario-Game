@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=37 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -23,6 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://bt82tyobe5nm6" path="res://images/firework2.png" id="19_1u514"]
 [ext_resource type="Script" path="res://scripts/fireworks.gd" id="20_5htwi"]
 [ext_resource type="Texture2D" uid="uid://7att7m04xgp4" path="res://images/Brick.png" id="22_4oia2"]
+[ext_resource type="AudioStream" uid="uid://c5ov5egak3cef" path="res://sounds/overworld.wav" id="24_2i5hb"]
+[ext_resource type="AudioStream" uid="uid://cumwuvhc3kd4g" path="res://sounds/jump.wav" id="25_mn1yf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
 size = Vector2(64, 64)
@@ -770,8 +772,18 @@ visible = false
 position = Vector2(6353, -196)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_2i5hb")
+max_distance = 10000.0
+
+[node name="Animation Sounds" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_mn1yf")
+max_distance = 10000.0
+
+[connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="Question_Block1" method="_on_area_2d_body_entered"]
+[connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]
 [connection signal="body_entered" from="Brick_Block1" to="Brick_Block1" method="_on_body_entered"]
 [connection signal="body_entered" from="Brick_Block2" to="Brick_Block2" method="_on_body_entered"]
 [connection signal="body_entered" from="Brick_Block3" to="Brick_Block3" method="_on_body_entered"]
@@ -789,3 +801,4 @@ sprite_frames = SubResource("SpriteFrames_muiwi")
 [connection signal="body_entered" from="Question_Block12" to="Question_Block12" method="_on_body_entered"]
 [connection signal="body_entered" from="Question_Block13" to="Question_Block13" method="_on_body_entered"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

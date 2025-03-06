@@ -1,20 +1,13 @@
 extends Node2D
 
+signal mouse_click
+
 var clickable = false
 
-var lives_visible = false
+@onready var lives = $Lives
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(event) -> void:
-	if !lives_visible:
-		$Lives.visible = false
-	else:
-		$Lives.visible = true
+func _ready():
+	lives.visible = false
 	
 func _input(event):
 	
@@ -25,14 +18,5 @@ func _input(event):
 		
 	if event is InputEventMouseButton and event.is_pressed() and clickable:
 		get_node("ColorRect").free()
-		var HUD = preload("res://canvas_layer.tscn").instantiate()
-		get_tree().root.add_child(HUD)
-		
-		lives_visible = true
-			
-		await get_tree().create_timer(3.0).timeout
-		get_tree().root.remove_child(HUD)
-		
-		var world = preload("res://world.tscn").instantiate()
-		get_tree().root.add_child(world)
-		get_node(".").free()
+		lives.visible = true
+		mouse_click.emit()

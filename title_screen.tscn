@@ -91,3 +91,5 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_h40my")
 
 [node name="Lives" parent="." instance=ExtResource("8_ulfr4")]
+
+[connection signal="mouse_click" from="." to="Lives" method="_on_title_screen_mouse_click"]

@@ -11,6 +11,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
+	
 	if activate == true:
 		var HUD = get_node("../HUD")
 		HUD.score += 200
@@ -30,6 +31,9 @@ func shift_block():
 	position.y += 10
 
 func coin_animation():
+	var sound = get_node("../Animation Sounds")
+	sound.stream = load("res://sounds/coin.wav")
+	sound.playing = true
 	animated_coin.visible = true
 	animated_coin.play("block_coin")
 	
