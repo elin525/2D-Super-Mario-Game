@@ -1,12 +1,15 @@
 extends Area2D
 
 @onready var animated_coin = $Coin_Animation
+@onready var animated_block = $Flashing_Block
+@onready var null_block = $Null_Block
 @onready var sound = get_node("../Animation Sounds")
 var activate = true
 
 func _ready() -> void:
 	animated_coin.visible = false
-	pass
+	null_block.visible = false
+	animated_block.play()
 
 func _process(delta: float) -> void:
 	pass
@@ -25,7 +28,10 @@ func _on_body_entered(body: Node2D) -> void:
 		shift_block()
 
 func shift_block():
-	$Sprite2D.frame = 1
+	null_block.visible = true
+	animated_block.stop()
+	animated_block.visible = false
+	
 	position.y -= 10
 	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
@@ -36,8 +42,9 @@ func coin_animation():
 	sound.playing = true
 	sound.stream = load("res://sounds/coin.wav")
 	sound.playing = true
+	
 	animated_coin.visible = true
-	animated_coin.play("block_coin")
+	animated_coin.play()
 	
 	for i in range(8):
 		var timer = get_tree().create_timer(0.05)
@@ -47,4 +54,5 @@ func coin_animation():
 			animated_coin.position.y += 5
 		await timer.timeout
 	
+	animated_coin.stop()
 	animated_coin.visible = false

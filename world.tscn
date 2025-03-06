@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=41 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://scripts/flag.gd" id="7_58b55"]
 [ext_resource type="PackedScene" uid="uid://d0ngqoded2uqf" path="res://canvas_layer.tscn" id="10_8v8g0"]
 [ext_resource type="Script" path="res://scripts/question_area.gd" id="12_2ah00"]
-[ext_resource type="Texture2D" uid="uid://chhc10f6fvi5a" path="res://images/questionblock.png" id="12_7odiw"]
 [ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="14_1066r"]
 [ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="14_p6vh3"]
 [ext_resource type="Script" path="res://scripts/brick_area.gd" id="15_hi7kc"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="16_rephp"]
 [ext_resource type="Texture2D" uid="uid://b3rwrudswjvmv" path="res://images/firework0.png" id="17_1pweh"]
 [ext_resource type="Texture2D" uid="uid://comdso7tphij6" path="res://images/firework1.png" id="18_6sy78"]
+[ext_resource type="Texture2D" uid="uid://o0eee1o4uwig" path="res://images/EmptyBlock.png" id="18_pbqcg"]
 [ext_resource type="Texture2D" uid="uid://bt82tyobe5nm6" path="res://images/firework2.png" id="19_1u514"]
 [ext_resource type="Script" path="res://scripts/fireworks.gd" id="20_5htwi"]
 [ext_resource type="Texture2D" uid="uid://7att7m04xgp4" path="res://images/Brick.png" id="22_4oia2"]
@@ -171,6 +171,35 @@ size = Vector2(30, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0mtj"]
 size = Vector2(30, 29)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gem18"]
+atlas = ExtResource("1_mgtot")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lh6ey"]
+atlas = ExtResource("1_mgtot")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdyeo"]
+atlas = ExtResource("1_mgtot")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h6p8g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gem18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lh6ey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdyeo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3xe8l"]
 animations = [{
@@ -391,6 +420,12 @@ shape = SubResource("RectangleShape2D_v0mtj")
 [node name="Question_Block1" type="Area2D" parent="."]
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block1"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block1"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
@@ -398,11 +433,10 @@ sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
 frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block1"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block1"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block1"]
 position = Vector2(466, -95)
@@ -418,18 +452,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(160, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block2"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block2"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block2"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block2"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block2"]
 position = Vector2(466, -95)
@@ -445,18 +484,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(224, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block3"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block3"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block3"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block3"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block3"]
 position = Vector2(466, -95)
@@ -472,18 +516,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(192, -128)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block4"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block4"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.771058
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block4"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block4"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block4"]
 position = Vector2(466, -95)
@@ -499,18 +548,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(1984, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block5"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block5"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block5"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block5"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block5"]
 position = Vector2(466, -95)
@@ -526,18 +580,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(2496, -128)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block6"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block6"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block6"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block6"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block6"]
 position = Vector2(466, -95)
@@ -553,18 +612,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(2880, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block7"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block7"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.771058
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block7"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block7"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block7"]
 position = Vector2(466, -95)
@@ -580,18 +644,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(2976, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block8"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block8"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.771058
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block8"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block8"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block8"]
 position = Vector2(466, -95)
@@ -607,18 +676,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(3072, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block9"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block9"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.771058
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block9"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block9"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block9"]
 position = Vector2(466, -95)
@@ -634,18 +708,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(2976, -128)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block10"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block10"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.771058
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block10"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block10"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block10"]
 position = Vector2(466, -95)
@@ -661,18 +740,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(3616, -128)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block11"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block11"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block11"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block11"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block11"]
 position = Vector2(466, -95)
@@ -688,18 +772,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(3648, -128)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block12"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block12"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block12"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block12"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block12"]
 position = Vector2(466, -95)
@@ -715,18 +804,23 @@ shape = SubResource("RectangleShape2D_xg0ji")
 position = Vector2(4928, 0)
 script = ExtResource("12_2ah00")
 
+[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Block13"]
+position = Vector2(466, -112)
+sprite_frames = SubResource("SpriteFrames_h6p8g")
+frame = 1
+frame_progress = 0.0830772
+
 [node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Block13"]
 position = Vector2(466, -143)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.795323
+frame_progress = 0.586713
 
-[node name="Sprite2D" type="Sprite2D" parent="Question_Block13"]
+[node name="Null_Block" type="Sprite2D" parent="Question_Block13"]
 position = Vector2(466, -112)
 scale = Vector2(2, 2)
-texture = ExtResource("12_7odiw")
-hframes = 2
+texture = ExtResource("18_pbqcg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Block13"]
 position = Vector2(466, -95)
