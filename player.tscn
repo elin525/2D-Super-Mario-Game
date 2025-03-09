@@ -45,18 +45,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_5672y")
+"texture": ExtResource("4_ancdr")
 }],
 "loop": true,
-"name": &"big_jump",
+"name": &"big_idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_ancdr")
+"texture": ExtResource("3_5672y")
 }],
 "loop": true,
-"name": &"big_mario",
+"name": &"big_jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -83,10 +83,13 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_gf086")
+"texture": ExtResource("12_etowk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_a2sp2")
 }],
 "loop": true,
-"name": &"death",
+"name": &"fire_end",
 "speed": 5.0
 }, {
 "frames": [{
@@ -94,18 +97,7 @@ animations = [{
 "texture": ExtResource("10_pp7xj")
 }],
 "loop": true,
-"name": &"fire_mario",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_etowk")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_a2sp2")
-}],
-"loop": true,
-"name": &"fire_mario_end",
+"name": &"fire_idle",
 "speed": 5.0
 }, {
 "frames": [{
@@ -113,7 +105,7 @@ animations = [{
 "texture": ExtResource("14_j1hv5")
 }],
 "loop": true,
-"name": &"fire_mario_jump",
+"name": &"fire_jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -127,7 +119,7 @@ animations = [{
 "texture": ExtResource("17_48gqn")
 }],
 "loop": true,
-"name": &"fire_mario_move",
+"name": &"fire_move",
 "speed": 5.0
 }, {
 "frames": [{
@@ -135,7 +127,7 @@ animations = [{
 "texture": ExtResource("18_8m6ji")
 }],
 "loop": true,
-"name": &"fire_mario_st",
+"name": &"fire_st",
 "speed": 5.0
 }, {
 "frames": [{
@@ -183,6 +175,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("9_gf086")
+}],
+"loop": true,
+"name": &"small_death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("12_lr4ff")
 }, {
 "duration": 1.0,
@@ -194,18 +194,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_o5m33")
+"texture": ExtResource("15_lf3up")
 }],
 "loop": true,
-"name": &"small_jump",
+"name": &"small_idle",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("15_lf3up")
+"texture": ExtResource("14_o5m33")
 }],
 "loop": true,
-"name": &"small_mario",
+"name": &"small_jump",
 "speed": 5.0
 }, {
 "frames": [{
@@ -243,7 +243,7 @@ script = ExtResource("1_ox1jm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"small_st"
+animation = &"small_death"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)
