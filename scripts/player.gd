@@ -52,7 +52,7 @@ func _physics_process(delta):
 			
 	if flag.initial_touched:
 		handle_flag_animation()
-		
+
 	# flag animation handling
 	if is_triggering_scene:
 		handle_scene_transition()
@@ -104,6 +104,7 @@ func handle_collision():
 			if position.y < collider.position.y:
 				collider.queue_free()
 				velocity.y = JUMP_VELOCITY * 0.5
+				#play_sound("stomp")
 			else:
 				hurt()
 				
@@ -151,6 +152,7 @@ func end_level():
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
+		print("firework trigger: ", fireworks)
 
 # ---------------- DAMAGE & DEATH ---------------- #
 func hurt():
@@ -189,10 +191,10 @@ func die(world):
 	play_animation("death")
 	
 	# jump up and fall down
-	position.y -= 220
-	await get_tree().create_timer(1.6).timeout
-	position.y += 300
+	position.y -= 250
 	await get_tree().create_timer(0.8).timeout
+	position.y += 300
+	await get_tree().create_timer(1.2).timeout
 	await sounds.finished
 
 	# trigger game over
