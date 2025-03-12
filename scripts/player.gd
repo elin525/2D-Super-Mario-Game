@@ -51,7 +51,7 @@ func _physics_process(delta):
 		# handle collisions
 		handle_collision()
 			
-	if flag.initial_touched:
+	if flag.initial_touched == true:
 		handle_flag_animation()
 
 	# flag animation handling
@@ -119,9 +119,12 @@ func handle_collision():
 				
 	if is_on_wall() and position.x > 6240 and position.x < 6288:
 			flag.initial_touched = true
+			time.score += 100
+			time.score -= 4000
 
 # ---------------- FLAG & LEVEL END ---------------- #
 func handle_flag_animation():
+	
 	if is_controllable:
 		set_position(Vector2(6275, -305))
 		set_velocity(Vector2(0, 300))
