@@ -18,16 +18,16 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.position.y <= -305:
 		HUD.score += 5000
 		HUD.update_score()
-	elif body.position.y <= 259:
+	elif body.position.y <= -259:
 		HUD.score += 4000
 		HUD.update_score()
-	elif body.position.y <= 177:
+	elif body.position.y <= -177:
 		HUD.score += 2000
 		HUD.update_score()
-	elif body.position.y <= 135:
+	elif body.position.y <= -135:
 		HUD.score += 800
 		HUD.update_score()
-	elif body.position.y <= 64:
+	elif body.position.y <= -64:
 		HUD.score += 400
 		HUD.update_score()
 	else:

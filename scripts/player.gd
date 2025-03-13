@@ -15,6 +15,7 @@ var is_controllable = true
 var is_triggering_scene = false
 var is_dying = false
 var already_jumped = false
+var jump_released = false
 
 # state prefix for animation
 var current_state = "small"
@@ -50,7 +51,7 @@ func _physics_process(delta):
 		# handle collisions
 		handle_collision()
 			
-	if flag.initial_touched:
+	if flag.initial_touched == true:
 		handle_flag_animation()
 
 	# flag animation handling
@@ -74,10 +75,18 @@ func change_state(new_state):
 
 # ---------------- MOVEMENT ---------------- #
 func apply_gravity():
+	
 	if not is_on_floor():
-		velocity.y += gravity
+		if Input.is_action_just_released("ui_up") and position.y <= 0:
+			jump_released = true
+			velocity.y += gravity * 3
+		elif jump_released:
+			velocity.y += gravity * 3
+		else:
+			velocity.y += gravity
 	else:
 		already_jumped = false
+		jump_released = false
 
 func handle_jump():
 	if Input.is_action_just_pressed("ui_up") and is_on_floor() and not already_jumped:
@@ -104,15 +113,18 @@ func handle_collision():
 			if position.y < collider.position.y:
 				collider.queue_free()
 				velocity.y = JUMP_VELOCITY * 0.5
-				#play_sound("stomp")
+				#play_sound("kill_mob")
 			else:
 				hurt()
 				
 	if is_on_wall() and position.x > 6240 and position.x < 6288:
 			flag.initial_touched = true
+			time.score += 100
+			time.score -= 4000
 
 # ---------------- FLAG & LEVEL END ---------------- #
 func handle_flag_animation():
+	
 	if is_controllable:
 		set_position(Vector2(6275, -305))
 		set_velocity(Vector2(0, 300))
@@ -122,7 +134,7 @@ func handle_flag_animation():
 	move_and_slide()
 
 	if position.y >= -50:
-		sprite.flip_h = (position.y >= -48)
+		sprite.flip_h = (position.y >= -50)
 		position.x = 6300
 		flag.initial_touched = true
 		await get_tree().create_timer(0.5).timeout
@@ -153,7 +165,6 @@ func end_level():
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
-		print("firework trigger: ", fireworks)
 
 # ---------------- DAMAGE & DEATH ---------------- #
 func hurt():

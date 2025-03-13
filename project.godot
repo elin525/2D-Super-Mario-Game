@@ -24,6 +24,10 @@ ResourceLoad="*res://scripts/resource_load.gd"
 window/size/viewport_height=878
 window/stretch/mode="viewport"
 
+[global_group]
+
+enemies=""
+
 [rendering]
 
 environment/defaults/default_clear_color=Color(0.360784, 0.580392, 0.988235, 1)

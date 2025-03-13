@@ -9,6 +9,7 @@ var furthest_x: float = 0  # player furthest x position
 
 
 func _ready():
+	
 	make_current()
 	
 	if target == null:
