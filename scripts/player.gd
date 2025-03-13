@@ -134,7 +134,7 @@ func handle_flag_animation():
 	move_and_slide()
 
 	if position.y >= -50:
-		sprite.flip_h = (position.y >= -48)
+		sprite.flip_h = (position.y >= -50)
 		position.x = 6300
 		flag.initial_touched = true
 		await get_tree().create_timer(0.5).timeout
