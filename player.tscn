@@ -235,7 +235,7 @@ animations = [{
 size = Vector2(26, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsgbc"]
-size = Vector2(26, 32)
+size = Vector2(28, 33)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_ox1jm")
@@ -243,7 +243,7 @@ script = ExtResource("1_ox1jm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"small_death"
+animation = &"small_idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)
@@ -261,5 +261,5 @@ position = Vector2(0, -16.5)
 shape = SubResource("RectangleShape2D_nvjl5")
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -16.5)
 shape = SubResource("RectangleShape2D_bsgbc")

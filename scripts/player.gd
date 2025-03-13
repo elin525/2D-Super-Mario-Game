@@ -134,6 +134,7 @@ func handle_scene_transition():
 	sprite.flip_h = (position.y < -33)
 	play_animation("move")
 	move_and_slide()
+	
 
 func end_level():
 	is_triggering_scene = false
@@ -179,9 +180,6 @@ func die(world):
 
 	is_dying = true
 	is_controllable = false
-	velocity = Vector2.ZERO
-	set_physics_process(false)
-	set_collision_layer_value(1, false)
 
 	# stop background music and play death sound
 	music.playing = false
@@ -191,11 +189,17 @@ func die(world):
 	play_animation("death")
 	
 	# jump up and fall down
-	position.y -= 250
-	await get_tree().create_timer(0.8).timeout
-	position.y += 300
-	await get_tree().create_timer(1.2).timeout
-	await sounds.finished
+	var start_position = position
+	var up_position = start_position + Vector2(0, -200)
+	var down_position = start_position + Vector2(0, 400)
+	
+	while position.y > up_position.y:
+		position.y -= 4
+		await get_tree().create_timer(0.01).timeout
+		
+	while position.y < down_position.y:
+		position.y += 4
+		await get_tree().create_timer(0.01).timeout
 
 	# trigger game over
 	world.death = true
