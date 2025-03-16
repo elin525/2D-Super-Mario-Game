@@ -12,7 +12,7 @@ var is_on_screen = false
 @onready var ray_cast_2d = $RayCast2D as RayCast2D
 @onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
 
-func _process(delta): 
+func _process(delta):
 	if is_on_screen:
 		position.x -= delta * horizontal_speed
 	

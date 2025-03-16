@@ -3,7 +3,7 @@ extends Area2D
 @onready var animated_coin = $Coin_Animation
 @onready var animated_block = $Flashing_Block
 @onready var null_block = $Null_Block
-@onready var sound = get_node("../Animation Sounds")
+@onready var sound = get_node("../../Animation Sounds")
 var activate = true
 
 func _ready() -> void:
@@ -17,7 +17,7 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	
 	if activate == true:
-		var HUD = get_node("../HUD")
+		var HUD = get_node("../../HUD")
 		HUD.score += 200
 		HUD.update_score()
 		HUD.coins += 1
