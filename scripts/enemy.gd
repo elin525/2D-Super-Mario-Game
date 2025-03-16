@@ -5,6 +5,9 @@ class_name Enemy
 const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 
 var is_on_screen = false
+var direction = -1
+var cooldown = false
+var just_on_screen = true
 @export var horizontal_speed = 30 
 @export var vertical_speed = 100
 @export var kill_points = 100
@@ -14,10 +17,28 @@ var is_on_screen = false
 
 func _process(delta):
 	if is_on_screen:
-		position.x -= delta * horizontal_speed
+		
+		if direction == -1:
+			position.x -= delta * horizontal_speed
+		else:
+			position.x += delta * horizontal_speed
 	
 		if !ray_cast_2d.is_colliding():
-			position.y += delta * vertical_speed
+			if just_on_screen:
+				position.y += delta * vertical_speed
+			if just_on_screen == false and cooldown == false:
+				cooldown = true
+				flip_direction()
+				await get_tree().create_timer(4).timeout
+				cooldown = false
+				just_on_screen = false
+ 
+		await get_tree().process_frame
+		if has_overlapping_areas() and cooldown == false:
+			cooldown = true
+			flip_direction()
+			await get_tree().create_timer(1).timeout
+			cooldown = false
 
 func die():
 	horizontal_speed = 0
@@ -58,3 +79,11 @@ func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
+
+func flip_direction():
+	if direction == -1:
+		direction = 1
+	else:
+		direction = -1
+
+	await get_tree().create_timer(1).timeout

@@ -191,8 +191,12 @@ func hurt():
 	is_controllable = true
 
 func die(world):
+	var l = ResourceLoad.LiveScene
+	
 	if is_dying:
 		return
+		
+	world.death = true	
 
 	is_dying = true
 	is_controllable = false
@@ -202,7 +206,10 @@ func die(world):
 
 	# stop background music and play death sound
 	music.playing = false
-	play_sound("death")
+	if l.lives > 0:
+		play_sound("death")
+	else:
+		play_sound("gameover")
 
 	# play death animation
 	play_animation("death")
@@ -218,15 +225,20 @@ func die(world):
 	var down_position = start_position + Vector2(0, 400)
 	
 	while position.y > up_position.y:
-		position.y -= 4
+		var collision = move_and_collide(Vector2(0, -4))
 		await get_tree().create_timer(0.01).timeout
 		
+		if collision:
+			break
+		
 	while position.y < down_position.y:
-		position.y += 4
+		var collision = move_and_collide(Vector2(0,4))
 		await get_tree().create_timer(0.01).timeout
 
+		if collision:
+			break
 	# trigger game over
-	world.death = true
+	await sounds.finished
 	death.emit()
 
 # ---------------- UTILITIES ---------------- #
@@ -254,7 +266,6 @@ func _on_death() -> void:
 	var l = ResourceLoad.LiveScene
 
 	if l.lives == 0:
-		play_sound("gameover")
 		return
 
 	ResourceLoad.world = self.duplicate()
@@ -282,7 +293,7 @@ func handle_enemy_collision(enemy: Enemy):
 	else:
 		var angle_of_collisison = rad_to_deg(position.angle_to_point(enemy.position))
 	
-		if angle_of_collisison > min_stomp_degree && max_stomp_degree > angle_of_collisison: 
+		if angle_of_collisison > min_stomp_degree && max_stomp_degree > angle_of_collisison and world.death == false: 
 			enemy.die()
 			on_enemy_stomped()
 			spawn_points_label(enemy)

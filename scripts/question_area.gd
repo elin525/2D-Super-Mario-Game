@@ -4,6 +4,7 @@ extends Area2D
 @onready var animated_block = $Flashing_Block
 @onready var null_block = $Null_Block
 @onready var sound = get_node("../../Animation Sounds")
+@onready var world = get_node("..")
 var activate = true
 
 func _ready() -> void:
@@ -16,7 +17,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	if activate == true:
+	if activate == true and world.death == false:
 		var HUD = get_node("../../HUD")
 		HUD.score += 200
 		HUD.update_score()
