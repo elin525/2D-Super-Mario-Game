@@ -219,7 +219,7 @@ animations = [{
 size = Vector2(30, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0mtj"]
-size = Vector2(30, 29)
+size = Vector2(32, 29)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gem18"]
 atlas = ExtResource("1_mgtot")
@@ -2046,46 +2046,46 @@ shape = SubResource("RectangleShape2D_xg0ji")
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Goomba" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(655, -17)
+position = Vector2(655, -16)
 
 [node name="Goomba2" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(1230, -17)
+position = Vector2(1230, -16)
 
 [node name="Goomba3" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(1630, -17)
+position = Vector2(1630, -16)
 
 [node name="Goomba4" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(2514, -273)
+position = Vector2(2514, -272)
 
 [node name="Goomba5" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(2577, -273)
+position = Vector2(2577, -272)
 
 [node name="Goomba6" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(3595, -17)
+position = Vector2(3595, -16)
 
 [node name="Goomba7" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(3644, -17)
+position = Vector2(3644, -16)
 
 [node name="Goomba8" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(3921, -17)
+position = Vector2(3921, -16)
 
 [node name="Goomba9" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(3969, -17)
+position = Vector2(3969, -16)
 
 [node name="Goomba10" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(4049, -17)
+position = Vector2(4049, -16)
 
 [node name="Goomba11" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(4098, -17)
+position = Vector2(4098, -16)
 
 [node name="Goomba12" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(5520, -17)
+position = Vector2(5520, -16)
 
 [node name="Goomba13" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(5567, -17)
+position = Vector2(5567, -16)
 
 [node name="Koopa" parent="Enemies" instance=ExtResource("27_hf3sn")]
-position = Vector2(3376, -24)
+position = Vector2(3376, -23)
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

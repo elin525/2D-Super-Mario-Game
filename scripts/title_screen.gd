@@ -16,7 +16,7 @@ func _input(event):
 	else:
 		clickable = false
 		
-	if event is InputEventMouseButton and event.is_pressed() and clickable:
+	if event is InputEventMouseButton and event.is_pressed() and clickable and get_node("ColorRect") != null:
 		get_node("ColorRect").free()
 		lives.visible = true
 		mouse_click.emit()

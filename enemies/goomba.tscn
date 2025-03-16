@@ -49,6 +49,7 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_mif4p")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
+exclude_parent = false
 target_position = Vector2(0, 16)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
