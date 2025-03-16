@@ -15,7 +15,7 @@ var just_on_screen = true
 @onready var ray_cast_2d = $RayCast2D as RayCast2D
 @onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
 
-func _process(delta): 
+func _process(delta):
 	if is_on_screen:
 		
 		if direction == -1:

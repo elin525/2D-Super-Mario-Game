@@ -39,6 +39,8 @@ script = ExtResource("1_ed62v")
 sprite_frames = SubResource("SpriteFrames_q4pde")
 animation = &"walk"
 autoplay = "walk"
+frame = 1
+frame_progress = 0.551051
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

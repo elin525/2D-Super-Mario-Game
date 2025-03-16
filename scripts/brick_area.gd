@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var player = get_node("../TileMap/player")
+@onready var player = get_node("../../TileMap/player")
 @onready var brick = $Sprite2D
 
 var piece_sprites = []
@@ -24,7 +24,7 @@ func _on_body_entered(body: Node2D) -> void:
 		delete_block()
 
 func shift_block():
-	var sound = get_node("../Animation Sounds")
+	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/blockhit.wav")
 	sound.playing = true
 	var temp_timer = get_tree().create_timer(0.05)
@@ -36,7 +36,7 @@ func shift_block():
 
 func delete_block():
 	# Play Sounds
-	var sound = get_node("../Animation Sounds")
+	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/blockbreak.wav")
 	sound.playing = true
 	
