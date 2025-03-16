@@ -31,14 +31,14 @@ func _process(delta):
 				flip_direction()
 				await get_tree().create_timer(4).timeout
 				cooldown = false
-				just_on_screen = false
+			just_on_screen = false
  
-			await get_tree().process_frame
-			if has_overlapping_areas() and cooldown == false:
-				cooldown = true
-				flip_direction()
-				await get_tree().create_timer(1).timeout
-				cooldown = false
+		await get_tree().process_frame
+		if has_overlapping_areas() and cooldown == false:
+			cooldown = true
+			flip_direction()
+			await get_tree().create_timer(1).timeout
+			cooldown = false
 
 func die():
 	horizontal_speed = 0
