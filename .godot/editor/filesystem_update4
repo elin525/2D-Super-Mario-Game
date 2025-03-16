@@ -2,3 +2,4 @@ res://player.tscn
 res://canvas_layer.tscn
 res://world.tscn
 res://enemies/goomba.tscn
+res://scripts/brick_area.gd

@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=48 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -12,10 +12,14 @@
 [ext_resource type="Script" path="res://scripts/flag.gd" id="7_58b55"]
 [ext_resource type="PackedScene" uid="uid://d0ngqoded2uqf" path="res://canvas_layer.tscn" id="10_8v8g0"]
 [ext_resource type="Script" path="res://scripts/question_area.gd" id="12_2ah00"]
+[ext_resource type="Texture2D" uid="uid://bxirgt1jkc3je" path="res://images/block_debris01.png" id="12_pufkp"]
+[ext_resource type="Texture2D" uid="uid://cpjtf5e0ped1" path="res://images/block_debris02.png" id="13_ruygm"]
 [ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="14_1066r"]
+[ext_resource type="Texture2D" uid="uid://ya1h2qam2erw" path="res://images/block_debris03.png" id="14_miuiw"]
 [ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="14_p6vh3"]
 [ext_resource type="Script" path="res://scripts/brick_area.gd" id="15_hi7kc"]
 [ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="15_os1b0"]
+[ext_resource type="Texture2D" uid="uid://cgn6utgahw02u" path="res://images/block_debris04.png" id="15_wkxrv"]
 [ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="16_rephp"]
 [ext_resource type="Texture2D" uid="uid://b3rwrudswjvmv" path="res://images/firework0.png" id="17_1pweh"]
 [ext_resource type="Texture2D" uid="uid://comdso7tphij6" path="res://images/firework1.png" id="18_6sy78"]
@@ -167,6 +171,26 @@ texture = ExtResource("1_mgtot")
 [sub_resource type="TileSet" id="TileSet_6qcmx"]
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_ay6rm")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elevw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_pufkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ruygm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_miuiw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_wkxrv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lq08g"]
 size = Vector2(30, 4)
@@ -366,6 +390,26 @@ safe_margin = 0.001
 position = Vector2(32, 0)
 script = ExtResource("15_hi7kc")
 
+[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Brick_Block1"]
+position = Vector2(553, -121)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Brick_Block1"]
+position = Vector2(553, -103)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Brick_Block1"]
+position = Vector2(570, -121)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Brick_Block1"]
+position = Vector2(571, -103)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_Block1"]
 position = Vector2(562, -96)
 shape = SubResource("RectangleShape2D_lq08g")
@@ -385,6 +429,26 @@ shape = SubResource("RectangleShape2D_v0mtj")
 position = Vector2(96, 0)
 script = ExtResource("15_hi7kc")
 
+[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Brick_Block2"]
+position = Vector2(553, -121)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Brick_Block2"]
+position = Vector2(553, -103)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Brick_Block2"]
+position = Vector2(570, -121)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Brick_Block2"]
+position = Vector2(571, -103)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_Block2"]
 position = Vector2(562, -96)
 shape = SubResource("RectangleShape2D_lq08g")
@@ -403,6 +467,26 @@ shape = SubResource("RectangleShape2D_v0mtj")
 [node name="Brick_Block3" type="Area2D" parent="."]
 position = Vector2(160, 0)
 script = ExtResource("15_hi7kc")
+
+[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Brick_Block3"]
+position = Vector2(553, -121)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Brick_Block3"]
+position = Vector2(553, -103)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Brick_Block3"]
+position = Vector2(570, -121)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
+
+[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Brick_Block3"]
+position = Vector2(571, -103)
+scale = Vector2(0.750003, 0.765625)
+sprite_frames = SubResource("SpriteFrames_elevw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Brick_Block3"]
 position = Vector2(562, -96)
