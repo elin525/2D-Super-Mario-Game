@@ -40,7 +40,6 @@ func _ready():
 	change_state(SMALL)
 
 func _physics_process(delta):
-	
 	if position.x < 0:
 		position.x = 0
 	
@@ -192,12 +191,8 @@ func hurt():
 	is_controllable = true
 
 func die(world):
-	var l = ResourceLoad.LiveScene
-	
 	if is_dying:
 		return
-
-	world.death = true
 
 	is_dying = true
 	is_controllable = false
@@ -207,10 +202,7 @@ func die(world):
 
 	# stop background music and play death sound
 	music.playing = false
-	if l.lives > 0:
-		play_sound("death")
-	else:
-		play_sound("gameover")
+	play_sound("death")
 
 	# play death animation
 	play_animation("death")
@@ -220,24 +212,21 @@ func die(world):
 	#await get_tree().create_timer(0.8).timeout
 	#position.y += 300
 	#await get_tree().create_timer(1.2).timeout
+	#await sounds.finished
 	var start_position = position
 	var up_position = start_position + Vector2(0, -200)
 	var down_position = start_position + Vector2(0, 400)
 	
 	while position.y > up_position.y:
-		var collision = move_and_collide(Vector2(0, -4))
+		position.y -= 4
 		await get_tree().create_timer(0.01).timeout
-		if collision:
-			break
-	
+		
 	while position.y < down_position.y:
-		var collision = move_and_collide(Vector2(0,4))
+		position.y += 4
 		await get_tree().create_timer(0.01).timeout
-		if collision:
-			break
 
 	# trigger game over
-	await sounds.finished
+	world.death = true
 	death.emit()
 
 # ---------------- UTILITIES ---------------- #
@@ -265,6 +254,7 @@ func _on_death() -> void:
 	var l = ResourceLoad.LiveScene
 
 	if l.lives == 0:
+		play_sound("gameover")
 		return
 
 	ResourceLoad.world = self.duplicate()

@@ -25,7 +25,7 @@ func new_game():
 		
 	if $HUD.clock == 0:
 		$AudioStreamPlayer2D.playing = false
-		player.die(self)
+		player.death.emit()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
