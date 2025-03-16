@@ -4,7 +4,7 @@ extends Area2D
 @onready var animated_block = $Flashing_Block
 @onready var null_block = $Null_Block
 @onready var sound = get_node("../../Animation Sounds")
-@onready var world = get_node("..")
+@onready var world = get_node("../..")
 var activate = true
 
 func _ready() -> void:

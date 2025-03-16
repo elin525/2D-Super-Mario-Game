@@ -288,6 +288,10 @@ texture = ExtResource("1_6br88")
 [node name="Area2D_Tube_01" type="Area2D" parent="."]
 position = Vector2(864, 192)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_01"]
+position = Vector2(0, -224)
+shape = SubResource("RectangleShape2D_ggvoq")
+
 [node name="Tube" type="Sprite2D" parent="Area2D_Tube_01"]
 texture = ExtResource("2_ghnn1")
 
@@ -299,6 +303,10 @@ shape = SubResource("RectangleShape2D_ggvoq")
 
 [node name="Area2D_Tube_02" type="Area2D" parent="."]
 position = Vector2(1184, 160)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_02"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_dq4lk")
 
 [node name="Tube" type="Sprite2D" parent="Area2D_Tube_02"]
 texture = ExtResource("2_ghnn1")
@@ -312,6 +320,10 @@ shape = SubResource("RectangleShape2D_dq4lk")
 [node name="Area2D_Tube_03" type="Area2D" parent="."]
 position = Vector2(1440, 128)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_03"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_dq4lk")
+
 [node name="Tube" type="Sprite2D" parent="Area2D_Tube_03"]
 texture = ExtResource("2_ghnn1")
 
@@ -323,6 +335,10 @@ shape = SubResource("RectangleShape2D_dq4lk")
 
 [node name="Area2D_Tube_04" type="Area2D" parent="."]
 position = Vector2(1792, 128)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_04"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_dq4lk")
 
 [node name="Tube" type="Sprite2D" parent="Area2D_Tube_04"]
 texture = ExtResource("2_ghnn1")
@@ -336,6 +352,10 @@ shape = SubResource("RectangleShape2D_dq4lk")
 [node name="Area2D_Tube_05" type="Area2D" parent="."]
 position = Vector2(5184, 192)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_05"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_dq4lk")
+
 [node name="Tube" type="Sprite2D" parent="Area2D_Tube_05"]
 texture = ExtResource("2_ghnn1")
 
@@ -347,6 +367,10 @@ shape = SubResource("RectangleShape2D_dq4lk")
 
 [node name="Area2D_Tube_06" type="Area2D" parent="."]
 position = Vector2(5696, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_06"]
+position = Vector2(0, -192)
+shape = SubResource("RectangleShape2D_dq4lk")
 
 [node name="Tube" type="Sprite2D" parent="Area2D_Tube_06"]
 texture = ExtResource("2_ghnn1")
