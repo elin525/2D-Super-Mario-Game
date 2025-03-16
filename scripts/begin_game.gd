@@ -3,11 +3,12 @@ extends Node2D
 signal hurry_up
 
 var death = false
+var player
 
 func new_game():
 	var flag = get_node("Area2D/Flag")
 	
-	var player = get_node("TileMap/player")
+	player = get_node("TileMap/player")
 	
 	$AudioStreamPlayer2D.playing = true
 
@@ -33,7 +34,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$AudioStreamPlayer2D.position.x = player.position.x
 
 
 func _on_question_block_12_body_entered(body: Node2D) -> void:

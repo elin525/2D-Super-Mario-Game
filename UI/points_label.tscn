@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqlejh5ap172w"]
+
+[ext_resource type="FontFile" uid="uid://bpqaukui6hvul" path="res://fonts/emulogic.ttf" id="1_43xbq"]
+[ext_resource type="Script" path="res://scripts/points_label.gd" id="2_4h84f"]
+
+[node name="PointsLabel" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_43xbq")
+theme_override_font_sizes/font_size = 10
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("2_4h84f")

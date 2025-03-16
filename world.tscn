@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=43 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://7att7m04xgp4" path="res://images/Brick.png" id="22_4oia2"]
 [ext_resource type="AudioStream" uid="uid://c5ov5egak3cef" path="res://sounds/overworld.wav" id="24_2i5hb"]
 [ext_resource type="AudioStream" uid="uid://cumwuvhc3kd4g" path="res://sounds/jump.wav" id="25_mn1yf"]
+[ext_resource type="PackedScene" uid="uid://ch7irned3qj80" path="res://enemies/goomba.tscn" id="26_t2ayo"]
+[ext_resource type="PackedScene" uid="uid://ba4mo4clfbxjc" path="res://enemies/koopa.tscn" id="27_hf3sn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
 size = Vector2(64, 64)
@@ -255,7 +257,7 @@ script = ExtResource("1_l4ws2")
 
 [node name="Map1-1" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(3515, 65)
+position = Vector2(3520, 63)
 scale = Vector2(1.99727, 1.99727)
 texture = ExtResource("1_6br88")
 
@@ -867,12 +869,58 @@ position = Vector2(6353, -196)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, -2)
 stream = ExtResource("24_2i5hb")
+volume_db = -2.0
 max_distance = 10000.0
 
 [node name="Animation Sounds" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_mn1yf")
 max_distance = 10000.0
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Goomba" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(655, -17)
+
+[node name="Goomba2" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(1230, -17)
+
+[node name="Goomba3" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(1630, -17)
+
+[node name="Goomba4" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(2514, -273)
+
+[node name="Goomba5" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(2577, -273)
+
+[node name="Goomba6" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(3595, -17)
+
+[node name="Goomba7" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(3644, -17)
+
+[node name="Goomba8" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(3921, -17)
+
+[node name="Goomba9" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(3969, -17)
+
+[node name="Goomba10" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(4049, -17)
+
+[node name="Goomba11" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(4098, -17)
+
+[node name="Goomba12" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(5520, -17)
+
+[node name="Goomba13" parent="Enemies" instance=ExtResource("26_t2ayo")]
+position = Vector2(5567, -17)
+
+[node name="Koopa" parent="Enemies" instance=ExtResource("27_hf3sn")]
+position = Vector2(3376, -24)
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

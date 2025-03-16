@@ -21,12 +21,20 @@ var jump_released = false
 var current_state = "small"
 
 # references
+@onready var world = get_node("../..")
 @onready var sprite = $AnimatedSprite2D
 @onready var sounds = get_node("../../Animation Sounds")
 @onready var music = get_node("../../AudioStreamPlayer2D")
-@onready var time = get_node("../../HUD")
+@onready var hud = get_node("../../HUD")
 @onready var map = get_node("..")
 @onready var flag = get_node("../../Area2D/Flag")
+
+const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
+@export_group("Stomping enemies")
+@export var min_stomp_degree = 20#35
+@export var max_stomp_degree = 130#145
+@export var stomp_y_velocity = -150 
+@export_group("")
 
 func _ready():
 	change_state(SMALL)
@@ -34,10 +42,8 @@ func _ready():
 func _physics_process(delta):
 	if position.x < 0:
 		position.x = 0
-
-	var world = get_node("../..")
 	
-	if time.clock > 0 and is_controllable:
+	if hud.clock > 0 and is_controllable:
 		apply_gravity()
 		handle_jump()
 		handle_movement()
@@ -119,8 +125,8 @@ func handle_collision():
 				
 	if is_on_wall() and position.x > 6240 and position.x < 6288:
 			flag.initial_touched = true
-			time.score += 100
-			time.score -= 4000
+			hud.score += 100
+			hud.score -= 4000
 
 # ---------------- FLAG & LEVEL END ---------------- #
 func handle_flag_animation():
@@ -146,22 +152,21 @@ func handle_scene_transition():
 	sprite.flip_h = (position.y < -33)
 	play_animation("move")
 	move_and_slide()
-	
 
 func end_level():
 	is_triggering_scene = false
 	if sprite != null:
 		sprite.queue_free()
-		var offset = time.clock
+		var offset = hud.clock
 		var fireworks = get_node("../../Fireworks1")
 
-		while time.clock > 0:
+		while hud.clock > 0:
 			play_sound("scorering")
 			await get_tree().create_timer(0.01).timeout
-			time.clock -= 1
-			time.update_time()
-			time.score += 50
-			time.update_score()
+			hud.clock -= 1
+			hud.update_time()
+			hud.score += 50
+			hud.update_score()
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
@@ -191,6 +196,9 @@ func die(world):
 
 	is_dying = true
 	is_controllable = false
+	#velocity = Vector2.ZERO
+	#set_physics_process(false)
+	#set_collision_layer_value(1, false)
 
 	# stop background music and play death sound
 	music.playing = false
@@ -200,6 +208,11 @@ func die(world):
 	play_animation("death")
 	
 	# jump up and fall down
+	#position.y -= 250
+	#await get_tree().create_timer(0.8).timeout
+	#position.y += 300
+	#await get_tree().create_timer(1.2).timeout
+	#await sounds.finished
 	var start_position = position
 	var up_position = start_position + Vector2(0, -200)
 	var down_position = start_position + Vector2(0, 400)
@@ -253,3 +266,36 @@ func _on_death() -> void:
 	tree.root.add_child(l)
 	l.triggered = true
 	tree.root.remove_child(get_node("/root/world"))
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area is Enemy:
+		handle_enemy_collision(area)
+		
+func handle_enemy_collision(enemy: Enemy):
+	if enemy == null:
+		return
+	
+	if is_instance_of(enemy, Koopa) && (enemy as Koopa).in_a_shell:
+		(enemy as Koopa).on_stomp(global_position)
+	
+	else:
+		var angle_of_collisison = rad_to_deg(position.angle_to_point(enemy.position))
+	
+		if angle_of_collisison > min_stomp_degree && max_stomp_degree > angle_of_collisison: 
+			enemy.die()
+			on_enemy_stomped()
+			spawn_points_label(enemy)
+		else: 
+			die(world)
+
+func on_enemy_stomped():
+	velocity.y = stomp_y_velocity
+	
+func spawn_points_label(enemy):
+	var points_label = POINTS_LABEL_SCENE.instantiate()
+	points_label.text = str(enemy.kill_points)
+	points_label.position = enemy.position + Vector2(-20, -20)
+	get_tree().root.add_child(points_label)
+	hud.score += enemy.kill_points
+	hud.update_score()

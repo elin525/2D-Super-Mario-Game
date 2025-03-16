@@ -1,4 +1,4 @@
 res://player.tscn
 res://canvas_layer.tscn
 res://world.tscn
-res://scripts/question_area.gd
+res://enemies/goomba.tscn
