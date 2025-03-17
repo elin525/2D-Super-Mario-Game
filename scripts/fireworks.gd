@@ -13,6 +13,7 @@ func trigger(offset):
 		visible = false
 		score.score += 500
 		score.update_score()
+		display_points(global_position)
 			
 		if offset % 10 == 3 or offset % 10 == 6:
 			var fireworks2 = get_node("../Fireworks2")
@@ -26,6 +27,7 @@ func trigger(offset):
 			fireworks2.visible = false
 			score.score += 500
 			score.update_score()
+			display_points(fireworks2.global_position)
 			
 			var fireworks3 = get_node("../Fireworks3")
 			fireworks3.visible = true
@@ -37,6 +39,7 @@ func trigger(offset):
 			fireworks3.visible = false
 			score.score += 500
 			score.update_score()
+			display_points(fireworks3.global_position)
 			
 			if offset % 10 == 6:
 				var fireworks4 = get_node("../Fireworks4")
@@ -49,6 +52,8 @@ func trigger(offset):
 				fireworks4.visible = false
 				score.score += 500
 				score.update_score()
+				display_points(fireworks4.global_position)
+				
 				var fireworks5 = get_node("../Fireworks5")
 				fireworks5.visible = true
 				fireworks5.play("default")
@@ -59,6 +64,7 @@ func trigger(offset):
 				fireworks5.visible = false
 				score.score += 500
 				score.update_score()
+				display_points(fireworks5.global_position)
 				
 				fireworks5.visible = false
 				var fireworks6 = get_node("../Fireworks6")
@@ -71,3 +77,11 @@ func trigger(offset):
 				fireworks6.visible = false
 				score.score += 500
 				score.update_score()
+				display_points(fireworks6.global_position)
+				
+func display_points(object_position):
+	var points_label = preload("res://UI/points_label.tscn").instantiate()
+	points_label.text = str(500)
+	points_label.position = object_position + Vector2(10, 0)
+	points_label.setPosition(points_label.position)
+	get_tree().root.add_child(points_label)

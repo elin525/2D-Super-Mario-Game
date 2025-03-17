@@ -5,6 +5,7 @@ extends Area2D
 @onready var null_block = $Null_Block
 @onready var sound = get_node("../../Animation Sounds")
 @onready var world = get_node("../..")
+@onready var player = get_node("../../TileMap/player")
 var activate = true
 
 func _ready() -> void:
@@ -57,3 +58,9 @@ func coin_animation():
 	
 	animated_coin.stop()
 	animated_coin.visible = false
+	
+	var points_label = preload("res://UI/points_label.tscn").instantiate()
+	points_label.text = str(200)
+	points_label.position = animated_coin.global_position + Vector2(10, 0)
+	points_label.setPosition(points_label.position)
+	get_tree().root.add_child(points_label)

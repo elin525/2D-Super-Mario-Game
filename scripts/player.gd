@@ -9,6 +9,7 @@ var state = SMALL
 # movement variables
 const JUMP_VELOCITY = -7 * 32
 var gravity = 0.09 * 35
+var direction: int
 
 # control state
 var is_controllable = true
@@ -28,6 +29,7 @@ var current_state = "small"
 @onready var hud = get_node("../../HUD")
 @onready var map = get_node("..")
 @onready var flag = get_node("../../Area2D/Flag")
+@onready var flag_area = get_node("../../Area2D")
 
 const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 @export_group("Stomping enemies")
@@ -44,6 +46,15 @@ func _physics_process(delta):
 		position.x = 0
 	
 	if hud.clock > 0 and is_controllable:
+		var input = Input.get_axis("ui_left", "ui_right")
+		
+		if input > 0:
+			direction = 1
+		elif input < 0:
+			direction = -1
+		else:
+			direction = 0
+		
 		apply_gravity()
 		handle_jump()
 		handle_movement()
@@ -124,9 +135,15 @@ func handle_collision():
 				hurt()
 				
 	if is_on_wall() and position.x > 6240 and position.x < 6288:
+			flag_area.block_touched = true
 			flag.initial_touched = true
 			hud.score += 100
 			hud.score -= 4000
+			var points_label = preload("res://UI/points_label.tscn").instantiate()
+			points_label.text = str(100)
+			points_label.position = global_position + Vector2(10, 0)
+			points_label.setPosition(points_label.position)
+			get_tree().root.add_child(points_label)
 
 # ---------------- FLAG & LEVEL END ---------------- #
 func handle_flag_animation():
@@ -262,8 +279,8 @@ func update_animation():
 		return
 	if already_jumped:
 		play_animation("jump")
-	elif velocity.x != 0:
-		sprite.flip_h = (velocity.x < 0)
+	elif direction != 0:
+		sprite.flip_h = (direction < 0)
 		play_animation("move")
 	else:
 		play_animation("idle")
@@ -315,6 +332,7 @@ func spawn_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	points_label.text = str(enemy.kill_points)
 	points_label.position = enemy.position + Vector2(-20, -20)
+	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)
 	hud.score += enemy.kill_points
 	hud.update_score()

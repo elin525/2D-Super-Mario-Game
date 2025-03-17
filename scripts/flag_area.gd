@@ -1,5 +1,9 @@
 extends Area2D
 
+var block_touched = false
+
+@onready var player = get_node("../TileMap/player")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -11,28 +15,30 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
+	
+	var score = 0
 		
 	var flag = get_node("Flag")
 	var HUD = get_node("../HUD")
 	
 	if body.position.y <= -305:
-		HUD.score += 5000
-		HUD.update_score()
+		score = 5000
 	elif body.position.y <= -259:
-		HUD.score += 4000
-		HUD.update_score()
+		score = 4000
 	elif body.position.y <= -177:
-		HUD.score += 2000
-		HUD.update_score()
+		score = 2000
 	elif body.position.y <= -135:
-		HUD.score += 800
-		HUD.update_score()
+		score = 800
 	elif body.position.y <= -64:
-		HUD.score += 400
-		HUD.update_score()
+		score = 400
 	else:
-		HUD.score += 100
-		HUD.update_score()
+		score = 100
+	
+	HUD.score += score
+	HUD.update_score()
+	
+	if block_touched == false:
+		display_points(player.global_position, score)
 	
 	flag.initial_touched = true
 	
@@ -43,3 +49,10 @@ func _on_body_entered(body: Node2D) -> void:
 	await music.finished
 	
 	music.playing = false
+	
+func display_points(object_position, score):
+	var points_label = preload("res://UI/points_label.tscn").instantiate()
+	points_label.text = str(score)
+	points_label.position = object_position + Vector2(10, 0)
+	points_label.setPosition(points_label.position)
+	get_tree().root.add_child(points_label)

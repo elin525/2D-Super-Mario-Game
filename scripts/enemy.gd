@@ -54,7 +54,6 @@ func _process(delta):
 			cooldown = false
 		elif has_overlapping_areas() and cooldown == false and shell == true:
 			for i in get_overlapping_areas():
-				print(i.name)
 				if i.get_parent().name != "Enemies" and i.get_parent().name != "player":
 					cooldown = true
 					flip_direction()
@@ -94,6 +93,7 @@ func die_from_hit():
 	
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	points_label.position = self.position + Vector2(-20, -20)
+	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)
 	
 	var HUD = get_node("../../HUD")
