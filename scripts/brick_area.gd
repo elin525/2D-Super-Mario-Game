@@ -2,8 +2,11 @@ extends Area2D
 
 @onready var player = get_node("../../TileMap/player")
 @onready var brick = $Sprite2D
+@onready var world = get_node("../..")
 
 var piece_sprites = []
+
+var touched = false
 
 func _ready() -> void:
 	piece_sprites.append($Piece_Animation1)
@@ -18,12 +21,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if player.current_state == "small":
+	if player.current_state == "small" and world.death == false:
 		shift_block()
 	elif player.current_state == "big" or player.current_state == "fire":
 		delete_block()
 
 func shift_block():
+	touched = true
 	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/blockhit.wav")
 	sound.playing = true
@@ -33,6 +37,7 @@ func shift_block():
 	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	brick.position.y += 10
+	touched = false
 
 func delete_block():
 	# Play Sounds

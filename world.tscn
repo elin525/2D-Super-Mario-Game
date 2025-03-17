@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=49 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -40,6 +40,9 @@ size = Vector2(64, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb3ca"]
 size = Vector2(32, 526)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtxis"]
+size = Vector2(32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("1_mgtot")
@@ -396,6 +399,15 @@ script = ExtResource("7_58b55")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_cb3ca")
+
+[node name="Koopa Shell Stop Point" type="Area2D" parent="."]
+position = Vector2(4192, -64)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Koopa Shell Stop Point"]
+position = Vector2(50, 48)
+shape = SubResource("RectangleShape2D_vtxis")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(2, 0)

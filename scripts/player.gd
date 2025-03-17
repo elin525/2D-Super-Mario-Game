@@ -193,10 +193,10 @@ func hurt():
 func die(world):
 	var l = ResourceLoad.LiveScene
 	
+	world.death = true
+	
 	if is_dying:
-		return
-		
-	world.death = true	
+		return	
 
 	is_dying = true
 	is_controllable = false
@@ -237,8 +237,15 @@ func die(world):
 
 		if collision:
 			break
+			
 	# trigger game over
-	await sounds.finished
+	
+	if sounds.is_playing() == true:
+		await sounds.finished
+	elif position.y >= 400:
+		death.emit()
+		return
+	
 	death.emit()
 
 # ---------------- UTILITIES ---------------- #
@@ -263,6 +270,7 @@ func update_animation():
 
 # ---------------- LIFE MANAGEMENT ---------------- #
 func _on_death() -> void:
+	
 	var l = ResourceLoad.LiveScene
 
 	if l.lives == 0:

@@ -25,3 +25,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	$"Coin Count/CoinAn1".play("default")
+	
+func add_score(points: int):
+	score += points
+	update_score()

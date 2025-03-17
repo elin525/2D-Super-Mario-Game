@@ -44,7 +44,7 @@ shape = ExtResource("5_b734r")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(-1, 0)
-target_position = Vector2(1, 23)
+target_position = Vector2(1, 24)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
