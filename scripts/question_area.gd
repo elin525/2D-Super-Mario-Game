@@ -62,11 +62,9 @@ func coin_animation():
 	
 	animated_coin.stop()
 	animated_coin.visible = false
-	animated_coin.position.x -= 30
-	animated_coin.position.y -= 5
 	
 	var points_label = preload("res://UI/points_label.tscn").instantiate()
 	points_label.text = str(200)
-	points_label.position = animated_coin.global_position + Vector2(10, 0)
+	points_label.position = animated_coin.global_position + Vector2(-20, -5)
 	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)
