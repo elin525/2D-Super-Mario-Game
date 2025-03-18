@@ -72,7 +72,7 @@ func die():
 	
 func die_from_hit():
 	
-	var pos = position.y
+	var pos = position
 	
 	set_collision_layer_value(1, false)
 	set_collision_mask_value(1, false)
@@ -84,8 +84,9 @@ func die_from_hit():
 	horizontal_speed = 0
 	
 	var die_tween = get_tree().create_tween()
-	die_tween.tween_property(self, "position", position + Vector2(0, -30), 0.2)
-	die_tween.chain().tween_property(self, "position", position + Vector2(0, min(pos+30, 500)), 4)
+	die_tween.tween_property(self, "position", pos + Vector2(0, -30), 0.2)
+	die_tween.chain().tween_property(self, "position", pos + Vector2(0, min(pos.y, 30)), 0.2)
+	die_tween.tween_callback(self.queue_free)
 	
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	points_label.position = self.position + Vector2(-20, -20)
