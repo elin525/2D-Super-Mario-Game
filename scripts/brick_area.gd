@@ -21,12 +21,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if player.current_state == "small" and world.death == false:
+	if player.current_state == "small" and world.death == false and player.blocks_interacted <= 0:
 		shift_block()
 	elif player.current_state == "big" or player.current_state == "fire":
 		delete_block()
 
 func shift_block():
+	player.blocks_interacted += 1
 	touched = true
 	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/blockhit.wav")
@@ -38,6 +39,7 @@ func shift_block():
 	await timer.timeout
 	brick.position.y += 10
 	touched = false
+	player.blocks_interacted -= 1
 
 func delete_block():
 	# Play Sounds
@@ -46,6 +48,7 @@ func delete_block():
 	sound.playing = true
 	
 	# Setup
+	player.blocks_interacted += 1
 	for sprite in piece_sprites:
 		sprite.visible = true
 		sprite.play()
@@ -77,3 +80,4 @@ func delete_block():
 	for piece in piece_sprites:
 		piece.visible = false
 		piece.stop()
+	player.blocks_interacted -= 1

@@ -17,8 +17,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	
-	if activate == true and world.death == false:
+	if activate == true and world.death == false and player.blocks_interacted <= 0:
 		var HUD = get_node("../../HUD")
 		HUD.score += 200
 		HUD.update_score()
@@ -30,6 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 		shift_block()
 
 func shift_block():
+	player.blocks_interacted += 1
 	null_block.visible = true
 	animated_block.stop()
 	animated_block.visible = false
@@ -38,6 +38,7 @@ func shift_block():
 	var timer = get_tree().create_timer(0.2)
 	await timer.timeout
 	position.y += 10
+	player.blocks_interacted -= 1
 
 func coin_animation():
 	sound.stream = load("res://sounds/blockhit.wav")

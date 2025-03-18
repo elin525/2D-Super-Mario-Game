@@ -17,6 +17,7 @@ var is_triggering_scene = false
 var is_dying = false
 var already_jumped = false
 var jump_released = false
+var blocks_interacted = 0
 
 # state prefix for animation
 var current_state = "small"
