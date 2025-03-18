@@ -29,11 +29,7 @@ func _process(delta):
 			position.x += delta * horizontal_speed
 	
 		if !ray_cast_2d.is_colliding():
-			if cooldown == false:
-				cooldown = true
-				flip_direction()
-				await get_tree().create_timer(1).timeout
-				cooldown = false
+			position.y += delta * vertical_speed
 		else:
 			var collider = ray_cast_2d.get_collider()
 			if collider.is_class("StaticBody2D"):
@@ -47,7 +43,7 @@ func _process(delta):
 		if isKoopa():
 			shell = (self as Koopa).in_a_shell
 		
-		if has_overlapping_areas() and cooldown == false and shell == false:
+		if has_overlapping_areas() and cooldown == false and shell == false and ray_cast_2d.is_colliding():
 			cooldown = true
 			flip_direction()
 			await get_tree().create_timer(1).timeout

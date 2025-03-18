@@ -7,6 +7,7 @@ extends Area2D
 @onready var world = get_node("../..")
 @onready var player = get_node("../../TileMap/player")
 var activate = true
+var touched = false
 
 func _ready() -> void:
 	animated_coin.visible = false
@@ -29,6 +30,7 @@ func _on_body_entered(body: Node2D) -> void:
 		shift_block()
 
 func shift_block():
+	touched = true
 	player.blocks_interacted += 1
 	null_block.visible = true
 	animated_block.stop()
@@ -39,6 +41,7 @@ func shift_block():
 	await timer.timeout
 	position.y += 10
 	player.blocks_interacted -= 1
+	touched = false
 
 func coin_animation():
 	sound.stream = load("res://sounds/blockhit.wav")
