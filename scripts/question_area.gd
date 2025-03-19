@@ -10,6 +10,12 @@ var activate = true
 var touched = false
 
 func _ready() -> void:
+	if name in ResourceLoad.hitQuestionBlocks and ResourceLoad.checkpoint_reached:
+		animated_block.visible = false
+		activate = false
+		animated_coin.visible = false
+		return
+	
 	animated_coin.visible = false
 	null_block.visible = false
 	animated_block.play()
@@ -42,6 +48,9 @@ func shift_block():
 	position.y += 10
 	player.blocks_interacted -= 1
 	touched = false
+	
+	if ResourceLoad.checkpoint_reached == false:
+		ResourceLoad.hitQuestionBlocks.append(name)
 
 func coin_animation():
 	sound.stream = load("res://sounds/blockhit.wav")

@@ -70,6 +70,9 @@ func die():
 	sound.stream = load("res://sounds/smb_stomp.wav")
 	sound.playing = true
 	
+	if ResourceLoad.checkpoint_reached == false:
+		ResourceLoad.deadEnemiesList.append(name)
+	
 func die_from_hit():
 	
 	var pos = position
@@ -82,6 +85,9 @@ func die_from_hit():
 	rotation_degrees = 180
 	vertical_speed = 0
 	horizontal_speed = 0
+	
+	if ResourceLoad.checkpoint_reached == false:
+		ResourceLoad.deadEnemiesList.append(name)
 	
 	var die_tween = get_tree().create_tween()
 	die_tween.tween_property(self, "position", pos + Vector2(0, -30), 0.2)
@@ -106,6 +112,9 @@ func _on_area_entered(area: Area2D) -> void:
 		die_from_hit()
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
+	if ResourceLoad.checkpoint_reached and name in ResourceLoad.deadEnemiesList:
+		queue_free()
+		return
 	is_on_screen = true
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:

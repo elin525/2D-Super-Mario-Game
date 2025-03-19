@@ -5,7 +5,9 @@ signal hurry_up
 var death = false
 var player
 
+# Called at the start of every attempt
 func new_game():
+	
 	var flag = get_node("Area2D/Flag")
 	
 	player = get_node("TileMap/player")
@@ -27,13 +29,16 @@ func new_game():
 		$AudioStreamPlayer2D.playing = false
 		player.die(self)
 
-# Called when the node enters the scene tree for the first time.
+# Called every time the Node enters the scene tree
 func _ready() -> void:
-	$HUD.start_game.emit() # Replace with function body.
+	$HUD.start_game.emit()
+	
+	if $HUD.clock <= 100:
+		hurry_up.emit()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+# Called every frame.
+func _process(_delta: float) -> void:
 	$AudioStreamPlayer2D.position.x = player.position.x
 
 
@@ -64,4 +69,4 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 func _on_hurry_up() -> void:
 	$AudioStreamPlayer2D.stream = load("res://sounds/overworld-fast.wav")
-	$AudioStreamPlayer2D.playing = true # Replace with function body.
+	$AudioStreamPlayer2D.playing = true

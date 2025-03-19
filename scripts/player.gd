@@ -41,6 +41,8 @@ const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 
 func _ready():
 	change_state(SMALL)
+	if ResourceLoad.checkpoint_reached:
+		position.x = 162*16
 
 func _physics_process(delta):
 	if position.x < 0:
@@ -65,6 +67,12 @@ func _physics_process(delta):
 		# check for death
 		if position.y >= 80:
 			die(world)
+			
+		if position.x >= 162*16:
+			ResourceLoad.checkpoint_reached = true
+			if ResourceLoad.saved == false:
+				ResourceLoad.checkpointReached.emit()
+				ResourceLoad.saved = true
 
 		# handle collisions
 		handle_collision()
@@ -293,8 +301,6 @@ func _on_death() -> void:
 
 	if l.lives == 0:
 		return
-
-	ResourceLoad.world = self.duplicate()
 
 	var tree = get_tree()
 	l.lives -= 1

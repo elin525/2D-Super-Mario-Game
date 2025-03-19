@@ -1,15 +1,12 @@
 extends Node
 
+signal checkpointReached
+
+static var checkpoint_reached = false
+static var saved = false
 var LiveScene: Node
-var world: Node
-var player: Node
-var HUD: Node
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-	
+var clock: int
+var score: int
+var coins: int
+var deadEnemiesList: Array[String]
+var hitQuestionBlocks: Array[String]
