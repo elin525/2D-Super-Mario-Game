@@ -17,6 +17,7 @@ var once = false
 @onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
 @onready var camera = get_node("../../TileMap/player/Camera2D")
 @onready var world = get_node("../..")
+@onready var player = get_node("../../TileMap/player")
 
 func _process(delta):
 	if is_on_screen:
@@ -72,6 +73,20 @@ func die():
 	
 	if ResourceLoad.checkpoint_reached == false:
 		ResourceLoad.deadEnemiesList.append(name)
+		
+	if ResourceLoad.stomped:
+		ResourceLoad.consecutive += 1
+		if ResourceLoad.consecutive >= ResourceLoad.pointsArray.size():
+			ResourceLoad.LiveScene.lives += 1
+			var points_label = POINTS_LABEL_SCENE.instantiate()
+			points_label.position = self.position + Vector2(-20, -20)
+			points_label.setPosition(points_label.position)
+			get_tree().root.add_child(points_label)
+			return
+		kill_points = ResourceLoad.pointsArray[ResourceLoad.consecutive]
+		
+	if not ResourceLoad.stomped:
+		ResourceLoad.stomped = true
 	
 func die_from_hit():
 	

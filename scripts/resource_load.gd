@@ -10,3 +10,7 @@ var score: int
 var coins: int
 var deadEnemiesList: Array[String]
 var hitQuestionBlocks: Array[String]
+
+static var stomped = false
+static var consecutive = 0
+var pointsArray = [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000]

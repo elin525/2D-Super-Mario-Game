@@ -113,6 +113,8 @@ func apply_gravity():
 	else:
 		already_jumped = false
 		jump_released = false
+		ResourceLoad.stomped = false
+		ResourceLoad.consecutive = 0
 
 func handle_jump():
 	if Input.is_action_just_pressed("ui_up") and is_on_floor() and not already_jumped:
@@ -337,7 +339,10 @@ func on_enemy_stomped():
 	
 func spawn_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
-	points_label.text = str(enemy.kill_points)
+	if ResourceLoad.consecutive >= ResourceLoad.pointsArray.size():
+		points_label.text = "1-UP"
+	else:
+		points_label.text = str(enemy.kill_points)
 	points_label.position = enemy.position + Vector2(-20, -20)
 	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)
