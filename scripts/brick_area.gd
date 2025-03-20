@@ -21,10 +21,11 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if player.current_state == "small" and world.death == false and player.blocks_interacted <= 0:
-		shift_block()
-	elif player.current_state == "big" or player.current_state == "fire":
-		delete_block()
+	if player.blocks_interacted == 0:
+		if player.current_state == "small" and world.death == false:
+			shift_block()
+		elif player.current_state == "big" or player.current_state == "fire":
+			delete_block()
 
 func shift_block():
 	player.blocks_interacted += 1

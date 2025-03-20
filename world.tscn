@@ -280,6 +280,7 @@ size = Vector2(30, 4)
 size = Vector2(30, 30)
 
 [node name="world" type="Node2D"]
+position = Vector2(1, -1)
 script = ExtResource("1_l4ws2")
 
 [node name="Map1-1" type="Sprite2D" parent="."]

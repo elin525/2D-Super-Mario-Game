@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if activate == true and world.death == false and player.blocks_interacted <= 0:
+	if activate == true and world.death == false and player.blocks_interacted == 0:
 		var HUD = get_node("../../HUD")
 		HUD.score += 200
 		HUD.update_score()
