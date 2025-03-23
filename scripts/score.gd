@@ -12,8 +12,7 @@ func _ready():
 	ResourceLoad.checkpointReached.connect(save_score)
 	
 	if ResourceLoad.checkpoint_reached:
-		clock = 100
-		#clock = ResourceLoad.clock
+		clock = ResourceLoad.clock
 		update_time()
 		score = ResourceLoad.score
 		update_score()
