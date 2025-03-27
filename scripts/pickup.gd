@@ -20,6 +20,8 @@ enum ItemType {
 
 var allow_horizontal_movement = false
 var vertical_speed = 0
+var direction = 1
+var cooldown = false
 
 func _ready() -> void:
 	if item_type != ItemType.COIN:
@@ -34,11 +36,34 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if item_type != ItemType.COIN:
 		if allow_horizontal_movement:
-			position.x += delta * horizonal_speed
+			if direction == 1:
+				position.x += delta * horizonal_speed
+			else:
+				position.x -= delta * horizonal_speed
 	
 		if !shape_cast_2d.is_colliding() && allow_horizontal_movement:
 			vertical_speed = lerpf(vertical_speed, max_vertical_speed, vertical_velocity_gain)
 			position.y += delta * vertical_speed
 		else:
 			vertical_speed = 0
+			
+		if has_overlapping_areas() and cooldown == false:
+			for i in get_overlapping_areas():
+				print(i.get_parent().name)
+				if i.get_parent().name != "Question_Blocks" and i.get_parent().name != "Bricks":
+					print("Yes")
+					flip_direction()
+					cooldown = true
+					break
+			
+		if cooldown == true:
+			await get_tree().create_timer(2.0).timeout
+			cooldown = false
+			
 	#else
+	
+func flip_direction():
+	if direction == 1:
+		direction = -1
+	else:
+		direction = 1

@@ -28,7 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
 [ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="20_c0a4k"]
-[ext_resource type="Shape2D" path="res://resources/collisionShapes/player_big_collision_shape.tres" id="29_gjf0b"]
+[ext_resource type="Shape2D" uid="uid://dpn6aeokrgk15" path="res://resources/collisionShapes/player_big_collision_shape.tres" id="29_gjf0b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_173b7"]
 resource_local_to_scene = true
