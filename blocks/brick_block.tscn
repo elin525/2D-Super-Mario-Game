@@ -1,11 +1,36 @@
-[gd_scene load_steps=10 format=3 uid="uid://dymlgbbpokuoc"]
+[gd_scene load_steps=16 format=3 uid="uid://dymlgbbpokuoc"]
 
 [ext_resource type="Script" path="res://scripts/brick_area.gd" id="1_50nn1"]
+[ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="2_0i7ih"]
+[ext_resource type="Texture2D" uid="uid://o0eee1o4uwig" path="res://images/EmptyBlock.png" id="2_a2pp0"]
 [ext_resource type="Texture2D" uid="uid://bxirgt1jkc3je" path="res://images/block_debris01.png" id="2_y4qjl"]
 [ext_resource type="Texture2D" uid="uid://cpjtf5e0ped1" path="res://images/block_debris02.png" id="3_3t86h"]
+[ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="3_8fyob"]
 [ext_resource type="Texture2D" uid="uid://ya1h2qam2erw" path="res://images/block_debris03.png" id="4_0ljs5"]
+[ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="4_56cu2"]
 [ext_resource type="Texture2D" uid="uid://cgn6utgahw02u" path="res://images/block_debris04.png" id="5_2k6d3"]
+[ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="5_lwmnr"]
 [ext_resource type="Texture2D" uid="uid://7att7m04xgp4" path="res://images/Brick.png" id="6_wqbiu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oldo6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0i7ih")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8fyob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_56cu2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lwmnr")
+}],
+"loop": true,
+"name": &"block_coin",
+"speed": 5.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_elevw"]
 animations = [{
@@ -39,25 +64,40 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_50nn1")
 
+[node name="Coin_Animation" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -29.5)
+scale = Vector2(0.90625, 0.607143)
+sprite_frames = SubResource("SpriteFrames_oldo6")
+animation = &"block_coin"
+
+[node name="Null_Block" type="Sprite2D" parent="."]
+position = Vector2(0, 1.5)
+scale = Vector2(2, 2)
+texture = ExtResource("2_a2pp0")
+
 [node name="Piece_Animation1" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9, -7.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
+frame_progress = 0.92015
 
 [node name="Piece_Animation2" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9, 9.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
+frame_progress = 0.10734
 
 [node name="Piece_Animation3" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -7.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
+frame_progress = 0.659699
 
 [node name="Piece_Animation4" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, 9.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
+frame_progress = 0.539749
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1.5)
