@@ -1,48 +1,25 @@
-[gd_scene load_steps=49 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=24 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
 [ext_resource type="Texture2D" uid="uid://drlw3mmxv54fa" path="res://worlds/1-1/tiles.png" id="1_mgtot"]
-[ext_resource type="Texture2D" uid="uid://d30t4yegd7237" path="res://images/tube.png" id="2_ghnn1"]
-[ext_resource type="Texture2D" uid="uid://buvdbe3hx4dty" path="res://images/flag_pillar.png" id="3_xn3ju"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="4_7dxbo"]
 [ext_resource type="PackedScene" uid="uid://08ys5xca31gt" path="res://player.tscn" id="5_hfqit"]
-[ext_resource type="Texture2D" uid="uid://c573w8vxym5ro" path="res://images/flag.png" id="6_jd3rq"]
-[ext_resource type="Script" path="res://scripts/flag_area.gd" id="6_uf0io"]
-[ext_resource type="Script" path="res://scripts/flag.gd" id="7_58b55"]
 [ext_resource type="PackedScene" uid="uid://d0ngqoded2uqf" path="res://canvas_layer.tscn" id="10_8v8g0"]
-[ext_resource type="Script" path="res://scripts/question_area.gd" id="12_2ah00"]
-[ext_resource type="Texture2D" uid="uid://bxirgt1jkc3je" path="res://images/block_debris01.png" id="12_pufkp"]
-[ext_resource type="Texture2D" uid="uid://cpjtf5e0ped1" path="res://images/block_debris02.png" id="13_ruygm"]
-[ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="14_1066r"]
-[ext_resource type="Texture2D" uid="uid://ya1h2qam2erw" path="res://images/block_debris03.png" id="14_miuiw"]
-[ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="14_p6vh3"]
-[ext_resource type="Script" path="res://scripts/brick_area.gd" id="15_hi7kc"]
-[ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="15_os1b0"]
-[ext_resource type="Texture2D" uid="uid://cgn6utgahw02u" path="res://images/block_debris04.png" id="15_wkxrv"]
-[ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="16_rephp"]
 [ext_resource type="Texture2D" uid="uid://b3rwrudswjvmv" path="res://images/firework0.png" id="17_1pweh"]
 [ext_resource type="Texture2D" uid="uid://comdso7tphij6" path="res://images/firework1.png" id="18_6sy78"]
-[ext_resource type="Texture2D" uid="uid://o0eee1o4uwig" path="res://images/EmptyBlock.png" id="18_pbqcg"]
+[ext_resource type="PackedScene" uid="uid://dymlgbbpokuoc" path="res://blocks/brick_block.tscn" id="18_fodhn"]
 [ext_resource type="Texture2D" uid="uid://bt82tyobe5nm6" path="res://images/firework2.png" id="19_1u514"]
+[ext_resource type="PackedScene" uid="uid://cm7ok2834noa3" path="res://flag_pole/flag_pole.tscn" id="19_obg0r"]
 [ext_resource type="Script" path="res://scripts/fireworks.gd" id="20_5htwi"]
-[ext_resource type="Texture2D" uid="uid://7att7m04xgp4" path="res://images/Brick.png" id="22_4oia2"]
+[ext_resource type="PackedScene" uid="uid://cufyiqnpkdraj" path="res://pickups/coin.tscn" id="20_jgqon"]
+[ext_resource type="PackedScene" uid="uid://b5mgsd8kwldmn" path="res://tubes/tube.tscn" id="21_mbfjl"]
+[ext_resource type="PackedScene" uid="uid://bhqc7eq5ow8f6" path="res://blocks/koopa_shell_stop_point.tscn" id="22_w4hc1"]
 [ext_resource type="AudioStream" uid="uid://c5ov5egak3cef" path="res://sounds/overworld.wav" id="24_2i5hb"]
 [ext_resource type="AudioStream" uid="uid://cumwuvhc3kd4g" path="res://sounds/jump.wav" id="25_mn1yf"]
+[ext_resource type="PackedScene" uid="uid://bwh668grr7c6r" path="res://blocks/question_block.tscn" id="25_uq6a1"]
 [ext_resource type="PackedScene" uid="uid://ch7irned3qj80" path="res://enemies/goomba.tscn" id="26_t2ayo"]
 [ext_resource type="PackedScene" uid="uid://ba4mo4clfbxjc" path="res://enemies/koopa.tscn" id="27_hf3sn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
-size = Vector2(64, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dq4lk"]
-size = Vector2(64, 128)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb3ca"]
-size = Vector2(32, 526)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtxis"]
-size = Vector2(32, 32)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("1_mgtot")
@@ -172,7 +149,8 @@ texture = ExtResource("1_mgtot")
 7:5/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_6qcmx"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 sources/0 = SubResource("TileSetAtlasSource_ay6rm")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_muiwi"]
@@ -198,217 +176,17 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_elevw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("12_pufkp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_ruygm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_miuiw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_wkxrv")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq08g"]
-size = Vector2(30, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0mtj"]
-size = Vector2(32, 29)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gem18"]
-atlas = ExtResource("1_mgtot")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lh6ey"]
-atlas = ExtResource("1_mgtot")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cdyeo"]
-atlas = ExtResource("1_mgtot")
-region = Rect2(160, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_h6p8g"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gem18")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lh6ey")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cdyeo")
-}],
-"loop": true,
-"name": &"default",
-"speed": 4.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_3xe8l"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("14_1066r")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_os1b0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_rephp")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_p6vh3")
-}],
-"loop": true,
-"name": &"block_coin",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h7rd"]
-size = Vector2(30, 4)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xg0ji"]
-size = Vector2(30, 30)
-
 [node name="world" type="Node2D"]
 position = Vector2(1, -1)
 script = ExtResource("1_l4ws2")
 
-[node name="Map1-1" type="Sprite2D" parent="."]
+[node name="Map1-1 (reference image)" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(3520, 63)
+position = Vector2(2052, 321)
 scale = Vector2(1.99727, 1.99727)
 texture = ExtResource("1_6br88")
 
-[node name="Area2D_Tube_01" type="Area2D" parent="."]
-position = Vector2(864, 192)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_01"]
-position = Vector2(0, -224)
-shape = SubResource("RectangleShape2D_ggvoq")
-
-[node name="Tube" type="Sprite2D" parent="Area2D_Tube_01"]
-texture = ExtResource("2_ghnn1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Area2D_Tube_01"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_01/StaticBody2D"]
-position = Vector2(0, -224)
-shape = SubResource("RectangleShape2D_ggvoq")
-
-[node name="Area2D_Tube_02" type="Area2D" parent="."]
-position = Vector2(1184, 160)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_02"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Tube" type="Sprite2D" parent="Area2D_Tube_02"]
-texture = ExtResource("2_ghnn1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Area2D_Tube_02"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_02/StaticBody2D"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Area2D_Tube_03" type="Area2D" parent="."]
-position = Vector2(1440, 128)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_03"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Tube" type="Sprite2D" parent="Area2D_Tube_03"]
-texture = ExtResource("2_ghnn1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Area2D_Tube_03"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_03/StaticBody2D"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Area2D_Tube_04" type="Area2D" parent="."]
-position = Vector2(1792, 128)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_04"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Tube" type="Sprite2D" parent="Area2D_Tube_04"]
-texture = ExtResource("2_ghnn1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Area2D_Tube_04"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_04/StaticBody2D"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Area2D_Tube_05" type="Area2D" parent="."]
-position = Vector2(5184, 192)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_05"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Tube" type="Sprite2D" parent="Area2D_Tube_05"]
-texture = ExtResource("2_ghnn1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Area2D_Tube_05"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_05/StaticBody2D"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Area2D_Tube_06" type="Area2D" parent="."]
-position = Vector2(5696, 192)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_06"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Tube" type="Sprite2D" parent="Area2D_Tube_06"]
-texture = ExtResource("2_ghnn1")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Area2D_Tube_06"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_Tube_06/StaticBody2D"]
-position = Vector2(0, -192)
-shape = SubResource("RectangleShape2D_dq4lk")
-
-[node name="Area2D" type="Area2D" parent="."]
-position = Vector2(6276, -305)
-script = ExtResource("6_uf0io")
-
-[node name="FlagPillar" type="Sprite2D" parent="Area2D"]
-position = Vector2(15, 120)
-texture = ExtResource("3_xn3ju")
-
-[node name="Flag" type="Sprite2D" parent="Area2D"]
-texture = ExtResource("6_jd3rq")
-script = ExtResource("7_58b55")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 6)
-shape = SubResource("RectangleShape2D_cb3ca")
-
-[node name="Koopa Shell Stop Point" type="Area2D" parent="."]
-position = Vector2(4192, -64)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Koopa Shell Stop Point"]
-position = Vector2(50, 48)
-shape = SubResource("RectangleShape2D_vtxis")
+[node name="Flag Pole" parent="." instance=ExtResource("19_obg0r")]
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(2, 0)
@@ -425,38 +203,6 @@ safe_margin = 0.001
 
 [node name="HUD" parent="." instance=ExtResource("10_8v8g0")]
 
-[node name="Fireworks1" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6390, -276)
-sprite_frames = SubResource("SpriteFrames_muiwi")
-script = ExtResource("20_5htwi")
-
-[node name="Fireworks2" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6353, -197)
-sprite_frames = SubResource("SpriteFrames_muiwi")
-
-[node name="Fireworks3" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6591, -275)
-sprite_frames = SubResource("SpriteFrames_muiwi")
-
-[node name="Fireworks4" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6606, -183)
-sprite_frames = SubResource("SpriteFrames_muiwi")
-frame_progress = 0.0654825
-
-[node name="Fireworks5" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6485, -257)
-sprite_frames = SubResource("SpriteFrames_muiwi")
-
-[node name="Fireworks6" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(6353, -196)
-sprite_frames = SubResource("SpriteFrames_muiwi")
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1, -2)
 stream = ExtResource("24_2i5hb")
@@ -469,1592 +215,203 @@ max_distance = 10000.0
 
 [node name="Bricks" type="Node" parent="."]
 
-[node name="Brick_Block1" type="Area2D" parent="Bricks"]
-position = Vector2(32, 0)
-script = ExtResource("15_hi7kc")
+[node name="Brick_Block1" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(594, -114)
 
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block1"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block2" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(658, -114)
 
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block1"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block3" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(722, -114)
 
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block1"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block4" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2418, -114)
 
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block1"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block5" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2482, -114)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block1"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
+[node name="Brick_Block6" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2514, -242)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block1"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
+[node name="Brick_Block7" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2546, -242)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block1"]
+[node name="Brick_Block8" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2578, -242)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block1/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
+[node name="Brick_Block9" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2610, -242)
 
-[node name="Brick_Block2" type="Area2D" parent="Bricks"]
-position = Vector2(96, 0)
-script = ExtResource("15_hi7kc")
+[node name="Brick_Block10" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2642, -242)
 
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block2"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block11" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2674, -242)
 
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block2"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block12" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2706, -242)
 
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block2"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block13" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2738, -242)
 
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block2"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block14" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2866, -242)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block2"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
+[node name="Brick_Block15" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2898, -242)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block2"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
+[node name="Brick_Block16" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2930, -242)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block2"]
+[node name="Brick_Block17" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(2962, -114)
+item_type = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block2/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
+[node name="Brick_Block18" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(3154, -114)
 
-[node name="Brick_Block3" type="Area2D" parent="Bricks"]
-position = Vector2(160, 0)
-script = ExtResource("15_hi7kc")
+[node name="Brick_Block19" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(3186, -114)
+item_type = 6
 
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block3"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block20" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(3730, -114)
 
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block3"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block21" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(3826, -242)
 
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block3"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block22" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(3858, -242)
 
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block3"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block23" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(3890, -242)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block3"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
+[node name="Brick_Block24" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(4050, -242)
 
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block3"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
+[node name="Brick_Block25" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(4082, -114)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block3"]
+[node name="Brick_Block26" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(4114, -114)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block3/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
+[node name="Brick_Block27" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(4146, -242)
 
-[node name="Brick_Block4" type="Area2D" parent="Bricks"]
-position = Vector2(1856, 0)
-script = ExtResource("15_hi7kc")
+[node name="Brick_Block28" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(5330, -114)
 
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block4"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
+[node name="Brick_Block29" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(5362, -114)
 
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block4"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block4"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block4"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block4"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block4"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block4/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block5" type="Area2D" parent="Bricks"]
-position = Vector2(1920, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block5"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block5"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block5"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block5"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block5"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block5"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block5/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block6" type="Area2D" parent="Bricks"]
-position = Vector2(1952, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block6"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block6"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block6"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block6"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block6"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block6"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block6/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block7" type="Area2D" parent="Bricks"]
-position = Vector2(1984, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block7"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block7"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block7"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block7"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block7"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block7"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block7/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block8" type="Area2D" parent="Bricks"]
-position = Vector2(2016, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block8"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block8"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block8"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block8"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block8"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block8"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block8/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block9" type="Area2D" parent="Bricks"]
-position = Vector2(2048, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block9"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block9"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block9"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block9"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block9"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block9"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block9/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block10" type="Area2D" parent="Bricks"]
-position = Vector2(2080, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block10"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block10"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block10"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block10"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block10"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block10"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block10/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block11" type="Area2D" parent="Bricks"]
-position = Vector2(2112, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block11"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block11"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block11"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block11"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block11"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block11"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block11/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block12" type="Area2D" parent="Bricks"]
-position = Vector2(2144, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block12"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block12"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block12"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block12"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block12"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block12"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block12/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block13" type="Area2D" parent="Bricks"]
-position = Vector2(2176, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block13"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block13"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block13"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block13"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block13"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block13"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block13/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block14" type="Area2D" parent="Bricks"]
-position = Vector2(2304, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block14"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block14"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block14"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block14"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block14"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block14"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block14"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block14/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block15" type="Area2D" parent="Bricks"]
-position = Vector2(2336, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block15"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block15"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block15"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block15"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block15"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block15"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block15"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block15/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block16" type="Area2D" parent="Bricks"]
-position = Vector2(2368, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block16"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block16"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block16"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block16"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block16"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block16"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block16"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block16/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block17" type="Area2D" parent="Bricks"]
-position = Vector2(2400, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block17"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block17"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block17"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block17"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block17"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block17"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block17"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block17/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block18" type="Area2D" parent="Bricks"]
-position = Vector2(2592, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block18"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block18"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block18"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block18"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block18"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block18"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block18"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block18/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block19" type="Area2D" parent="Bricks"]
-position = Vector2(2624, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block19"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block19"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block19"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block19"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block19"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block19"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block19"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block19/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block20" type="Area2D" parent="Bricks"]
-position = Vector2(3168, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block20"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block20"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block20"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block20"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block20"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block20"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block20"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block20/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block21" type="Area2D" parent="Bricks"]
-position = Vector2(3264, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block21"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block21"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block21"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block21"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block21"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block21"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block21"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block21/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block22" type="Area2D" parent="Bricks"]
-position = Vector2(3296, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block22"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block22"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block22"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block22"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block22"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block22"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block22"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block22/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block23" type="Area2D" parent="Bricks"]
-position = Vector2(3328, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block23"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block23"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block23"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block23"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block23"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block23"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block23"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block23/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block24" type="Area2D" parent="Bricks"]
-position = Vector2(3488, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block24"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block24"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block24"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block24"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block24"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block24"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block24"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block24/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block25" type="Area2D" parent="Bricks"]
-position = Vector2(3584, -128)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block25"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block25"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block25"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block25"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block25"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block25"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block25"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block25/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block26" type="Area2D" parent="Bricks"]
-position = Vector2(3520, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block26"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block26"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block26"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block26"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block26"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block26"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block26"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block26/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block27" type="Area2D" parent="Bricks"]
-position = Vector2(3552, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block27"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block27"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block27"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block27"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block27"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block27"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block27"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block27/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block28" type="Area2D" parent="Bricks"]
-position = Vector2(4768, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block28"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block28"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block28"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block28"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block28"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block28"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block28"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block28/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block29" type="Area2D" parent="Bricks"]
-position = Vector2(4800, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block29"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block29"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block29"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block29"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block29"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block29"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block29"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block29/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
-
-[node name="Brick_Block30" type="Area2D" parent="Bricks"]
-position = Vector2(4864, 0)
-script = ExtResource("15_hi7kc")
-
-[node name="Piece_Animation1" type="AnimatedSprite2D" parent="Bricks/Brick_Block30"]
-position = Vector2(553, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation2" type="AnimatedSprite2D" parent="Bricks/Brick_Block30"]
-position = Vector2(553, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation3" type="AnimatedSprite2D" parent="Bricks/Brick_Block30"]
-position = Vector2(570, -121)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="Piece_Animation4" type="AnimatedSprite2D" parent="Bricks/Brick_Block30"]
-position = Vector2(571, -103)
-scale = Vector2(0.750003, 0.765625)
-sprite_frames = SubResource("SpriteFrames_elevw")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block30"]
-position = Vector2(562, -96)
-shape = SubResource("RectangleShape2D_lq08g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Bricks/Brick_Block30"]
-position = Vector2(562, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("22_4oia2")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Bricks/Brick_Block30"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bricks/Brick_Block30/StaticBody2D"]
-position = Vector2(562, -113.5)
-shape = SubResource("RectangleShape2D_v0mtj")
+[node name="Brick_Block30" parent="Bricks" instance=ExtResource("18_fodhn")]
+position = Vector2(5426, -114)
 
 [node name="Question_Blocks" type="Node" parent="."]
 
-[node name="Question_Block1" type="Area2D" parent="Question_Blocks"]
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block1"]
+[node name="Question_Block1" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
 position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block1"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.179215
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block1"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block1"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block1/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block2" type="Area2D" parent="Question_Blocks"]
-position = Vector2(160, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block2"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block2"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block2"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block2"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block2/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block3" type="Area2D" parent="Question_Blocks"]
-position = Vector2(224, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block3"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block3"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block3"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block3"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block3/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block4" type="Area2D" parent="Question_Blocks"]
-position = Vector2(192, -128)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block4"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block4"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block4"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block4"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block4/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block5" type="Area2D" parent="Question_Blocks"]
-position = Vector2(1984, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block5"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block5"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block5"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block5"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block5"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block5/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block6" type="Area2D" parent="Question_Blocks"]
-position = Vector2(2496, -128)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block6"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block6"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block6"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block6"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block6/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block7" type="Area2D" parent="Question_Blocks"]
-position = Vector2(2880, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block7"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block7"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block7"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block7"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block7/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block8" type="Area2D" parent="Question_Blocks"]
-position = Vector2(2976, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block8"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block8"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block8"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block8"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block8/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block9" type="Area2D" parent="Question_Blocks"]
-position = Vector2(3072, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block9"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block9"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block9"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block9"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block9/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block10" type="Area2D" parent="Question_Blocks"]
-position = Vector2(2976, -128)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block10"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block10"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block10"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block10"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block10"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block10/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block11" type="Area2D" parent="Question_Blocks"]
-position = Vector2(3616, -128)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block11"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block11"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block11"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block11"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block11"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block11/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block12" type="Area2D" parent="Question_Blocks"]
-position = Vector2(3648, -128)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block12"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block12"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block12"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block12"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block12"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block12/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
-
-[node name="Question_Block13" type="Area2D" parent="Question_Blocks"]
-position = Vector2(4928, 0)
-script = ExtResource("12_2ah00")
-
-[node name="Flashing_Block" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block13"]
-position = Vector2(466, -112)
-sprite_frames = SubResource("SpriteFrames_h6p8g")
-frame = 1
-frame_progress = 0.0830772
-
-[node name="Coin_Animation" type="AnimatedSprite2D" parent="Question_Blocks/Question_Block13"]
-position = Vector2(466, -143)
-scale = Vector2(0.90625, 0.607143)
-sprite_frames = SubResource("SpriteFrames_3xe8l")
-animation = &"block_coin"
-frame_progress = 0.586713
-
-[node name="Null_Block" type="Sprite2D" parent="Question_Blocks/Question_Block13"]
-position = Vector2(466, -112)
-scale = Vector2(2, 2)
-texture = ExtResource("18_pbqcg")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block13"]
-position = Vector2(466, -95)
-shape = SubResource("RectangleShape2D_0h7rd")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Question_Blocks/Question_Block13"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Question_Blocks/Question_Block13/StaticBody2D"]
-position = Vector2(466, -113)
-shape = SubResource("RectangleShape2D_xg0ji")
+
+[node name="Question_Block2" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(626, -112)
+item_type = 1
+
+[node name="Question_Block3" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(690, -112)
+
+[node name="Question_Block4" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(658, -240)
+
+[node name="Question_Block_Hidden" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(2003, -145)
+item_type = 3
+
+[node name="Question_Block5" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(2450, -112)
+item_type = 2
+
+[node name="Question_Block6" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(2962, -240)
+
+[node name="Question_Block7" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(3346, -112)
+
+[node name="Question_Block8" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(3442, -112)
+
+[node name="Question_Block9" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(3538, -112)
+
+[node name="Question_Block10" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(3442, -240)
+
+[node name="Question_Block11" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(4082, -240)
+
+[node name="Question_Block12" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(4114, -240)
+
+[node name="Question_Block13" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
+position = Vector2(5394, -112)
+
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3347, 625)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3379, 625)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3411, 625)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3443, 625)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3475, 625)
+
+[node name="Coin6" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3507, 625)
+
+[node name="Coin7" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3539, 625)
+
+[node name="Coin8" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3347, 562)
+
+[node name="Coin9" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3379, 562)
+
+[node name="Coin10" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3411, 562)
+
+[node name="Coin11" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3443, 562)
+
+[node name="Coin12" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3475, 562)
+
+[node name="Coin13" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3507, 562)
+
+[node name="Coin14" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3539, 562)
+
+[node name="Coin15" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3379, 498)
+
+[node name="Coin16" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3411, 498)
+
+[node name="Coin17" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3443, 498)
+
+[node name="Coin18" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3475, 498)
+
+[node name="Coin19" parent="Coins" instance=ExtResource("20_jgqon")]
+position = Vector2(3507, 498)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -2068,10 +425,10 @@ position = Vector2(1230, -16)
 position = Vector2(1630, -16)
 
 [node name="Goomba4" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(2514, -272)
+position = Vector2(2514, -272.5)
 
 [node name="Goomba5" parent="Enemies" instance=ExtResource("26_t2ayo")]
-position = Vector2(2577, -272)
+position = Vector2(2578, -272.5)
 
 [node name="Goomba6" parent="Enemies" instance=ExtResource("26_t2ayo")]
 position = Vector2(3595, -16)
@@ -2100,52 +457,64 @@ position = Vector2(5567, -16)
 [node name="Koopa" parent="Enemies" instance=ExtResource("27_hf3sn")]
 position = Vector2(3376, -23)
 
+[node name="Tubes" type="Node" parent="."]
+
+[node name="Tube1" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(865, 191)
+
+[node name="Tube2" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(1185, 159)
+
+[node name="Tube3" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(1441, 127)
+
+[node name="Tube4" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(1793, 127)
+
+[node name="Tube5" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(5185, 191)
+
+[node name="Tube6" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(5697, 191)
+
+[node name="Fireworks" type="Node" parent="."]
+
+[node name="Fireworks1" type="AnimatedSprite2D" parent="Fireworks"]
+visible = false
+position = Vector2(6391, -277)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+script = ExtResource("20_5htwi")
+
+[node name="Fireworks2" type="AnimatedSprite2D" parent="Fireworks"]
+visible = false
+position = Vector2(6354, -198)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks3" type="AnimatedSprite2D" parent="Fireworks"]
+visible = false
+position = Vector2(6592, -276)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks4" type="AnimatedSprite2D" parent="Fireworks"]
+visible = false
+position = Vector2(6607, -184)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+frame_progress = 0.0654825
+
+[node name="Fireworks5" type="AnimatedSprite2D" parent="Fireworks"]
+visible = false
+position = Vector2(6486, -258)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Fireworks6" type="AnimatedSprite2D" parent="Fireworks"]
+visible = false
+position = Vector2(6354, -197)
+sprite_frames = SubResource("SpriteFrames_muiwi")
+
+[node name="Koopa Shell Stop Point" parent="." instance=ExtResource("22_w4hc1")]
+position = Vector2(4242, -16)
+
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
-[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="Area2D" to="Question_Blocks/Question_Block1" method="_on_area_2d_body_entered"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
-[connection signal="body_entered" from="Bricks/Brick_Block1" to="Bricks/Brick_Block1" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block2" to="Bricks/Brick_Block2" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block3" to="Bricks/Brick_Block3" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block4" to="Bricks/Brick_Block4" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block5" to="Bricks/Brick_Block5" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block6" to="Bricks/Brick_Block6" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block7" to="Bricks/Brick_Block7" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block8" to="Bricks/Brick_Block8" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block9" to="Bricks/Brick_Block9" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block10" to="Bricks/Brick_Block10" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block11" to="Bricks/Brick_Block11" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block12" to="Bricks/Brick_Block12" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block13" to="Bricks/Brick_Block13" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block14" to="Bricks/Brick_Block14" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block15" to="Bricks/Brick_Block15" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block16" to="Bricks/Brick_Block16" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block17" to="Bricks/Brick_Block17" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block18" to="Bricks/Brick_Block18" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block19" to="Bricks/Brick_Block19" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block20" to="Bricks/Brick_Block20" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block21" to="Bricks/Brick_Block21" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block22" to="Bricks/Brick_Block22" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block23" to="Bricks/Brick_Block23" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block24" to="Bricks/Brick_Block24" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block25" to="Bricks/Brick_Block25" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block26" to="Bricks/Brick_Block26" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block27" to="Bricks/Brick_Block27" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block28" to="Bricks/Brick_Block28" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block29" to="Bricks/Brick_Block29" method="_on_body_entered"]
-[connection signal="body_entered" from="Bricks/Brick_Block30" to="Bricks/Brick_Block30" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block1" to="Question_Blocks/Question_Block1" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block2" to="Question_Blocks/Question_Block2" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block3" to="Question_Blocks/Question_Block3" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block4" to="Question_Blocks/Question_Block4" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block5" to="Question_Blocks/Question_Block5" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block6" to="Question_Blocks/Question_Block6" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block7" to="Question_Blocks/Question_Block7" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block8" to="Question_Blocks/Question_Block8" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block9" to="Question_Blocks/Question_Block9" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block10" to="Question_Blocks/Question_Block10" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block11" to="Question_Blocks/Question_Block11" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block12" to="Question_Blocks/Question_Block12" method="_on_body_entered"]
-[connection signal="body_entered" from="Question_Blocks/Question_Block13" to="Question_Blocks/Question_Block13" method="_on_body_entered"]

@@ -3,8 +3,11 @@ extends CharacterBody2D
 signal death
 
 # mario states
-enum { SMALL, BIG, FIRE }
-var state = SMALL
+enum player_state { SMALL, BIG, FIRE }
+var state = player_state.SMALL
+
+const PLAYER_SMALL_COLLISION_SHAPE = preload("res://resources/collisionShapes/player_small_collision_shape.tres")
+const PLAYER_BIG_COLLISION_SHAPE = preload("res://resources/collisionShapes/player_big_collision_shape.tres")
 
 # movement variables
 const JUMP_VELOCITY = -7 * 32
@@ -25,25 +28,29 @@ var current_state = "small"
 # references
 @onready var world = get_node("../..")
 @onready var sprite = $AnimatedSprite2D
+@onready var area_collision = $Area2D/AreaCollisionShape
+@onready var body_collision = $BodyCollisionShape
 @onready var sounds = get_node("../../Animation Sounds")
 @onready var music = get_node("../../AudioStreamPlayer2D")
 @onready var hud = get_node("../../HUD")
 @onready var map = get_node("..")
-@onready var flag = get_node("../../Area2D/Flag")
-@onready var flag_area = get_node("../../Area2D")
+@onready var flag = get_node("../../Flag Pole/Flag")
+@onready var flag_area = get_node("../../Flag Pole")
 
 const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 @export_group("Stomping enemies")
-@export var min_stomp_degree = 20#35
-@export var max_stomp_degree = 130#145
+@export var min_stomp_degree = 10#35
+@export var max_stomp_degree = 170#145
 @export var stomp_y_velocity = -150 
 @export_group("")
 
 func _ready():
-	change_state(SMALL)
+	call_deferred("change_state", player_state.SMALL)
 	if ResourceLoad.checkpoint_reached:
 		position.x = 162*16
-
+	
+	set_player_collision_shape(true)
+	
 func _physics_process(delta):
 	if position.x < 0:
 		position.x = 0
@@ -91,12 +98,15 @@ func _physics_process(delta):
 func change_state(new_state):
 	state = new_state
 	match state:
-		SMALL:
+		player_state.SMALL:
 			current_state = "small"
-		BIG:
+			print("small")
+		player_state.BIG:
 			current_state = "big"
-		FIRE:
+			print("big")
+		player_state.FIRE:
 			current_state = "fire"
+			print("fire")
 	update_animation()
 
 # ---------------- MOVEMENT ---------------- #
@@ -186,7 +196,7 @@ func end_level():
 	if sprite != null:
 		sprite.queue_free()
 		var offset = hud.clock
-		var fireworks = get_node("../../Fireworks1")
+		var fireworks = get_node("../../Fireworks/Fireworks1")
 
 		while hud.clock > 0:
 			play_sound("scorering")
@@ -201,10 +211,10 @@ func end_level():
 
 # ---------------- DAMAGE & DEATH ---------------- #
 func hurt():
-	if state == FIRE:
-		change_state(BIG)
-	elif state == BIG:
-		change_state(SMALL)
+	if state == player_state.FIRE:
+		call_deferred("change_state", player_state.BIG)
+	elif state == player_state.BIG:
+		call_deferred("change_state", player_state.SMALL)
 	else:
 		die(get_node("../.."))
 		return
@@ -317,6 +327,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Enemy:
 		handle_enemy_collision(area)
 		
+	if area is Pickup:
+		handle_pickup_collision(area)
+		area.queue_free()
+	
 func handle_enemy_collision(enemy: Enemy):
 	if enemy == null:
 		return
@@ -330,14 +344,36 @@ func handle_enemy_collision(enemy: Enemy):
 		if angle_of_collisison > min_stomp_degree && max_stomp_degree > angle_of_collisison and world.death == false: 
 			enemy.die()
 			on_enemy_stomped()
-			spawn_points_label(enemy)
+			spawn_enemy_points_label(enemy)
 		else: 
 			die(world)
 
 func on_enemy_stomped():
 	velocity.y = stomp_y_velocity
 	
-func spawn_points_label(enemy):
+func handle_pickup_collision(pickup: Pickup):
+	if pickup == null:
+		return
+	
+	if pickup.item_type == pickup.ItemType.MUSHROOM:
+		handle_mushroom_collision(pickup)
+	
+	if pickup.item_type == pickup.ItemType.FIREPLANT:
+		handle_fireplant_collision(pickup)
+	
+func handle_mushroom_collision(pickup: Pickup):
+	if state == player_state.SMALL:
+		call_deferred("change_state", player_state.BIG)
+		set_player_collision_shape(false)
+
+func handle_fireplant_collision(pickup: Pickup):
+	if state == player_state.BIG:
+		call_deferred("change_state", player_state.FIRE)
+	elif state == player_state.SMALL:
+		call_deferred("change_state", player_state.BIG)
+		set_player_collision_shape(false)
+
+func spawn_enemy_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	if ResourceLoad.consecutive >= ResourceLoad.pointsArray.size():
 		points_label.text = "1-UP"
@@ -348,3 +384,8 @@ func spawn_points_label(enemy):
 	get_tree().root.add_child(points_label)
 	hud.score += enemy.kill_points
 	hud.update_score()
+
+func set_player_collision_shape(is_small: bool):
+	var collision_shape = PLAYER_SMALL_COLLISION_SHAPE if is_small else PLAYER_BIG_COLLISION_SHAPE
+	area_collision.set_deferred("shape", collision_shape)
+	body_collision.set_deferred("shape", collision_shape)

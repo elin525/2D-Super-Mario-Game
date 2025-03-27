@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5mgsd8kwldmn"]
+
+[ext_resource type="Texture2D" uid="uid://d30t4yegd7237" path="res://images/tube.png" id="1_tu6v1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
+size = Vector2(64, 207.75)
+
+[node name="Area2D_Tube_01" type="Area2D"]
+position = Vector2(864, 192)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -152.125)
+shape = SubResource("RectangleShape2D_ggvoq")
+
+[node name="Tube" type="Sprite2D" parent="."]
+texture = ExtResource("1_tu6v1")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, -152.25)
+shape = SubResource("RectangleShape2D_ggvoq")

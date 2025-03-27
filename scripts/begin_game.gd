@@ -8,7 +8,7 @@ var player
 # Called at the start of every attempt
 func new_game():
 	
-	var flag = get_node("Area2D/Flag")
+	var flag = get_node("Flag Pole/Flag")
 	
 	player = get_node("TileMap/player")
 	
@@ -59,7 +59,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 
 func _on_audio_stream_player_2d_finished() -> void:
-	var flag = get_node("Area2D/Flag")
+	var flag = get_node("Flag Pole/Flag")
 	
 	if $HUD.clock > 0 and flag.initial_touched != true:
 		$AudioStreamPlayer2D.playing = true

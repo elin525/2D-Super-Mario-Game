@@ -28,7 +28,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mif4p"]
-size = Vector2(32, 28)
+size = Vector2(32, 25)
 
 [node name="Goomba" type="Area2D"]
 collision_layer = 3
@@ -45,7 +45,7 @@ frame_progress = 0.551051
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
 visibility_layer = 3
-position = Vector2(0, 2)
+position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_mif4p")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]

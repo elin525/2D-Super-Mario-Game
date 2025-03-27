@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
 [ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="20_c0a4k"]
+[ext_resource type="Shape2D" uid="uid://dpn6aeokrgk15" path="res://resources/collisionShapes/player_big_collision_shape.tres" id="29_gjf0b"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_173b7"]
 resource_local_to_scene = true
@@ -231,9 +232,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvjl5"]
-size = Vector2(26, 31)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bsgbc"]
 size = Vector2(28, 33)
 
@@ -243,7 +241,7 @@ script = ExtResource("1_ox1jm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"small_st"
+animation = &"big_idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)
@@ -257,8 +255,8 @@ script = ExtResource("20_c0a4k")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="AreaCollisionShape" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, -16.5)
-shape = SubResource("RectangleShape2D_nvjl5")
+position = Vector2(0, -16)
+shape = ExtResource("29_gjf0b")
 
 [node name="BodyCollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16.5)

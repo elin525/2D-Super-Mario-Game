@@ -1,5 +1,19 @@
 extends Area2D
 
+class_name BrickBlock
+
+enum ItemType {
+	EMPTY,
+	COIN,
+	COINS,
+	MUSHROOM,
+	FIREPLANT,
+	ONEUP,
+	STAR
+}
+
+@export var item_type: ItemType = ItemType.EMPTY
+
 @onready var player = get_node("../../TileMap/player")
 @onready var brick = $Sprite2D
 @onready var world = get_node("../..")
@@ -21,11 +35,31 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
-	if player.blocks_interacted == 0:
-		if player.current_state == "small" and world.death == false:
-			shift_block()
-		elif player.current_state == "big" or player.current_state == "fire":
-			delete_block()
+	match item_type:
+			ItemType.EMPTY:
+				if player.blocks_interacted == 0:
+					if player.current_state == "small" and world.death == false:
+						shift_block()
+					elif player.current_state == "big" or player.current_state == "fire":
+						delete_block()
+			ItemType.COIN:
+				print("Coin")
+				shift_block()
+			ItemType.COINS:
+				print("Coins")
+				shift_block()
+			ItemType.MUSHROOM:
+				print("Mushroom")
+				shift_block()
+			ItemType.FIREPLANT:
+				print("Fire plant")
+				shift_block()
+			ItemType.ONEUP:
+				print("1UP")
+				shift_block()
+			ItemType.STAR:
+				print("Star")
+				shift_block()
 
 func shift_block():
 	player.blocks_interacted += 1

@@ -1,5 +1,24 @@
 extends Area2D
 
+class_name QuestionBlock
+
+enum ItemType {
+	COIN,
+	MUSHROOM,
+	FIREPLANT,
+	ONEUP,
+	STAR
+}
+
+const MUSHROOM_SCENE = preload("res://pickups/mushroom.tscn")
+const FIREPLANT_SCENE = preload("res://pickups/fireplant.tscn")
+const ONEUP_SCENE = preload("res://pickups/oneup.tscn")
+const STAR_SCENE = preload("res://pickups/star.tscn")
+
+@export var item_type: ItemType = ItemType.COIN
+#@export var invisible: bool = false
+#var is_empty = false
+
 @onready var animated_coin = $Coin_Animation
 @onready var animated_block = $Flashing_Block
 @onready var null_block = $Null_Block
@@ -26,14 +45,38 @@ func _process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if activate == true and world.death == false and player.blocks_interacted == 0:
 		var HUD = get_node("../../HUD")
-		HUD.score += 200
-		HUD.update_score()
-		HUD.coins += 1
-		HUD.update_coins()
-		
+
 		activate = false
-		coin_animation()
 		shift_block()
+		
+		match item_type:
+			ItemType.COIN:		
+				HUD.score += 200
+				HUD.update_score()
+				HUD.coins += 1
+				HUD.update_coins()
+				coin_animation()
+				
+			ItemType.MUSHROOM:
+				var mushroom = MUSHROOM_SCENE.instantiate()
+				mushroom.global_position = global_position
+				get_tree().root.call_deferred("add_child", mushroom)
+				
+			ItemType.FIREPLANT:
+				var fireplant = FIREPLANT_SCENE.instantiate()
+				fireplant.global_position = global_position
+				get_tree().root.call_deferred("add_child", fireplant)
+				
+			ItemType.ONEUP:
+				var oneup = ONEUP_SCENE.instantiate()
+				oneup.global_position = global_position
+				get_tree().root.call_deferred("add_child", oneup)
+				
+			ItemType.STAR:
+				var star = STAR_SCENE.instantiate()
+				star.global_position = global_position
+				get_tree().root.call_deferred("add_child", star)
+
 
 func shift_block():
 	touched = true
