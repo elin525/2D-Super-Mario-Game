@@ -16,6 +16,7 @@ enum ItemType {
 @export var max_vertical_speed = 150
 @export var vertical_velocity_gain = 0.1
 @onready var shape_cast_2d = $ShapeCast2D
+@onready var sound = get_node("/root/world/Animation Sounds")
 
 var allow_horizontal_movement = false
 var vertical_speed = 0
@@ -26,6 +27,8 @@ func _ready() -> void:
 		spawn_tween.tween_property(self, "position", position + Vector2(0, -23), 0.6)
 	
 		if item_type == ItemType.MUSHROOM || item_type == ItemType.ONEUP:
+			sound.stream = load("res://sounds/mushroomappear.wav")
+			sound.playing = true
 			spawn_tween.tween_callback(func (): allow_horizontal_movement = true)
 	
 func _process(delta: float) -> void:

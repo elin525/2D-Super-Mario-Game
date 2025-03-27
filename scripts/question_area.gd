@@ -34,6 +34,9 @@ func _ready() -> void:
 		activate = false
 		animated_coin.visible = false
 		return
+		
+	if name == "Question_Block_Hidden":
+		animated_block.visible = false
 	
 	animated_coin.visible = false
 	null_block.visible = false

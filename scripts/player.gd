@@ -21,6 +21,8 @@ var is_dying = false
 var already_jumped = false
 var jump_released = false
 var blocks_interacted = 0
+var level_up = false
+var cooldown = false
 
 # state prefix for animation
 var current_state = "small"
@@ -68,7 +70,8 @@ func _physics_process(delta):
 		apply_gravity()
 		handle_jump()
 		handle_movement()
-		update_animation()
+		if level_up == false:
+			update_animation()
 		move_and_slide()
 		
 		# check for death
@@ -128,7 +131,10 @@ func apply_gravity():
 
 func handle_jump():
 	if Input.is_action_just_pressed("ui_up") and is_on_floor() and not already_jumped:
-		play_sound("jump")
+		if state == player_state.SMALL:
+			play_sound("jump")
+		else:
+			play_sound("jumpbig")
 		velocity.y = JUMP_VELOCITY
 		already_jumped = true
 
@@ -211,15 +217,18 @@ func end_level():
 
 # ---------------- DAMAGE & DEATH ---------------- #
 func hurt():
-	if state == player_state.FIRE:
-		call_deferred("change_state", player_state.BIG)
-	elif state == player_state.BIG:
-		call_deferred("change_state", player_state.SMALL)
-	else:
-		die(get_node("../.."))
-		return
+	if cooldown == false:
+		if state == player_state.FIRE:
+			call_deferred("change_state", player_state.BIG)
+		elif state == player_state.BIG:
+			call_deferred("change_state", player_state.SMALL)
+			set_player_collision_shape(true)
+		else:
+			die(get_node("../.."))
+			return
 
 	# temporary invincibility
+	cooldown = true
 	is_controllable = false
 	for i in range(5):
 		sprite.visible = false
@@ -227,6 +236,7 @@ func hurt():
 		sprite.visible = true
 		await get_tree().create_timer(0.2).timeout
 	is_controllable = true
+	cooldown = false
 
 func die(world):
 	var l = ResourceLoad.LiveScene
@@ -346,7 +356,7 @@ func handle_enemy_collision(enemy: Enemy):
 			on_enemy_stomped()
 			spawn_enemy_points_label(enemy)
 		else: 
-			die(world)
+			hurt()
 
 func on_enemy_stomped():
 	velocity.y = stomp_y_velocity
@@ -355,14 +365,29 @@ func handle_pickup_collision(pickup: Pickup):
 	if pickup == null:
 		return
 	
-	if pickup.item_type == pickup.ItemType.MUSHROOM:
+	if pickup.item_type == pickup.ItemType.MUSHROOM or pickup.item_type == pickup.ItemType.ONEUP:
 		handle_mushroom_collision(pickup)
 	
 	if pickup.item_type == pickup.ItemType.FIREPLANT:
 		handle_fireplant_collision(pickup)
 	
 func handle_mushroom_collision(pickup: Pickup):
+	if pickup.item_type == pickup.ItemType.ONEUP:
+		ResourceLoad.LiveScene.lives += 1
+		var points_label = POINTS_LABEL_SCENE.instantiate()
+		points_label.text = "1-UP"
+		points_label.position = pickup.position + Vector2(-20, -20)
+		points_label.setPosition(points_label.position)
+		get_tree().root.add_child(points_label)
+		return
+		
 	if state == player_state.SMALL:
+		sprite.play("level_up")
+		level_up = true
+		sounds.stream = load("res://sounds/mushroomeat.wav")
+		sounds.playing = true
+		await sprite.animation_finished
+		level_up = false
 		call_deferred("change_state", player_state.BIG)
 		set_player_collision_shape(false)
 
