@@ -57,8 +57,9 @@ func _on_body_entered(body: Node2D) -> void:
 				print("Coins")
 				hitpoints -= 1
 				if hitpoints <= 0:
-					brick.visible = false
-					null_block.visible = true
+					var sound = get_node("../../Animation Sounds")
+					sound.stream = load("res://sounds/blockhit.wav")
+					sound.playing = true
 				else:
 					HUD.score += 200
 					HUD.update_score()
@@ -66,6 +67,9 @@ func _on_body_entered(body: Node2D) -> void:
 					HUD.update_coins()
 					shift_block()
 					coin_animation()
+				if hitpoints == 0:
+					brick.visible = false
+					null_block.visible = true
 					
 			ItemType.MUSHROOM:
 				print("Mushroom")

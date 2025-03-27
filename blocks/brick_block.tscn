@@ -79,25 +79,25 @@ texture = ExtResource("2_a2pp0")
 position = Vector2(-9, -7.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
-frame_progress = 0.971346
+frame_progress = 0.92015
 
 [node name="Piece_Animation2" type="AnimatedSprite2D" parent="."]
 position = Vector2(-9, 9.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
-frame_progress = 0.158536
+frame_progress = 0.10734
 
 [node name="Piece_Animation3" type="AnimatedSprite2D" parent="."]
 position = Vector2(8, -7.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
-frame_progress = 0.710896
+frame_progress = 0.659699
 
 [node name="Piece_Animation4" type="AnimatedSprite2D" parent="."]
 position = Vector2(9, 9.5)
 scale = Vector2(0.750003, 0.765625)
 sprite_frames = SubResource("SpriteFrames_elevw")
-frame_progress = 0.590947
+frame_progress = 0.539749
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, 1.5)
