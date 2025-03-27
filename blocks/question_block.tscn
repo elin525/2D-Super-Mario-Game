@@ -80,7 +80,7 @@ position = Vector2(0, -29.5)
 scale = Vector2(0.90625, 0.607143)
 sprite_frames = SubResource("SpriteFrames_3xe8l")
 animation = &"block_coin"
-frame_progress = 0.179215
+frame_progress = 0.804052
 
 [node name="Null_Block" type="Sprite2D" parent="."]
 position = Vector2(0, -0.5)

@@ -19,8 +19,12 @@ enum ItemType {
 @onready var world = get_node("../..")
 
 var piece_sprites = []
-
+var hitpoints = 5
 var touched = false
+
+@onready var null_block = $Null_Block
+@onready var animated_coin = $Coin_Animation
+@onready var sound = get_node("../../Animation Sounds")
 
 func _ready() -> void:
 	piece_sprites.append($Piece_Animation1)
@@ -30,11 +34,15 @@ func _ready() -> void:
 	
 	for sprite in piece_sprites:
 		sprite.visible = false
+	
+	animated_coin.visible = false
+	null_block.visible = false
 
 func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
+	var HUD = get_node("../../HUD")
 	match item_type:
 			ItemType.EMPTY:
 				if player.blocks_interacted == 0:
@@ -47,7 +55,18 @@ func _on_body_entered(body: Node2D) -> void:
 				shift_block()
 			ItemType.COINS:
 				print("Coins")
-				shift_block()
+				hitpoints -= 1
+				if hitpoints <= 0:
+					brick.visible = false
+					null_block.visible = true
+				else:
+					HUD.score += 200
+					HUD.update_score()
+					HUD.coins += 1
+					HUD.update_coins()
+					shift_block()
+					coin_animation()
+					
 			ItemType.MUSHROOM:
 				print("Mushroom")
 				shift_block()
@@ -116,3 +135,29 @@ func delete_block():
 		piece.visible = false
 		piece.stop()
 	player.blocks_interacted -= 1
+
+func coin_animation():
+	sound.stream = load("res://sounds/blockhit.wav")
+	sound.playing = true
+	sound.stream = load("res://sounds/coin.wav")
+	sound.playing = true
+	
+	animated_coin.visible = true
+	animated_coin.play()
+	
+	for i in range(8):
+		var timer = get_tree().create_timer(0.05)
+		if i < 4:
+			animated_coin.position.y -= 5
+		else:
+			animated_coin.position.y += 5
+		await timer.timeout
+	
+	animated_coin.stop()
+	animated_coin.visible = false
+	
+	var points_label = preload("res://UI/points_label.tscn").instantiate()
+	points_label.text = str(200)
+	points_label.position = animated_coin.global_position + Vector2(-20, -5)
+	points_label.setPosition(points_label.position)
+	get_tree().root.add_child(points_label)
