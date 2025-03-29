@@ -13,7 +13,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
-	if lives < 3 and triggered == true:
+	if lives <= 3 and triggered == true:
 		ResourceLoad.LiveScene = self.duplicate()
 		await get_tree().create_timer(3.0).timeout
 		var world = preload("res://world.tscn").instantiate()

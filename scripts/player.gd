@@ -54,6 +54,10 @@ func _ready():
 	set_player_collision_shape(true)
 	
 func _physics_process(delta):
+	
+	if world.death == true:
+		return
+	
 	if position.x < 0:
 		position.x = 0
 	
@@ -96,6 +100,12 @@ func _physics_process(delta):
 		
 	if position.x >= 6464:
 		end_level()
+		
+	if Input.is_action_just_pressed("ui_select") and state == player_state.FIRE:
+		play_sound("fireball")
+		var fireball = preload("res://fireball.tscn").instantiate()
+		fireball.global_position = global_position
+		get_tree().root.call_deferred("add_child", fireball)
 
 # ---------------- MARIO STATE ---------------- #
 func change_state(new_state):
@@ -390,13 +400,28 @@ func handle_mushroom_collision(pickup: Pickup):
 		level_up = false
 		call_deferred("change_state", player_state.BIG)
 		set_player_collision_shape(false)
+		
+		hud.score += 500
+		hud.update_score()
+		var points_label = POINTS_LABEL_SCENE.instantiate()
+		points_label.text = "500"
+		points_label.position = self.position + Vector2(-20, -20)
+		points_label.setPosition(points_label.position)
+		get_tree().root.add_child(points_label)
 
 func handle_fireplant_collision(pickup: Pickup):
 	if state == player_state.BIG:
 		call_deferred("change_state", player_state.FIRE)
-	elif state == player_state.SMALL:
-		call_deferred("change_state", player_state.BIG)
-		set_player_collision_shape(false)
+		hud.score += 1000
+		hud.update_score()
+		var points_label = POINTS_LABEL_SCENE.instantiate()
+		points_label.text = "1000"
+		points_label.position = self.position + Vector2(-20, -20)
+		points_label.setPosition(points_label.position)
+		get_tree().root.add_child(points_label)
+	#elif state == player_state.SMALL:
+		#call_deferred("change_state", player_state.BIG)
+		#set_player_collision_shape(false)
 
 func spawn_enemy_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()

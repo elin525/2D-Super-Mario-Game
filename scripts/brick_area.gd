@@ -104,7 +104,7 @@ func delete_block():
 	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/blockbreak.wav")
 	sound.playing = true
-	
+	touched = true
 	# Setup
 	player.blocks_interacted += 1
 	for sprite in piece_sprites:
@@ -139,6 +139,18 @@ func delete_block():
 		piece.visible = false
 		piece.stop()
 	player.blocks_interacted -= 1
+	
+	var hud = get_node("../../HUD")
+	hud.score += 50
+	hud.update_score()
+	
+	var points_label = preload("res://UI/points_label.tscn").instantiate()
+	points_label.text = str(50)
+	points_label.position = animated_coin.global_position + Vector2(-20, -5)
+	points_label.setPosition(points_label.position)
+	get_tree().root.add_child(points_label)
+	
+	touched = false
 
 func coin_animation():
 	sound.stream = load("res://sounds/blockhit.wav")

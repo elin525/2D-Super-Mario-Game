@@ -49,9 +49,7 @@ func _process(delta: float) -> void:
 			
 		if has_overlapping_areas() and cooldown == false:
 			for i in get_overlapping_areas():
-				print(i.get_parent().name)
 				if i.get_parent().name != "Question_Blocks" and i.get_parent().name != "Bricks":
-					print("Yes")
 					flip_direction()
 					cooldown = true
 					break

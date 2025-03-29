@@ -52,6 +52,9 @@ func _on_body_entered(body: Node2D) -> void:
 		activate = false
 		shift_block()
 		
+		if item_type == ItemType.FIREPLANT and player.state == player.player_state.SMALL:
+			item_type = ItemType.MUSHROOM
+		
 		match item_type:
 			ItemType.COIN:		
 				HUD.score += 200

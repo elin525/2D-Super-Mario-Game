@@ -46,9 +46,12 @@ func _process(delta):
 		
 		if has_overlapping_areas() and cooldown == false and shell == false and ray_cast_2d.is_colliding():
 			cooldown = true
-			flip_direction()
-			await get_tree().create_timer(1).timeout
-			cooldown = false
+			for i in get_overlapping_areas():
+				if not i is Pickup:
+					flip_direction()
+					await get_tree().create_timer(1).timeout
+					cooldown = false
+					break
 		elif has_overlapping_areas() and cooldown == false and shell == true:
 			for i in get_overlapping_areas():
 				if i.get_parent().name != "Enemies" and i.get_parent().name != "player":
@@ -110,6 +113,7 @@ func die_from_hit():
 	die_tween.tween_callback(self.queue_free)
 	
 	var points_label = POINTS_LABEL_SCENE.instantiate()
+	points_label.text = str(kill_points)
 	points_label.position = self.position + Vector2(-20, -20)
 	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)
