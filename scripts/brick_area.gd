@@ -12,7 +12,16 @@ enum ItemType {
 	STAR
 }
 
+enum ColorType {
+	BRICK,
+	UNDERGROUD,
+	CASTLE
+}
+
+const UNDERGROUND_BRICK_TEXTURE = preload("res://images/UndergroundBrick.png")
+
 @export var item_type: ItemType = ItemType.EMPTY
+@export var color_type: ColorType = ColorType.BRICK
 
 @onready var player = get_node("../../TileMap/player")
 @onready var brick = $Sprite2D
@@ -27,6 +36,9 @@ var touched = false
 @onready var sound = get_node("../../Animation Sounds")
 
 func _ready() -> void:
+	if color_type == ColorType.UNDERGROUD:
+		brick.texture = UNDERGROUND_BRICK_TEXTURE
+	
 	piece_sprites.append($Piece_Animation1)
 	piece_sprites.append($Piece_Animation2)
 	piece_sprites.append($Piece_Animation3)
