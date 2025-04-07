@@ -362,6 +362,9 @@ func handle_enemy_collision(enemy: Enemy):
 	
 	else:
 		var angle_of_collisison = rad_to_deg(position.angle_to_point(enemy.position))
+		
+		if angle_of_collisison == null:
+			return
 	
 		if angle_of_collisison > min_stomp_degree && max_stomp_degree > angle_of_collisison and world.death == false: 
 			enemy.die()

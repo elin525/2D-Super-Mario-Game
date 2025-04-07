@@ -234,9 +234,6 @@ script = ExtResource("5_q1jxi")
 [node name="player" parent="TileMap" instance=ExtResource("6_prybo")]
 slide_on_ceiling = false
 safe_margin = 0.001
-min_stomp_degree = null
-max_stomp_degree = null
-stomp_y_velocity = null
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="TileMap/player"]
 
