@@ -16,7 +16,7 @@ enum ItemType {
 @export var max_vertical_speed = 150
 @export var vertical_velocity_gain = 0.1
 @onready var shape_cast_2d = $ShapeCast2D
-@onready var sound = get_node("/root/map1-2/Animation Sounds")
+@onready var sound
 
 var allow_horizontal_movement = false
 var vertical_speed = 0
