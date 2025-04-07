@@ -224,6 +224,8 @@ func end_level():
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
+		
+		ResourceLoad.changeLevel()
 
 # ---------------- DAMAGE & DEATH ---------------- #
 func hurt():

@@ -24,6 +24,11 @@ var direction = 1
 var cooldown = false
 
 func _ready() -> void:
+	if ResourceLoad.level == "map1-1":
+		sound = get_node("/root/world/Animation Sounds")
+	else:
+		sound = get_node("/root/" + ResourceLoad.level + "/Animation Sounds")
+	
 	if item_type != ItemType.COIN:
 		var spawn_tween = get_tree().create_tween()
 		spawn_tween.tween_property(self, "position", position + Vector2(0, -23), 0.6)

@@ -10,7 +10,17 @@ var score: int
 var coins: int
 var deadEnemiesList: Array[String]
 var hitQuestionBlocks: Array[String]
+static var level = "map1-1"
+static var completed = 0
+static var world = 1
 
 static var stomped = false
 static var consecutive = 0
 var pointsArray = [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000]
+
+func changeLevel():
+	completed += 1
+	level = "map" + str(world) + "-" + str(completed+1)
+	
+	if completed % 4 == 0:
+		world += 1
