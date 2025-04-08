@@ -23,6 +23,7 @@ var jump_released = false
 var blocks_interacted = 0
 var level_up = false
 var cooldown = false
+var jumped_after_enemy = false
 
 # state prefix for animation
 var current_state = "small"
@@ -138,6 +139,7 @@ func apply_gravity():
 		jump_released = false
 		ResourceLoad.stomped = false
 		ResourceLoad.consecutive = 0
+		jumped_after_enemy = false
 
 func handle_jump():
 	if Input.is_action_just_pressed("ui_up") and is_on_floor() and not already_jumped:
@@ -224,6 +226,13 @@ func end_level():
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
+		
+		if offset % 10 == 1:
+			await fireworks.animation_finished
+		elif offset % 10 == 3:
+			await fireworks.get_node("../Fireworks3").animation_finished
+		elif offset % 10 == 6:
+			await fireworks.get_node("../Fireworks6").animation_finished
 		
 		ResourceLoad.changeLevel()
 
@@ -342,8 +351,17 @@ func _on_death() -> void:
 
 	tree.root.add_child(l)
 	l.triggered = true
-	tree.root.remove_child(get_node("/root/world"))
-
+	
+	var string = ""
+	
+	if ResourceLoad.level == "map1-1":
+		string = "world"
+	else:
+		string = "map" + str(ResourceLoad.world) + "-" + str(ResourceLoad.completed+1)
+		
+	var node = "/root/" + string
+	
+	tree.root.remove_child(get_node(node))
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area is Enemy:
@@ -375,10 +393,23 @@ func handle_enemy_collision(enemy: Enemy):
 
 func on_enemy_stomped():
 	velocity.y = stomp_y_velocity
+	await get_tree().create_timer(0.0001).timeout
+	jumped_after_enemy = true
 	
 func handle_pickup_collision(pickup: Pickup):
 	if pickup == null:
 		return
+		
+	if pickup.item_type == pickup.ItemType.COIN:
+		sounds.stream = load("res://sounds/coin.wav")
+		sounds.playing = true
+		hud.score += 200
+		hud.update_score()
+		var points_label = POINTS_LABEL_SCENE.instantiate()
+		points_label.text = "200"
+		points_label.position = self.position + Vector2(-20, -20)
+		points_label.setPosition(points_label.position)
+		get_tree().root.add_child(points_label)
 	
 	if pickup.item_type == pickup.ItemType.MUSHROOM or pickup.item_type == pickup.ItemType.ONEUP:
 		handle_mushroom_collision(pickup)
@@ -432,6 +463,9 @@ func spawn_enemy_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	if ResourceLoad.consecutive >= ResourceLoad.pointsArray.size():
 		points_label.text = "1-UP"
+	elif jumped_after_enemy == false and ResourceLoad.consecutive == 1:
+		points_label.text = "400"
+		enemy.kill_points = 400
 	else:
 		points_label.text = str(enemy.kill_points)
 	points_label.position = enemy.position + Vector2(-20, -20)

@@ -54,6 +54,9 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_body_entered(body: Node2D) -> void:
+	if world.death == true or body.name != "player":
+		return
+	
 	var HUD = get_node("../../HUD")
 	match item_type:
 			ItemType.EMPTY:
