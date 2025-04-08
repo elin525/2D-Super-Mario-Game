@@ -266,10 +266,7 @@ func die(world):
 
 	# stop background music and play death sound
 	music.playing = false
-	if l.lives > 0:
-		play_sound("death")
-	else:
-		play_sound("gameover")
+	play_sound("death")
 
 	# play death animation
 	play_animation("death")
@@ -285,18 +282,15 @@ func die(world):
 	var down_position = start_position + Vector2(0, 400)
 	
 	while position.y > up_position.y:
-		var collision = move_and_collide(Vector2(0, -4))
-		await get_tree().create_timer(0.01).timeout
-		
-		if collision:
-			break
-		
-	while position.y < down_position.y:
-		var collision = move_and_collide(Vector2(0,4))
+		position.y -= 4
 		await get_tree().create_timer(0.01).timeout
 
-		if collision:
-			break
+	while position.y < down_position.y:
+		position.y += 4
+		await get_tree().create_timer(0.01).timeout
+
+		#if collision:
+			#break
 			
 	# trigger game over
 	
@@ -334,7 +328,14 @@ func _on_death() -> void:
 	var l = ResourceLoad.LiveScene
 
 	if l.lives == 0:
-		return
+		play_sound("gameover")
+		if sounds.is_playing():
+			await sounds.finished
+		await get_tree().create_timer(0.2).timeout
+		var title = load("res://title_screen.tscn").instantiate()
+		get_tree().root.add_child(title)
+		get_tree().root.remove_child(l)
+		l.queue_free()
 
 	var tree = get_tree()
 	l.lives -= 1
