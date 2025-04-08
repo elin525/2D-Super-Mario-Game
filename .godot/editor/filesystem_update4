@@ -1,1 +1,6 @@
 res://world.tscn
+res://blocks/brick_block.tscn
+res://blocks/question_block.tscn
+res://map1-2.tscn
+res://scripts/brick_area.gd
+res://tubes/tube.tscn

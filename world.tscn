@@ -475,7 +475,7 @@ position = Vector2(1793, 127)
 position = Vector2(5185, 191)
 
 [node name="Tube6" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(5697, 191)
+position = Vector2(5700, 191)
 
 [node name="Fireworks" type="Node" parent="."]
 
