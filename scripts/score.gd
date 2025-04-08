@@ -18,6 +18,9 @@ func _ready():
 		update_score()
 		coins = ResourceLoad.coins
 		update_coins()
+		
+	if ResourceLoad.level != "map1-1":
+		$"World 1-1".text = "WORLD\n" + str(ResourceLoad.world) + "-" + str(ResourceLoad.completed+1)
 
 func update_time():
 	$Time.text = "TIME\n%d" % clock

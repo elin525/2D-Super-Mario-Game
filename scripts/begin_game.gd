@@ -31,6 +31,7 @@ func new_game():
 
 # Called every time the Node enters the scene tree
 func _ready() -> void:
+	$"Animation Sounds".playing = false
 	$HUD.start_game.emit()
 	
 	if $HUD.clock <= 100:
@@ -68,5 +69,12 @@ func _on_audio_stream_player_2d_finished() -> void:
 
 
 func _on_hurry_up() -> void:
-	$AudioStreamPlayer2D.stream = load("res://sounds/overworld-fast.wav")
+	if ResourceLoad.level == "map1-1":
+		$AudioStreamPlayer2D.stream = load("res://sounds/overworld-fast.wav")
+	else:
+		var file = FileAccess.open("res://sounds/underground-fast.mp3", FileAccess.READ)
+		var mpsound = AudioStreamMP3.new()
+		mpsound.data = file.get_buffer(file.get_length())
+		$AudioStreamPlayer2D.stream = mpsound
+		
 	$AudioStreamPlayer2D.playing = true

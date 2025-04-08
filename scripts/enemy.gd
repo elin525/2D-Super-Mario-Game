@@ -78,6 +78,7 @@ func die():
 		ResourceLoad.deadEnemiesList.append(name)
 		
 	if ResourceLoad.stomped:
+		
 		ResourceLoad.consecutive += 1
 		if ResourceLoad.consecutive >= ResourceLoad.pointsArray.size():
 			ResourceLoad.LiveScene.lives += 1
@@ -90,6 +91,8 @@ func die():
 		
 	if not ResourceLoad.stomped:
 		ResourceLoad.stomped = true
+		
+	
 	
 func die_from_hit():
 	
