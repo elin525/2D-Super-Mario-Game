@@ -10,6 +10,8 @@ func trigger(offset):
 		
 		visible = true
 		play("default")
+		sound.stream = load("res://sounds/smb_fireworks.wav")
+		sound.playing = true
 		await self.animation_finished
 		await get_tree().create_timer(0.1).timeout
 		visible = false
