@@ -29,9 +29,8 @@ func _process(delta: float) -> void:
 	
 	for i in $Area2D.get_overlapping_areas():
 		if i.get_parent().name != "player":
-			if global_position.y > 0:
-				self.queue_free()
-			elif i.get_parent().name == "Enemies":
+			
+			if i.get_parent().name == "Enemies":
 				
 				if i.name != "Koopa":
 					i.kill_points = 100
@@ -43,6 +42,7 @@ func _process(delta: float) -> void:
 				self.queue_free()
 	
 	for i in $Area2D.get_overlapping_bodies():
+		print(i.name)
 		var collision_angle = rad_to_deg(global_position.angle_to_point(i.global_position))
 		
 		var tile_pos = Vector2i(floor(global_position.x/16), ceil(global_position.y/16))
@@ -50,7 +50,7 @@ func _process(delta: float) -> void:
 			cooldown = true
 			
 		if i.name == "TileMap":
-			print(tile_pos)
+
 			var coordinates = world.get_cell_atlas_coords(0, tile_pos)
 			
 			print(coordinates)
@@ -68,11 +68,16 @@ func _process(delta: float) -> void:
 			elif coordinates == Vector2i(-1,-1) and world.get_cell_atlas_coords(0, tile_pos-Vector2i(-1, 0)) != Vector2i(-1, -1):
 				collision_angle = rad_to_deg(global_position.angle_to_point(tile_pos_16+Vector2i(0, 16)))
 			
-			
-			print(collision_angle)	
+			print(collision_angle)
 				
 			if abs(collision_angle) < 45 or abs(collision_angle) > 135:
 				self.queue_free()
+				
+		if i.get_parent().get_parent().name == "Tubes":
+			collision_angle = rad_to_deg(global_position.angle_to_point(Vector2i(i.global_position.x, -32)))
 			
-		if i.name != "TileMap" and i.name != "player" and abs(collision_angle) < 45:
+			if abs(collision_angle) < 45 or abs(collision_angle) > 135:
+				self.queue_free()
+			
+		if i.name != "TileMap" and i.name != "player" and self != null and abs(collision_angle) < 45:
 			self.queue_free()

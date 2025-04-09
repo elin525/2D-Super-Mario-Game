@@ -223,6 +223,9 @@ func end_level():
 			hud.update_time()
 			hud.score += 50
 			hud.update_score()
+			
+		if music.is_playing():
+			await music.finished
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
