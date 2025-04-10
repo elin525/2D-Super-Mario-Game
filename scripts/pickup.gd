@@ -64,7 +64,10 @@ func _process(delta: float) -> void:
 			cooldown = false
 			
 	#else
-	
+func on_block_below_hit():
+	if allow_horizontal_movement and item_type == ItemType.MUSHROOM:
+		flip_direction()
+
 func flip_direction():
 	if direction == 1:
 		direction = -1

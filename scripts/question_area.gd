@@ -100,7 +100,7 @@ func shift_block():
 	
 	if ResourceLoad.checkpoint_reached == false:
 		ResourceLoad.hitQuestionBlocks.append(name)
-
+		
 func coin_animation():
 	sound.stream = load("res://sounds/blockhit.wav")
 	sound.playing = true
