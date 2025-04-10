@@ -34,10 +34,11 @@ func _process(delta):
 		else:
 			var collider = ray_cast_2d.get_collider()
 			if collider.is_class("StaticBody2D"):
-				if collider.get_parent().touched == true and once == false:
-					die_from_hit()
-					once = true
-					return
+				if collider.get_parent().get_parent().name == "Bricks" or collider.get_parent().get_parent().name == "Question_Blocks":
+					if collider.get_parent().touched == true and once == false:
+						die_from_hit()
+						once = true
+						return
 				
 		#await get_tree().process_frame		
 		

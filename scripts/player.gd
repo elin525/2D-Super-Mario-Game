@@ -223,16 +223,22 @@ func end_level():
 			hud.update_time()
 			hud.score += 50
 			hud.update_score()
+			
+		if music.is_playing():
+			await music.finished
 
 		await get_tree().create_timer(2).timeout
 		fireworks.trigger(offset)
 		
 		if offset % 10 == 1:
 			await fireworks.animation_finished
+			await fireworks.finished
 		elif offset % 10 == 3:
 			await fireworks.get_node("../Fireworks3").animation_finished
+			await fireworks.finished
 		elif offset % 10 == 6:
 			await fireworks.get_node("../Fireworks6").animation_finished
+			await fireworks.finished
 		
 		ResourceLoad.changeLevel()
 
@@ -370,6 +376,8 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		
 	if area is Pickup:
 		handle_pickup_collision(area)
+		if world.death == true:
+			return
 		area.queue_free()
 	
 func handle_enemy_collision(enemy: Enemy):
@@ -398,7 +406,7 @@ func on_enemy_stomped():
 	jumped_after_enemy = true
 	
 func handle_pickup_collision(pickup: Pickup):
-	if pickup == null:
+	if pickup == null or world.death == true:
 		return
 		
 	if pickup.item_type == pickup.ItemType.COIN:

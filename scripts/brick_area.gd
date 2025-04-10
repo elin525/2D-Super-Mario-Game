@@ -38,11 +38,23 @@ var touched = false
 func _ready() -> void:
 	if color_type == ColorType.UNDERGROUD:
 		brick.texture = UNDERGROUND_BRICK_TEXTURE
-	
-	piece_sprites.append($Piece_Animation1)
-	piece_sprites.append($Piece_Animation2)
-	piece_sprites.append($Piece_Animation3)
-	piece_sprites.append($Piece_Animation4)
+		piece_sprites.append($Blue_Piece_Animation1)
+		piece_sprites.append($Blue_Piece_Animation2)
+		piece_sprites.append($Blue_Piece_Animation3)
+		piece_sprites.append($Blue_Piece_Animation4)
+		$Piece_Animation1.visible = false
+		$Piece_Animation2.visible = false
+		$Piece_Animation3.visible = false
+		$Piece_Animation4.visible = false
+	else:
+		piece_sprites.append($Piece_Animation1)
+		piece_sprites.append($Piece_Animation2)
+		piece_sprites.append($Piece_Animation3)
+		piece_sprites.append($Piece_Animation4)
+		$Blue_Piece_Animation1.visible = false
+		$Blue_Piece_Animation2.visible = false
+		$Blue_Piece_Animation3.visible = false
+		$Blue_Piece_Animation4.visible = false
 	
 	for sprite in piece_sprites:
 		sprite.visible = false

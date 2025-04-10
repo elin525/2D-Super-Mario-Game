@@ -12,11 +12,11 @@ position = Vector2(864, 192)
 position = Vector2(0, -152.125)
 shape = SubResource("RectangleShape2D_ggvoq")
 
-[node name="Tube" type="Sprite2D" parent="."]
-texture = ExtResource("1_tu6v1")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, -152.25)
 shape = SubResource("RectangleShape2D_ggvoq")
+
+[node name="Tube" type="Sprite2D" parent="."]
+texture = ExtResource("1_tu6v1")

@@ -1,5 +1,7 @@
 extends AnimatedSprite2D
 
+signal finished
+
 func trigger(offset):
 	
 	if offset % 10 == 1 or offset % 10 == 3 or offset % 10 == 6:
@@ -8,12 +10,17 @@ func trigger(offset):
 		
 		visible = true
 		play("default")
+		sound.stream = load("res://sounds/smb_fireworks.wav")
+		sound.playing = true
 		await self.animation_finished
 		await get_tree().create_timer(0.1).timeout
 		visible = false
 		score.score += 500
 		score.update_score()
 		display_points(global_position)
+		if offset % 10 == 1:
+			await get_tree().create_timer(1).timeout
+		finished.emit()
 			
 		if offset % 10 == 3 or offset % 10 == 6:
 			var fireworks2 = get_node("../Fireworks2")
@@ -40,6 +47,9 @@ func trigger(offset):
 			score.score += 500
 			score.update_score()
 			display_points(fireworks3.global_position)
+			if offset % 10 == 3:
+				await get_tree().create_timer(1).timeout
+			finished.emit()
 			
 			if offset % 10 == 6:
 				var fireworks4 = get_node("../Fireworks4")
@@ -78,6 +88,8 @@ func trigger(offset):
 				score.score += 500
 				score.update_score()
 				display_points(fireworks6.global_position)
+				await get_tree().create_timer(1).timeout
+				finished.emit()
 				
 func display_points(object_position):
 	var points_label = preload("res://UI/points_label.tscn").instantiate()
