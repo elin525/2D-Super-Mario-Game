@@ -470,6 +470,7 @@ position = Vector2(1441, 127)
 
 [node name="Tube4" parent="Tubes" instance=ExtResource("21_mbfjl")]
 position = Vector2(1793, 127)
+tube_type = 1
 
 [node name="Tube5" parent="Tubes" instance=ExtResource("21_mbfjl")]
 position = Vector2(5185, 191)
