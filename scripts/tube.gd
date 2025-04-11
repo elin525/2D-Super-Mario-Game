@@ -27,10 +27,8 @@ func _process(delta: float) -> void:
 				player.is_controllable = true
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print("Entered")
 	accessable = true
 
 
 func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	print("Exited")
 	accessable = false
