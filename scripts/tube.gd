@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 				pass
 			TubeType.w1_1_1:
 				player.is_controllable = false
-				player.position.x = 5702
+				player.position.x = 5174
 				player.position.y = -64
 				player.is_controllable = true
 
