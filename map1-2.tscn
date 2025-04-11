@@ -1596,25 +1596,32 @@ position = Vector2(4627, -24)
 
 [node name="Tube1" parent="Tubes" instance=ExtResource("15_38b4r")]
 position = Vector2(3460, 128)
+script = null
 
 [node name="Tube2" parent="Tubes" instance=ExtResource("15_38b4r")]
 position = Vector2(3267, 160)
+script = null
 
 [node name="Tube3" parent="Tubes" instance=ExtResource("15_38b4r")]
 position = Vector2(3652, 192)
+script = null
 
 [node name="Tube4" parent="Tubes" instance=ExtResource("15_38b4r")]
 position = Vector2(5667, 160)
+script = null
 
 [node name="Tube5" parent="Tubes" instance=ExtResource("15_38b4r")]
 position = Vector2(5796, 160)
+script = null
 
 [node name="Tube6" parent="Tubes" instance=ExtResource("15_38b4r")]
 position = Vector2(5923, 160)
+script = null
 
 [node name="Tube7" parent="Tubes" instance=ExtResource("15_38b4r")]
 z_index = -1
 position = Vector2(4867, -753)
+script = null
 
 [node name="Fireworks" type="Node" parent="."]
 
