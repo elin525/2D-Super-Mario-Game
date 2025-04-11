@@ -58,7 +58,7 @@ func _process(delta):
 				if i.get_parent().name != "Enemies" and i.get_parent().name != "player":
 					cooldown = true
 					flip_direction()
-					await get_tree().create_timer(1).timeout
+					await get_tree().create_timer(0.5).timeout
 					cooldown = false
 					break
  

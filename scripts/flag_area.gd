@@ -1,18 +1,22 @@
 extends Area2D
 
+signal finished
+
 var block_touched = false
+var end = false
 
 @onready var player = get_node("../TileMap/player")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	ResourceLoad.level_changed.connect(end_finished)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	if end:
+		self.finished.emit()
+	
 
 func _on_body_entered(body: Node2D) -> void:
 	
@@ -50,9 +54,14 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	music.playing = false
 	
+	end = true
+	
 func display_points(object_position, score):
 	var points_label = preload("res://UI/points_label.tscn").instantiate()
 	points_label.text = str(score)
 	points_label.position = object_position + Vector2(10, 0)
 	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)
+	
+func end_finished():
+	end = false

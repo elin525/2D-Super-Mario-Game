@@ -6,7 +6,7 @@ var clock: int = 400
 
 var score: int = 000000
 
-var coins: int = 0
+static var coins: int = 0
 
 func _ready():
 	ResourceLoad.checkpointReached.connect(save_score)
@@ -27,6 +27,8 @@ func update_time():
 	
 func update_coins():
 	$"Coin Count".text = "x%d" % coins
+	if coins % 100 == 0:
+		ResourceLoad.LiveScene.lives += 1;
 
 func update_score():
 	$Score.text = "MARIO\n%06d" % score

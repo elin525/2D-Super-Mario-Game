@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://bc3hr1j4bstwc"]
+[gd_scene load_steps=26 format=3 uid="uid://bc3hr1j4bstwc"]
 
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_iucqg"]
 [ext_resource type="Texture2D" uid="uid://djyl8u2fju5fd" path="res://images/reference/map1-2.png" id="2_hmvd6"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://bt82tyobe5nm6" path="res://images/firework2.png" id="18_ar0kp"]
 [ext_resource type="Script" path="res://scripts/fireworks.gd" id="19_8n2pa"]
 [ext_resource type="PackedScene" uid="uid://bhqc7eq5ow8f6" path="res://blocks/koopa_shell_stop_point.tscn" id="20_ausqu"]
+[ext_resource type="PackedScene" uid="uid://dekostg3ky1fy" path="res://blocks/elevator.tscn" id="21_a4o18"]
+[ext_resource type="Script" path="res://scripts/elevator.gd" id="22_3tb0y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("4_mk105")
@@ -1659,7 +1661,19 @@ position = Vector2(947, -16)
 [node name="Koopa Shell Stop Point3" parent="Enemy_Stop_Blocks" instance=ExtResource("20_ausqu")]
 position = Vector2(1011, -16)
 
+[node name="Elevators" type="Node" parent="."]
+
+[node name="ElevatorDown" parent="Elevators" instance=ExtResource("21_a4o18")]
+position = Vector2(4453, -170)
+script = ExtResource("22_3tb0y")
+
+[node name="ElevatorUp" parent="Elevators" instance=ExtResource("21_a4o18")]
+position = Vector2(4890, -113)
+script = ExtResource("22_3tb0y")
+
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="area_entered" from="Elevators/ElevatorDown" to="Elevators/ElevatorDown" method="_on_area_entered"]
+[connection signal="area_entered" from="Elevators/ElevatorUp" to="Elevators/ElevatorUp" method="_on_area_entered"]

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dekostg3ky1fy"]
+
+[ext_resource type="Texture2D" uid="uid://c3mf1xrnkycbj" path="res://images/elevator.png" id="1_v1pxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pgo5c"]
+size = Vector2(48, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d5uk6"]
+size = Vector2(48, 8)
+
+[node name="Area2D" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v1pxr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_pgo5c")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_d5uk6")
