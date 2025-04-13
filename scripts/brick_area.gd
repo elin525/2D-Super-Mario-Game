@@ -117,11 +117,8 @@ func shift_block():
 	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/blockhit.wav")
 	sound.playing = true
-	var temp_timer = get_tree().create_timer(0.05)
-	await temp_timer.timeout
 	brick.position.y -= 10
-	var timer = get_tree().create_timer(0.2)
-	await timer.timeout
+	await get_tree().create_timer(0.2).timeout
 	brick.position.y += 10
 	touched = false
 	player.blocks_interacted -= 1
@@ -140,24 +137,22 @@ func delete_block():
 	
 	brick.visible = not brick.visible
 	for i in range(10):
-		var temp_timer = get_tree().create_timer(0.01)
 		for j in range(len(piece_sprites)):
 			piece_sprites[j].position.y -= 2
 			if j < 2:
 				piece_sprites[j].position.x -= 2
 			else:
 				piece_sprites[j].position.x += 2
-		await temp_timer.timeout
+		await get_tree().create_timer(0.01).timeout
 	
 	for i in range(20):
-		var temp_timer = get_tree().create_timer(0.01)
 		for j in range(len(piece_sprites)):
 			piece_sprites[j].position.y += 6
 			if j < 2:
 				piece_sprites[j].position.x -= 1
 			else:
 				piece_sprites[j].position.x += 1
-		await temp_timer.timeout
+		await get_tree().create_timer(0.01).timeout
 	
 	# Disable visibility, animation, and hitboxes
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -189,12 +184,11 @@ func coin_animation():
 	animated_coin.play()
 	
 	for i in range(8):
-		var timer = get_tree().create_timer(0.05)
 		if i < 4:
 			animated_coin.position.y -= 5
 		else:
 			animated_coin.position.y += 5
-		await timer.timeout
+		await get_tree().create_timer(0.05).timeout
 	
 	animated_coin.stop()
 	animated_coin.visible = false

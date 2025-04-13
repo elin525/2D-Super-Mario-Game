@@ -9,6 +9,7 @@ enum TubeType {
 
 @export var tube_type: TubeType = TubeType.dull_pipe
 @onready var player = get_node("../../TileMap/player")
+@onready var sound = get_node("../../Animation Sounds")
 
 var accessable = false
 
@@ -22,6 +23,7 @@ func _process(delta: float) -> void:
 				pass
 			TubeType.w1_1_1:
 				player.is_controllable = false
+				await animation()
 				player.position.x = 5174
 				player.position.y = -64
 				player.is_controllable = true
@@ -32,3 +34,16 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 
 func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	accessable = false
+
+func animation():
+	var sound = get_node("../../Animation Sounds")
+	sound.stream = load("res://sounds/pipe.wav")
+	sound.playing = true
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+	
+	for i in range(16):
+		player.position.y += 2
+		await get_tree().create_timer(0.05).timeout
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
+	sound.playing = false
+	sound.playing = true
