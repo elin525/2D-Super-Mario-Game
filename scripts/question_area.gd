@@ -92,8 +92,7 @@ func shift_block():
 	animated_block.visible = false
 	
 	position.y -= 10
-	var timer = get_tree().create_timer(0.2)
-	await timer.timeout
+	await get_tree().create_timer(0.2).timeout
 	position.y += 10
 	player.blocks_interacted -= 1
 	touched = false
@@ -111,12 +110,11 @@ func coin_animation():
 	animated_coin.play()
 	
 	for i in range(8):
-		var timer = get_tree().create_timer(0.05)
 		if i < 4:
 			animated_coin.position.y -= 5
 		else:
 			animated_coin.position.y += 5
-		await timer.timeout
+		await get_tree().create_timer(0.05).timeout
 	
 	animated_coin.stop()
 	animated_coin.visible = false
