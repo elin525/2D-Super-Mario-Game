@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bc3hr1j4bstwc"]
+[gd_scene load_steps=27 format=3 uid="uid://bc3hr1j4bstwc"]
 
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_iucqg"]
 [ext_resource type="Texture2D" uid="uid://djyl8u2fju5fd" path="res://images/reference/map1-2.png" id="2_hmvd6"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bhqc7eq5ow8f6" path="res://blocks/koopa_shell_stop_point.tscn" id="20_ausqu"]
 [ext_resource type="PackedScene" uid="uid://dekostg3ky1fy" path="res://blocks/elevator.tscn" id="21_a4o18"]
 [ext_resource type="Script" path="res://scripts/elevator.gd" id="22_3tb0y"]
+[ext_resource type="PackedScene" uid="uid://lmp34td6edeg" path="res://enemies/piranha_plant.tscn" id="23_154oa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("4_mk105")
@@ -1677,6 +1678,17 @@ script = ExtResource("22_3tb0y")
 [node name="ElevatorUp" parent="Elevators" instance=ExtResource("21_a4o18")]
 position = Vector2(4890, -113)
 script = ExtResource("22_3tb0y")
+
+[node name="Piranha_Plant" type="Node" parent="."]
+
+[node name="PiranhaPlant" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
+position = Vector2(3268, -59)
+
+[node name="PiranhaPlant2" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
+position = Vector2(3462, -89)
+
+[node name="PiranhaPlant3" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
+position = Vector2(3653, -31)
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnwtak43lop27"
-path="res://.godot/imported/rose3.png-2fc23d3a076891667074265b9bac068f.ctex"
+uid="uid://bf6hxh1im2frm"
+path="res://.godot/imported/piranha1.png-28d0491e6a6ff753328a49ede270e162.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/rose3.png"
-dest_files=["res://.godot/imported/rose3.png-2fc23d3a076891667074265b9bac068f.ctex"]
+source_file="res://images/piranha1.png"
+dest_files=["res://.godot/imported/piranha1.png-28d0491e6a6ff753328a49ede270e162.ctex"]
 
 [params]
 
