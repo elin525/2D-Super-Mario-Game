@@ -1682,13 +1682,13 @@ script = ExtResource("22_3tb0y")
 [node name="Piranha_Plant" type="Node" parent="."]
 
 [node name="PiranhaPlant" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
-position = Vector2(3268, -59)
+position = Vector2(3265, -71)
 
 [node name="PiranhaPlant2" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
-position = Vector2(3462, -89)
+position = Vector2(3459, -102)
 
 [node name="PiranhaPlant3" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
-position = Vector2(3653, -31)
+position = Vector2(3651, -41)
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]

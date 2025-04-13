@@ -1,11 +1,48 @@
-extends Node
+extends Node2D
 
+@onready var sprite := $AnimatedSprite2D
+@onready var timer := $Timer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+var base_position: Vector2
+var up_distance := -76       
+var move_speed := 20.0       
+var is_up := false
+var target_position: Vector2
+var moving := false
 
+func _ready():
+	base_position = position
+	target_position = base_position
+	timer.timeout.connect(_on_timer_timeout)
+	sprite.play("piranha_plant")
+	timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_timer_timeout() -> void:
+	if is_up:
+		move_down()
+	else:
+		move_up()
+
+func move_up() -> void:
+	is_up = true
+	target_position = base_position + Vector2(0, up_distance)
+	moving = true
+	timer.start(3.8)
+	
+func move_down() -> void:
+	is_up = false
+	target_position = base_position
+	moving = true
+
+func _physics_process(delta: float) -> void:
+	if moving:
+		var direction = (target_position - position).normalized()
+		var distance = move_speed * delta
+		var new_position = position + direction * distance
+
+		if position.distance_to(target_position) < distance:
+			position = target_position
+			moving = false
+			timer.start(3.5)
+		else:
+			position = new_position

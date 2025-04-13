@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://b116tfvwx3ro4"]
+
+[ext_resource type="Script" path="res://scripts/piranha_plant.gd" id="1_wtrxs"]
+[ext_resource type="Texture2D" uid="uid://bf6hxh1im2frm" path="res://images/piranha1.png" id="2_umj6d"]
+[ext_resource type="Texture2D" uid="uid://c5rlivr605pnq" path="res://images/piranha2.png" id="3_48ibx"]
+[ext_resource type="Texture2D" uid="uid://bnwtak43lop27" path="res://images/piranha3.png" id="4_qfl0d"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dv5d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_umj6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_48ibx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qfl0d")
+}],
+"loop": true,
+"name": &"piranha",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_h8vj4"]
+resource_name = "PopUp"
+length = 4.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 2, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 16), Vector2(0, -16), Vector2(0, -16), Vector2(0, 16)]
+}
+
+[sub_resource type="Animation" id="Animation_kkjnc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -16)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_id0vd"]
+_data = {
+"PopUp": SubResource("Animation_h8vj4"),
+"RESET": SubResource("Animation_kkjnc")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_thvks"]
+radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ijh50"]
+size = Vector2(10, 26)
+
+[node name="PiranhaPlant" type="CharacterBody2D"]
+z_index = -10
+script = ExtResource("1_wtrxs")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_7dv5d")
+animation = &"piranha"
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Sprite"]
+remote_path = NodePath("../../Hitbox")
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_id0vd")
+}
+
+[node name="PlayerDetect" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Shape" type="CollisionShape2D" parent="PlayerDetect"]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_thvks")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0, 1.90735e-06)
+scale = Vector2(1, 3.2)
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="Shape" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_ijh50")
+
+[connection signal="area_entered" from="Hitbox" to="." method="check_hit"]
