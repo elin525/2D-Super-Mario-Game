@@ -1593,37 +1593,6 @@ position = Vector2(4323, -144)
 z_index = 1
 position = Vector2(4627, -24)
 
-[node name="Tubes" type="Node" parent="."]
-
-[node name="Tube1" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(3460, 128)
-script = null
-
-[node name="Tube2" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(3267, 160)
-script = null
-
-[node name="Tube3" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(3652, 192)
-script = null
-
-[node name="Tube4" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(5667, 160)
-script = null
-
-[node name="Tube5" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(5796, 160)
-script = null
-
-[node name="Tube6" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(5923, 160)
-script = null
-
-[node name="Tube7" parent="Tubes" instance=ExtResource("15_38b4r")]
-z_index = -1
-position = Vector2(4867, -753)
-script = null
-
 [node name="Fireworks" type="Node" parent="."]
 
 [node name="Fireworks1" type="AnimatedSprite2D" parent="Fireworks"]
@@ -1689,6 +1658,37 @@ position = Vector2(3459, -102)
 
 [node name="PiranhaPlant3" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
 position = Vector2(3651, -41)
+
+[node name="Tubes" type="Node" parent="."]
+
+[node name="Tube1" parent="Tubes" instance=ExtResource("15_38b4r")]
+position = Vector2(3460, 128)
+script = null
+
+[node name="Tube2" parent="Tubes" instance=ExtResource("15_38b4r")]
+position = Vector2(3267, 160)
+script = null
+
+[node name="Tube3" parent="Tubes" instance=ExtResource("15_38b4r")]
+position = Vector2(3652, 192)
+script = null
+
+[node name="Tube4" parent="Tubes" instance=ExtResource("15_38b4r")]
+position = Vector2(5667, 160)
+script = null
+
+[node name="Tube5" parent="Tubes" instance=ExtResource("15_38b4r")]
+position = Vector2(5796, 160)
+script = null
+
+[node name="Tube6" parent="Tubes" instance=ExtResource("15_38b4r")]
+position = Vector2(5923, 160)
+script = null
+
+[node name="Tube7" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = -1
+position = Vector2(4867, -753)
+script = null
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]

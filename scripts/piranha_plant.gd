@@ -5,7 +5,7 @@ extends Node2D
 
 var base_position: Vector2
 var up_distance := -76       
-var move_speed := 20.0       
+var move_speed := 50.0       
 var is_up := false
 var target_position: Vector2
 var moving := false
