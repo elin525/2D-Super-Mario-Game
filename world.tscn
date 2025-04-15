@@ -188,6 +188,27 @@ texture = ExtResource("1_6br88")
 
 [node name="Flag Pole" parent="." instance=ExtResource("19_obg0r")]
 
+[node name="Tubes" type="Node" parent="."]
+
+[node name="Tube1" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(865, 191)
+
+[node name="Tube2" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(1185, 159)
+
+[node name="Tube3" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(1441, 127)
+
+[node name="Tube4" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(1793, 127)
+tube_type = 1
+
+[node name="Tube5" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(5185, 191)
+
+[node name="Tube6" parent="Tubes" instance=ExtResource("21_mbfjl")]
+position = Vector2(5700, 191)
+
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(2, 0)
 tile_set = SubResource("TileSet_6qcmx")
@@ -456,27 +477,6 @@ position = Vector2(5567, -16)
 
 [node name="Koopa" parent="Enemies" instance=ExtResource("27_hf3sn")]
 position = Vector2(3376, -23)
-
-[node name="Tubes" type="Node" parent="."]
-
-[node name="Tube1" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(865, 191)
-
-[node name="Tube2" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(1185, 159)
-
-[node name="Tube3" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(1441, 127)
-
-[node name="Tube4" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(1793, 127)
-tube_type = 1
-
-[node name="Tube5" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(5185, 191)
-
-[node name="Tube6" parent="Tubes" instance=ExtResource("21_mbfjl")]
-position = Vector2(5700, 191)
 
 [node name="Fireworks" type="Node" parent="."]
 

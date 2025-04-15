@@ -41,9 +41,9 @@ func animation():
 	sound.playing = true
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	
-	for i in range(16):
-		player.position.y += 2
-		await get_tree().create_timer(0.05).timeout
+	for i in range(24):
+		player.position.y += 1
+		await get_tree().create_timer(0.04).timeout
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	sound.playing = false
 	sound.playing = true
