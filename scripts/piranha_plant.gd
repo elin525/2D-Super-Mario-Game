@@ -46,3 +46,8 @@ func _physics_process(delta: float) -> void:
 			timer.start(3.5)
 		else:
 			position = new_position
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.get_parent().name == "player":
+		area.get_parent().hurt()

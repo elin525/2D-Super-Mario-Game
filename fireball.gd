@@ -42,7 +42,6 @@ func _process(delta: float) -> void:
 				self.queue_free()
 	
 	for i in $Area2D.get_overlapping_bodies():
-		print(i.name)
 		var collision_angle = rad_to_deg(global_position.angle_to_point(i.global_position))
 		
 		var tile_pos = Vector2i(floor(global_position.x/16), ceil(global_position.y/16))
@@ -52,8 +51,6 @@ func _process(delta: float) -> void:
 		if i.name == "TileMap":
 
 			var coordinates = world.get_cell_atlas_coords(0, tile_pos)
-			
-			print(coordinates)
 			
 			var tile_pos_16 = Vector2i(tile_pos.x*16, tile_pos.y*16)
 				

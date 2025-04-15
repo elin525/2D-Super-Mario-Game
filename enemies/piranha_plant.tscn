@@ -44,3 +44,5 @@ autostart = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.499999, -16.5)
 scale = Vector2(2.05, 3.05)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

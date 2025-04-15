@@ -1575,7 +1575,7 @@ position = Vector2(3171, -17)
 
 [node name="Goomba11" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
-position = Vector2(3219, -17)
+position = Vector2(3215, -17)
 
 [node name="Goomba12" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
