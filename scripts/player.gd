@@ -240,6 +240,7 @@ func end_level():
 			await fireworks.get_node("../Fireworks6").animation_finished
 			await fireworks.finished
 		
+		hud.save_coins()
 		ResourceLoad.changeLevel()
 
 # ---------------- DAMAGE & DEATH ---------------- #

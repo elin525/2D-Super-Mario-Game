@@ -18,6 +18,9 @@ func _ready():
 		update_score()
 		coins = ResourceLoad.coins
 		update_coins()
+	else:
+		coins = ResourceLoad.coins
+		update_coins()
 		
 	if ResourceLoad.level != "map1-1":
 		$"World 1-1".text = "WORLD\n" + str(ResourceLoad.world) + "-" + str(ResourceLoad.completed+1)
@@ -27,7 +30,7 @@ func update_time():
 	
 func update_coins():
 	$"Coin Count".text = "x%d" % coins
-	if coins % 100 == 0:
+	if coins > 0 and coins % 100 == 0:
 		ResourceLoad.LiveScene.lives += 1;
 
 func update_score():
@@ -44,4 +47,7 @@ func add_score(points: int):
 func save_score():
 	ResourceLoad.clock = clock
 	ResourceLoad.score = score
+	ResourceLoad.coins = coins
+
+func save_coins():
 	ResourceLoad.coins = coins
