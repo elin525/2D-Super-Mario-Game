@@ -1,7 +1,8 @@
 res://world.tscn
+res://scripts/tube.gd
 res://blocks/brick_block.tscn
 res://blocks/question_block.tscn
 res://map1-2.tscn
 res://tubes/tube.tscn
 res://enemies/piranha_plant.tscn
-res://scripts/tube.gd
+res://scripts/player.gd

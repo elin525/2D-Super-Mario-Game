@@ -23,9 +23,9 @@ func _process(delta: float) -> void:
 				pass
 			TubeType.w1_1_1:
 				player.is_controllable = false
-				await animation()
-				player.position.x = 5174
-				player.position.y = -64
+				await enter_pipe()
+				await get_tree().create_timer(0.05).timeout
+				exit_pipe(get_node("../../Tubes/Tube5/StaticBody2D/CollisionShape2D"), 5174, -64)
 				player.is_controllable = true
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
@@ -35,15 +35,28 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	accessable = false
 
-func animation():
+func enter_pipe():
 	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/pipe.wav")
 	sound.playing = true
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
 	
 	for i in range(24):
-		player.position.y += 1
 		await get_tree().create_timer(0.04).timeout
-	$StaticBody2D/CollisionShape2D.set_deferred("disabled", true)
-	sound.playing = false
+		player.position.y += 1
+	$StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
+
+func exit_pipe(target_pipe, target_x, target_y):
+	var sound = get_node("../../Animation Sounds")
+	sound.stream = load("res://sounds/pipe.wav")
 	sound.playing = true
+	
+	#target_pipe.set_deferred("disabled", true)
+	player.position.x = target_x
+	player.position.y = target_y
+	"""
+	for i in range(24):
+		await get_tree().create_timer(0.04).timeout
+		player.position.y -= 1
+	target_pipe.set_deferred("disabled", false)
+	"""
