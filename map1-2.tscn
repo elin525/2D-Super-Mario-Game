@@ -278,7 +278,7 @@ layer_0/tile_data = PackedInt32Array(-1376260, 1048576, 2, -1310724, 1048576, 3,
 script = ExtResource("5_q1jxi")
 
 [node name="player" parent="TileMap" instance=ExtResource("6_prybo")]
-position = Vector2(128, -946)
+position = Vector2(129, -944)
 slide_on_ceiling = false
 safe_margin = 0.001
 
