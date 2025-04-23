@@ -239,7 +239,7 @@ script = ExtResource("1_ox1jm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"big_move"
+animation = &"small_move"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)

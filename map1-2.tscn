@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bc3hr1j4bstwc"]
+[gd_scene load_steps=28 format=3 uid="uid://bc3hr1j4bstwc"]
 
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_iucqg"]
 [ext_resource type="Texture2D" uid="uid://djyl8u2fju5fd" path="res://images/reference/map1-2.png" id="2_hmvd6"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://dekostg3ky1fy" path="res://blocks/elevator.tscn" id="21_a4o18"]
 [ext_resource type="Script" path="res://scripts/elevator.gd" id="22_3tb0y"]
 [ext_resource type="PackedScene" uid="uid://lmp34td6edeg" path="res://enemies/piranha_plant.tscn" id="23_154oa"]
+[ext_resource type="PackedScene" uid="uid://l3bo4apx67lw" path="res://side_tube.tscn" id="24_tq0xp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("4_mk105")
@@ -226,6 +227,48 @@ texture = ExtResource("2_hmvd6")
 z_index = 1
 position = Vector2(5443, -1248)
 
+[node name="Tubes" type="Node" parent="."]
+
+[node name="Tube1" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = 1
+position = Vector2(3460, 128)
+script = null
+
+[node name="Tube2" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = 1
+position = Vector2(3267, 160)
+script = null
+
+[node name="Tube3" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = 1
+position = Vector2(3652, 192)
+script = null
+
+[node name="Tube4" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = 1
+position = Vector2(5667, 160)
+script = null
+
+[node name="Tube5" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = 1
+position = Vector2(5796, 160)
+script = null
+
+[node name="Tube6" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = 1
+position = Vector2(5923, 160)
+script = null
+
+[node name="Tube7" parent="Tubes" instance=ExtResource("15_38b4r")]
+z_index = -1
+position = Vector2(4867, -753)
+script = null
+
+[node name="Side Tube" parent="Tubes" instance=ExtResource("24_tq0xp")]
+z_index = 1
+position = Vector2(670, -985)
+tube_type = 4
+
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
 position = Vector2(2, 0)
@@ -235,6 +278,7 @@ layer_0/tile_data = PackedInt32Array(-1376260, 1048576, 2, -1310724, 1048576, 3,
 script = ExtResource("5_q1jxi")
 
 [node name="player" parent="TileMap" instance=ExtResource("6_prybo")]
+position = Vector2(128, -946)
 slide_on_ceiling = false
 safe_margin = 0.001
 
@@ -1658,37 +1702,6 @@ position = Vector2(3459, -102)
 
 [node name="PiranhaPlant3" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
 position = Vector2(3651, -41)
-
-[node name="Tubes" type="Node" parent="."]
-
-[node name="Tube1" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(3460, 128)
-script = null
-
-[node name="Tube2" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(3267, 160)
-script = null
-
-[node name="Tube3" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(3652, 192)
-script = null
-
-[node name="Tube4" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(5667, 160)
-script = null
-
-[node name="Tube5" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(5796, 160)
-script = null
-
-[node name="Tube6" parent="Tubes" instance=ExtResource("15_38b4r")]
-position = Vector2(5923, 160)
-script = null
-
-[node name="Tube7" parent="Tubes" instance=ExtResource("15_38b4r")]
-z_index = -1
-position = Vector2(4867, -753)
-script = null
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]

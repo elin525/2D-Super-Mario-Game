@@ -48,6 +48,7 @@ const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 @export_group("")
 
 func _ready():
+	
 	call_deferred("change_state", player_state.SMALL)
 	if ResourceLoad.checkpoint_reached:
 		position.x = 162*16

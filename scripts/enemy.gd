@@ -65,7 +65,8 @@ func _process(delta):
 		if self == null or world.death == true:
 			return
 
-		await get_tree().process_frame
+		if is_inside_tree():
+			await get_tree().process_frame
 
 func die():
 	horizontal_speed = 0

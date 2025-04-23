@@ -16,6 +16,10 @@ func _ready():
 		var parent = get_parent()
 		if parent is CharacterBody2D:
 			target = parent
+			
+	if ResourceLoad.level == "map1-2" and ResourceLoad.checkpoint_reached == false:
+		limit_top = target.global_position.y-470
+		limit_bottom = target.global_position.y+48
 
 func _process(delta):
 	if target:
