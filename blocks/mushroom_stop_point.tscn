@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b22brb3tbn44x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lifq"]
+
+[node name="MushroomStopPoint" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_8lifq")

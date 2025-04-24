@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bc3hr1j4bstwc"]
+[gd_scene load_steps=31 format=3 uid="uid://bc3hr1j4bstwc"]
 
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_iucqg"]
 [ext_resource type="Texture2D" uid="uid://djyl8u2fju5fd" path="res://images/reference/map1-2.png" id="2_hmvd6"]
@@ -26,6 +26,7 @@
 [ext_resource type="Script" path="res://scripts/elevator.gd" id="22_3tb0y"]
 [ext_resource type="PackedScene" uid="uid://lmp34td6edeg" path="res://enemies/piranha_plant.tscn" id="23_154oa"]
 [ext_resource type="PackedScene" uid="uid://l3bo4apx67lw" path="res://side_tube.tscn" id="24_tq0xp"]
+[ext_resource type="PackedScene" uid="uid://b22brb3tbn44x" path="res://blocks/mushroom_stop_point.tscn" id="27_rtnie"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("4_mk105")
@@ -1576,11 +1577,11 @@ position = Vector2(3506, 465)
 
 [node name="Goomba" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
-position = Vector2(467, -17)
+position = Vector2(465, -22)
 
 [node name="Goomba2" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
-position = Vector2(501, -47)
+position = Vector2(500, -49)
 
 [node name="Goomba3" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
@@ -1711,6 +1712,11 @@ position = Vector2(3459, -102)
 
 [node name="PiranhaPlant3" parent="Piranha_Plant" instance=ExtResource("23_154oa")]
 position = Vector2(3651, -41)
+
+[node name="Mushroom_Stop_Point" type="Node" parent="."]
+
+[node name="MushroomStopPoint" parent="Mushroom_Stop_Point" instance=ExtResource("27_rtnie")]
+position = Vector2(495, -24)
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]
