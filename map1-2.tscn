@@ -269,8 +269,8 @@ script = null
 
 [node name="Side Tube" parent="Tubes" instance=ExtResource("24_tq0xp")]
 z_index = 1
-position = Vector2(670, -985)
-tube_type = 4
+position = Vector2(674, -985)
+tube_type = 3
 
 [node name="Side Tube2" parent="Tubes" instance=ExtResource("6_chpd2")]
 z_index = 2
@@ -278,6 +278,7 @@ position = Vector2(3628, 437)
 
 [node name="Side Tube4" parent="Tubes" instance=ExtResource("7_iq0tk")]
 position = Vector2(5339, -139)
+tube_type = 4
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1

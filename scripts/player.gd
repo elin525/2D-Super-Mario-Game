@@ -39,6 +39,7 @@ var current_state = "small"
 @onready var map = get_node("..")
 @onready var flag = get_node("../../Flag Pole/Flag")
 @onready var flag_area = get_node("../../Flag Pole")
+@onready var camera = get_node("../../TileMap/player/Camera2D")
 
 const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 @export_group("Stomping enemies")
@@ -81,7 +82,7 @@ func _physics_process(delta):
 		move_and_slide()
 		
 		# check for death
-		if position.y >= 80:
+		if position.y >= camera.limit_bottom:
 			die(world)
 			
 		if position.x >= 162*16:

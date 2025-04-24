@@ -7,3 +7,5 @@ res://enemies/piranha_plant.tscn
 res://side_tube.tscn
 res://side_tube_tall.tscn
 res://side_tube_medium.tscn
+res://scripts/tube.gd
+res://scripts/player.gd
