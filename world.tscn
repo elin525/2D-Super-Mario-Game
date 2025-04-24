@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=25 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
 [ext_resource type="Texture2D" uid="uid://drlw3mmxv54fa" path="res://worlds/1-1/tiles.png" id="1_mgtot"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="4_7dxbo"]
+[ext_resource type="PackedScene" uid="uid://cxnvje7wrtda0" path="res://side_tube_tall.tscn" id="5_46oro"]
 [ext_resource type="PackedScene" uid="uid://08ys5xca31gt" path="res://player.tscn" id="5_hfqit"]
 [ext_resource type="PackedScene" uid="uid://d0ngqoded2uqf" path="res://canvas_layer.tscn" id="10_8v8g0"]
 [ext_resource type="Texture2D" uid="uid://b3rwrudswjvmv" path="res://images/firework0.png" id="17_1pweh"]
@@ -208,6 +209,9 @@ position = Vector2(5185, 191)
 
 [node name="Tube6" parent="Tubes" instance=ExtResource("21_mbfjl")]
 position = Vector2(5700, 191)
+
+[node name="Side Tube" parent="Tubes" instance=ExtResource("5_46oro")]
+position = Vector2(3692, 695)
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(2, 0)

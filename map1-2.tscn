@@ -1,11 +1,13 @@
-[gd_scene load_steps=28 format=3 uid="uid://bc3hr1j4bstwc"]
+[gd_scene load_steps=30 format=3 uid="uid://bc3hr1j4bstwc"]
 
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_iucqg"]
 [ext_resource type="Texture2D" uid="uid://djyl8u2fju5fd" path="res://images/reference/map1-2.png" id="2_hmvd6"]
 [ext_resource type="PackedScene" uid="uid://cm7ok2834noa3" path="res://flag_pole/flag_pole.tscn" id="3_yvt5b"]
 [ext_resource type="Texture2D" uid="uid://drlw3mmxv54fa" path="res://worlds/1-1/tiles.png" id="4_mk105"]
 [ext_resource type="Script" path="res://scripts/world.gd" id="5_q1jxi"]
+[ext_resource type="PackedScene" uid="uid://cxnvje7wrtda0" path="res://side_tube_tall.tscn" id="6_chpd2"]
 [ext_resource type="PackedScene" uid="uid://08ys5xca31gt" path="res://player.tscn" id="6_prybo"]
+[ext_resource type="PackedScene" uid="uid://crymfm6sm1pws" path="res://side_tube_medium.tscn" id="7_iq0tk"]
 [ext_resource type="PackedScene" uid="uid://d0ngqoded2uqf" path="res://canvas_layer.tscn" id="7_nt8mo"]
 [ext_resource type="AudioStream" uid="uid://crtnsoy856xft" path="res://sounds/underground.mp3" id="8_bs8h5"]
 [ext_resource type="AudioStream" uid="uid://cumwuvhc3kd4g" path="res://sounds/jump.wav" id="9_lnqng"]
@@ -268,6 +270,13 @@ script = null
 z_index = 1
 position = Vector2(670, -985)
 tube_type = 4
+
+[node name="Side Tube2" parent="Tubes" instance=ExtResource("6_chpd2")]
+z_index = 2
+position = Vector2(3628, 437)
+
+[node name="Side Tube4" parent="Tubes" instance=ExtResource("7_iq0tk")]
+position = Vector2(5339, -139)
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = 1
