@@ -231,7 +231,7 @@ safe_margin = 0.001
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(-1, -2)
 stream = ExtResource("24_2i5hb")
-volume_db = -2.0
+volume_db = 3.279
 max_distance = 10000.0
 
 [node name="Animation Sounds" type="AudioStreamPlayer2D" parent="."]
