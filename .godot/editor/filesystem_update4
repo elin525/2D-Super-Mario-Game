@@ -1,4 +1,3 @@
-res://pickups/fireplant.tscn
 res://world.tscn
 res://blocks/brick_block.tscn
 res://blocks/question_block.tscn
@@ -10,4 +9,5 @@ res://side_tube_tall.tscn
 res://side_tube_medium.tscn
 res://pickups/coin.tscn
 res://pickups/mushroom.tscn
-res://scripts/pickup.gd
+res://pickups/fireplant.tscn
+res://canvas_layer.tscn
