@@ -1,3 +1,4 @@
+res://pickups/fireplant.tscn
 res://world.tscn
 res://blocks/brick_block.tscn
 res://blocks/question_block.tscn
@@ -7,5 +8,6 @@ res://enemies/piranha_plant.tscn
 res://side_tube.tscn
 res://side_tube_tall.tscn
 res://side_tube_medium.tscn
-res://scripts/tube.gd
-res://scripts/player.gd
+res://pickups/coin.tscn
+res://pickups/mushroom.tscn
+res://scripts/pickup.gd

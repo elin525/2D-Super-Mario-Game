@@ -40,6 +40,9 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if item_type != ItemType.COIN:
+		if item_type == ItemType.FIREPLANT:
+			$AnimatedSprite2D.play()
+		
 		if allow_horizontal_movement:
 			if direction == 1:
 				position.x += delta * horizonal_speed
