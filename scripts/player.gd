@@ -24,6 +24,7 @@ var blocks_interacted = 0
 var level_up = false
 var cooldown = false
 var jumped_after_enemy = false
+var is_crouching = false
 
 # state prefix for animation
 var current_state = "small"
@@ -65,6 +66,7 @@ func _physics_process(delta):
 		position.x = 0
 	
 	if hud.clock > 0 and is_controllable:
+		handle_crouch()
 		var input = Input.get_axis("ui_left", "ui_right")
 		
 		if input > 0:
@@ -160,6 +162,12 @@ func handle_movement():
 		velocity.x = min(velocity.x - 0.038 * 32, -2.0 * 32)
 	else:
 		velocity.x = move_toward(velocity.x, 0, 0.06 * 32)
+	
+func handle_crouch():
+	if is_on_floor() and Input.is_action_pressed("ui_down"):
+		is_crouching = true
+	else:
+		is_crouching = false
 
 # ---------------- COLLISIONS ---------------- #
 func handle_collision():
@@ -331,6 +339,9 @@ func play_sound(sound_name):
 
 func update_animation():
 	if is_dying:
+		return
+	if is_crouching:
+		play_animation("crouch")
 		return
 	if already_jumped:
 		play_animation("jump")
