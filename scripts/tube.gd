@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 				await enter_pipe()
 				camera.limit_top = 260
 				camera.limit_bottom = 760
-				camera.limit_left = 3000
+				camera.limit_left = 0
 				camera.limit_right = 3740
 				camera.furthest_x = 3202
 				await exit_pipe(3277, 400)

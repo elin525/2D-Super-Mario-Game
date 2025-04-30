@@ -1,21 +1,41 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3r8jlje4xkuv"]
+[gd_scene load_steps=9 format=3 uid="uid://c3r8jlje4xkuv"]
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_dc0as"]
 [ext_resource type="Texture2D" uid="uid://cd2qlyetsmiry" path="res://images/flower_0.png" id="2_4r70s"]
+[ext_resource type="Texture2D" uid="uid://c3xvmew45xv3e" path="res://images/flower_1.png" id="3_1h4c6"]
+[ext_resource type="Texture2D" uid="uid://nfv3b8xghi8b" path="res://images/flower_2.png" id="4_qnj0k"]
+[ext_resource type="Texture2D" uid="uid://smp1vydiqwmh" path="res://images/flower_3.png" id="5_die5i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u3jf"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5tnr"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_isvdm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_4r70s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1h4c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qnj0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_die5i")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Pickup" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_dc0as")
 item_type = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_4r70s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4u3jf")
@@ -26,3 +46,7 @@ shape = SubResource("RectangleShape2D_k5tnr")
 target_position = Vector2(0, 0)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_isvdm")
+frame_progress = 0.670128
