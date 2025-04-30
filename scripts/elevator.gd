@@ -1,6 +1,7 @@
 extends Area2D
 
 var entered = false
+@onready var world = get_node("../..")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,12 +23,12 @@ func _on_area_entered(area: Area2D) -> void:
 		
 		if self.name == "ElevatorDown":
 			await get_tree().create_timer(1).timeout
-			while global_position.y < 5:
+			while global_position.y < 5 and world.death == false:
 				position.y += area.get_parent().gravity
 				await get_tree().create_timer(0.1).timeout
 				
 		else:
 			await get_tree().create_timer(1).timeout
-			while global_position.y > -384:
+			while global_position.y > -384 and world.death == false:
 				position.y -= 3
 				await get_tree().create_timer(0.1).timeout

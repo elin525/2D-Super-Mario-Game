@@ -240,7 +240,7 @@ script = null
 [node name="Tube2" parent="Tubes" instance=ExtResource("15_38b4r")]
 z_index = 1
 position = Vector2(3267, 160)
-script = null
+tube_type = 5
 
 [node name="Tube3" parent="Tubes" instance=ExtResource("15_38b4r")]
 z_index = 1
@@ -275,8 +275,10 @@ tube_type = 3
 [node name="Side Tube2" parent="Tubes" instance=ExtResource("6_chpd2")]
 z_index = 2
 position = Vector2(3628, 437)
+tube_type = 6
 
 [node name="Side Tube4" parent="Tubes" instance=ExtResource("7_iq0tk")]
+z_index = 2
 position = Vector2(5339, -139)
 tube_type = 4
 
@@ -1652,34 +1654,34 @@ position = Vector2(4627, -24)
 
 [node name="Fireworks1" type="AnimatedSprite2D" parent="Fireworks"]
 visible = false
-position = Vector2(6391, -277)
+position = Vector2(5577, -1151)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 script = ExtResource("19_8n2pa")
 
 [node name="Fireworks2" type="AnimatedSprite2D" parent="Fireworks"]
 visible = false
-position = Vector2(6354, -198)
+position = Vector2(5553, -1126)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 
 [node name="Fireworks3" type="AnimatedSprite2D" parent="Fireworks"]
 visible = false
-position = Vector2(6592, -276)
+position = Vector2(5740, -1161)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 
 [node name="Fireworks4" type="AnimatedSprite2D" parent="Fireworks"]
 visible = false
-position = Vector2(6607, -184)
+position = Vector2(5750, -1104)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 frame_progress = 0.0654825
 
 [node name="Fireworks5" type="AnimatedSprite2D" parent="Fireworks"]
 visible = false
-position = Vector2(6486, -258)
+position = Vector2(5665, -1168)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 
 [node name="Fireworks6" type="AnimatedSprite2D" parent="Fireworks"]
 visible = false
-position = Vector2(6354, -197)
+position = Vector2(5539, -1107)
 sprite_frames = SubResource("SpriteFrames_muiwi")
 
 [node name="Enemy_Stop_Blocks" type="Node" parent="."]

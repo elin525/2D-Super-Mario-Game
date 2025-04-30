@@ -1,4 +1,4 @@
-extends Node2D
+extends Area2D
 
 @onready var sprite := $AnimatedSprite2D
 @onready var timer := $Timer
@@ -9,6 +9,7 @@ var move_speed := 50.0
 var is_up := false
 var target_position: Vector2
 var moving := false
+var tube
 
 func _ready():
 	base_position = position
@@ -49,5 +50,10 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_entered(area: Area2D) -> void:
-	if area.get_parent().name == "player":
+	
+	for i in get_overlapping_areas():
+		if i.get_parent().name == "Tubes":
+			tube = i
+			
+	if area.get_parent().name == "player" and tube.get_node("StaticBody2D/CollisionShape2D").disabled == false:
 		area.get_parent().hurt()

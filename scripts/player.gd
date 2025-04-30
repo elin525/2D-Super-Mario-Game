@@ -54,6 +54,7 @@ func _ready():
 	call_deferred("change_state", player_state.SMALL)
 	if ResourceLoad.checkpoint_reached:
 		position.x = 162*16
+		position.y = 0
 	
 	set_player_collision_shape(true)
 	
@@ -103,7 +104,7 @@ func _physics_process(delta):
 	if is_triggering_scene:
 		handle_scene_transition()
 		
-	if position.x >= 6464:
+	if position.x >= 6464 or (ResourceLoad.level == "map1-2" and position.x > 5648):
 		end_level()
 		
 	if Input.is_action_just_pressed("ui_select") and state == player_state.FIRE:
@@ -183,7 +184,7 @@ func handle_collision():
 			else:
 				hurt()
 				
-	if is_on_wall() and position.x > 6240 and position.x < 6288:
+	if is_on_wall() and ((position.x > 6240 and position.x < 6288) or (ResourceLoad.level == "map1-2" and position.x > 5400 and position.x < 5465)):
 			flag_area.block_touched = true
 			flag.initial_touched = true
 			hud.score += 100
@@ -198,16 +199,22 @@ func handle_collision():
 func handle_flag_animation():
 	
 	if is_controllable:
-		set_position(Vector2(6275, -305))
+		if ResourceLoad.level =="map1-1":
+			set_position(Vector2(6275, -305))
+		else:
+			set_position(Vector2(5440, -1230))
 		set_velocity(Vector2(0, 300))
 
 	is_controllable = false
 	play_animation("end")
 	move_and_slide()
 
-	if position.y >= -50:
-		sprite.flip_h = (position.y >= -50)
-		position.x = 6300
+	if position.y >= -50 or (ResourceLoad.level == "map1-2" and position.y >= -995):
+		sprite.flip_h = (position.y >= -50 or (ResourceLoad.level == "map1-2" and position.y >= -995))
+		if (ResourceLoad.level == "map1-2" and position.y >= -995):
+			position.x = 5475
+		else:
+			position.x = 6300
 		flag.initial_touched = true
 		await get_tree().create_timer(0.5).timeout
 		is_triggering_scene = true
@@ -215,7 +222,7 @@ func handle_flag_animation():
 func handle_scene_transition():
 	velocity.x = 160
 	velocity.y += gravity
-	sprite.flip_h = (position.y < -33)
+	sprite.flip_h = ((ResourceLoad.level == "map1-1" and position.y < -33) or global_position.y < -1000)
 	play_animation("move")
 	move_and_slide()
 
@@ -250,8 +257,9 @@ func end_level():
 			await fireworks.get_node("../Fireworks6").animation_finished
 			await fireworks.finished
 		
-		hud.save_coins()
-		ResourceLoad.changeLevel()
+		if ResourceLoad.level == "map1-1":
+			hud.save_coins()
+			ResourceLoad.changeLevel()
 
 # ---------------- DAMAGE & DEATH ---------------- #
 func hurt():
@@ -428,6 +436,8 @@ func handle_pickup_collision(pickup: Pickup):
 		sounds.playing = true
 		hud.score += 200
 		hud.update_score()
+		hud.coins += 1
+		hud.update_coins()
 		var points_label = POINTS_LABEL_SCENE.instantiate()
 		points_label.text = "200"
 		points_label.position = self.position + Vector2(-20, -20)
@@ -478,9 +488,10 @@ func handle_fireplant_collision(pickup: Pickup):
 		points_label.position = self.position + Vector2(-20, -20)
 		points_label.setPosition(points_label.position)
 		get_tree().root.add_child(points_label)
-	#elif state == player_state.SMALL:
-		#call_deferred("change_state", player_state.BIG)
-		#set_player_collision_shape(false)
+	elif state == player_state.SMALL:
+		call_deferred("change_state", player_state.BIG)
+		set_player_collision_shape(false)
+		
 
 func spawn_enemy_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()

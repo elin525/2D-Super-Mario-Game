@@ -5,7 +5,9 @@ enum TubeType {
 	w1_1_1,
 	w1_1_2,
 	w1_2_1,
-	w1_2_2
+	w1_2_2,
+	w1_2_3,
+	w1_2_4
 }
 
 @export var tube_type: TubeType = TubeType.dull_pipe
@@ -28,7 +30,16 @@ func _process(delta: float) -> void:
 				camera.limit_bottom = 760
 				camera.limit_left = 3000
 				camera.limit_right = 3740
+				camera.furthest_x = 3202
 				await exit_pipe(3277, 400)
+			TubeType.w1_2_3:
+				await enter_pipe()
+				camera.limit_top = 125
+				camera.limit_bottom = 625
+				camera.limit_left = 3000
+				camera.limit_right = 3740
+				camera.furthest_x = 3000
+				await exit_pipe(3200, 250)
 				
 	elif accessable and Input.is_action_pressed("ui_right"):
 		match tube_type:
@@ -48,11 +59,24 @@ func _process(delta: float) -> void:
 				camera.furthest_x = 0
 				await exit_pipe(50, -345)
 			TubeType.w1_2_2:
-				pass
-				
+				await enter_pipe()
+				camera.limit_top = -1420
+				camera.limit_bottom = -897
+				camera.limit_left = 4795
+				camera.furthest_x = 4795
+				await exit_pipe(4860, -1020)
+			TubeType.w1_2_4:
+				await enter_pipe()
+				camera.limit_top = -470
+				camera.limit_bottom = 48
+				camera.limit_left = -65
+				camera.limit_right = 6650
+				camera.furthest_x = 0
+				await exit_pipe(3640, -70)
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
-	accessable = true
+	if area.get_parent().name == "player":
+		accessable = true
 
 func _on_area_shape_exited(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	accessable = false
@@ -73,6 +97,12 @@ func enter_pipe():
 				player.position.x += 1
 			TubeType.w1_2_1:
 				player.position.x += 1
+			TubeType.w1_2_2:
+				player.position.x += 1
+			TubeType.w1_2_3:
+				player.position.y += 1.5
+			TubeType.w1_2_4:
+				player.position.x += 1
 		await get_tree().create_timer(0.04).timeout
 	$StaticBody2D/CollisionShape2D.set_deferred("disabled", false)
 	await get_tree().create_timer(0.05).timeout
@@ -85,3 +115,8 @@ func exit_pipe(target_x, target_y):
 	player.position.x = target_x
 	player.position.y = target_y
 	player.is_controllable = true
+	player.cooldown = true
+	for i in range(5):
+		await get_tree().create_timer(0.2).timeout
+		await get_tree().create_timer(0.2).timeout
+	player.cooldown = false

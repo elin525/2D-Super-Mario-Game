@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ox1jm"]
 [ext_resource type="Texture2D" uid="uid://j325jhul6ci6" path="res://images/mario/mario1_end.png" id="1_yi2v6"]
-[ext_resource type="Texture2D" uid="uid://c7c5ukbcuhmf0" path="res://images/mario/big_crouch.png" id="2_3bemy"]
+[ext_resource type="Texture2D" uid="uid://bjy1cceqhqrwx" path="res://images/mario/big_crouch.png" id="2_3bemy"]
 [ext_resource type="Texture2D" uid="uid://cqe74uxkx65av" path="res://images/mario/mario1_end1.png" id="2_mujd3"]
 [ext_resource type="Texture2D" uid="uid://lpx4br5caidn" path="res://images/mario/mario1_jump.png" id="3_5672y"]
 [ext_resource type="Texture2D" uid="uid://bfhakbrtqoo3k" path="res://images/mario/mario1.png" id="4_ancdr"]
@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cu2ty2y51s43" path="res://images/mario/mario1_st.png" id="8_v242x"]
 [ext_resource type="Texture2D" uid="uid://i5n21l8nribn" path="res://images/mario/mario_death.png" id="9_gf086"]
 [ext_resource type="Texture2D" uid="uid://6sfeg5arpk82" path="res://images/mario/mario2.png" id="10_pp7xj"]
-[ext_resource type="Texture2D" uid="uid://c12e6ei6n36fu" path="res://images/mario/fire_crouch.png" id="11_dn7td"]
+[ext_resource type="Texture2D" uid="uid://diq0x8ir657ut" path="res://images/mario/fire_crouch.png" id="11_dn7td"]
 [ext_resource type="Texture2D" uid="uid://b8brig10qtr7" path="res://images/mario/mario_lvlup.png" id="11_vuti3"]
 [ext_resource type="Texture2D" uid="uid://kwmle0cy1wio" path="res://images/mario/mario2_end.png" id="12_etowk"]
 [ext_resource type="Texture2D" uid="uid://dwj1f81i0de3k" path="res://images/mario/mario_end1.png" id="12_lr4ff"]
@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
 [ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="20_c0a4k"]
-[ext_resource type="Texture2D" uid="uid://di5hv12ctgfv7" path="res://images/mario/small_crouch.png" id="22_5w075"]
+[ext_resource type="Texture2D" uid="uid://dpfyoi2oomtvm" path="res://images/mario/small_crouch.png" id="22_5w075"]
 [ext_resource type="Shape2D" uid="uid://dpn6aeokrgk15" path="res://resources/collisionShapes/player_big_collision_shape.tres" id="29_gjf0b"]
 [ext_resource type="Shape2D" uid="uid://b7mpq3y4um6lb" path="res://resources/collisionShapes/player_small_collision_shape.tres" id="30_d2nqf"]
 
@@ -266,7 +266,7 @@ script = ExtResource("1_ox1jm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"small_crouch"
+animation = &"fire_crouch"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)
