@@ -23,6 +23,11 @@ const UNDERGROUND_BRICK_TEXTURE = preload("res://images/UndergroundBrick.png")
 @export var item_type: ItemType = ItemType.EMPTY
 @export var color_type: ColorType = ColorType.BRICK
 
+const MUSHROOM_SCENE = preload("res://pickups/mushroom.tscn")
+const FIREPLANT_SCENE = preload("res://pickups/fireplant.tscn")
+const ONEUP_SCENE = preload("res://pickups/oneup.tscn")
+const STAR_SCENE = preload("res://pickups/star.tscn")
+
 @onready var player = get_node("../../TileMap/player")
 @onready var brick = $Sprite2D
 @onready var world = get_node("../..")
@@ -70,46 +75,73 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	
 	var HUD = get_node("../../HUD")
-	match item_type:
-			ItemType.EMPTY:
-				if player.blocks_interacted == 0:
-					if player.current_state == "small" and world.death == false:
-						shift_block()
-					elif player.current_state == "big" or player.current_state == "fire":
-						delete_block()
-			ItemType.COIN:
-				print("Coin")
-				shift_block()
-			ItemType.COINS:
-				print("Coins")
-				hitpoints -= 1
-				if hitpoints <= 0:
-					var sound = get_node("../../Animation Sounds")
-					sound.stream = load("res://sounds/blockhit.wav")
-					sound.playing = true
-				else:
+	if hitpoints <= 0:
+		var sound = get_node("../../Animation Sounds")
+		sound.stream = load("res://sounds/blockhit.wav")
+		sound.playing = true
+	else:
+		match item_type:
+				ItemType.EMPTY:
+					if player.blocks_interacted == 0:
+						if player.current_state == "small" and world.death == false:
+							shift_block()
+						elif player.current_state == "big" or player.current_state == "fire":
+							delete_block()
+				ItemType.COIN:
+					print("Coin")
+					hitpoints = 0
 					HUD.score += 200
 					HUD.update_score()
 					HUD.coins += 1
 					HUD.update_coins()
 					shift_block()
 					coin_animation()
-				if hitpoints == 0:
-					brick.visible = false
-					null_block.visible = true
-					
-			ItemType.MUSHROOM:
-				print("Mushroom")
-				shift_block()
-			ItemType.FIREPLANT:
-				print("Fire plant")
-				shift_block()
-			ItemType.ONEUP:
-				print("1UP")
-				shift_block()
-			ItemType.STAR:
-				print("Star")
-				shift_block()
+				ItemType.COINS:
+					print("Coins")
+					hitpoints -= 1
+					HUD.score += 200
+					HUD.update_score()
+					HUD.coins += 1
+					HUD.update_coins()
+					shift_block()
+					coin_animation()
+						
+				ItemType.MUSHROOM:
+					print("Mushroom")
+					hitpoints = 0
+					var mushroom = MUSHROOM_SCENE.instantiate()
+					mushroom.global_position = global_position + Vector2(0,-10)
+					get_tree().root.call_deferred("add_child", mushroom)
+					shift_block()
+				ItemType.FIREPLANT:
+					print("Fire plant")
+					hitpoints = 0
+					if player.current_state == "small" and world.death == false:
+						var mushroom = MUSHROOM_SCENE.instantiate()
+						mushroom.global_position = global_position + Vector2(0,-10)
+						get_tree().root.call_deferred("add_child", mushroom)
+					elif player.current_state == "big" or player.current_state == "fire":
+						var fireplant = FIREPLANT_SCENE.instantiate()
+						fireplant.global_position = global_position + Vector2(0,-10)
+						get_tree().root.call_deferred("add_child", fireplant)
+					shift_block()
+				ItemType.ONEUP:
+					print("1UP")
+					hitpoints = 0
+					var oneup = ONEUP_SCENE.instantiate()
+					oneup.global_position = global_position + Vector2(0,-10)
+					get_tree().root.call_deferred("add_child", oneup)
+					shift_block()
+				ItemType.STAR:
+					print("Star")
+					hitpoints = 0
+					var star = STAR_SCENE.instantiate()
+					star.global_position = global_position + Vector2(0,-10)
+					get_tree().root.call_deferred("add_child", star)
+					shift_block()
+	if hitpoints == 0:
+		brick.visible = false
+		null_block.visible = true
 
 func shift_block():
 	player.blocks_interacted += 1

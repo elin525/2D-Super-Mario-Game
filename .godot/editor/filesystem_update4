@@ -11,3 +11,4 @@ res://pickups/coin.tscn
 res://pickups/mushroom.tscn
 res://pickups/fireplant.tscn
 res://canvas_layer.tscn
+res://scripts/brick_area.gd
