@@ -4,20 +4,21 @@
 [ext_resource type="Script" path="res://scripts/tube.gd" id="1_oamip"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ya21r"]
-size = Vector2(7, 51)
+size = Vector2(7, 28.8)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_85714"]
 size = Vector2(90, 99)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8vir"]
-size = Vector2(48, 48.5)
+size = Vector2(48, 96.6)
 
 [node name="Side Tube" type="Area2D"]
 scale = Vector2(1.25, 1.25)
 script = ExtResource("1_oamip")
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
-position = Vector2(-62.5, 6.5)
+position = Vector2(-62.5, 17.6)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ya21r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -27,7 +28,8 @@ shape = SubResource("RectangleShape2D_85714")
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-35, 6.75)
+position = Vector2(-35, -17.3)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_t8vir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

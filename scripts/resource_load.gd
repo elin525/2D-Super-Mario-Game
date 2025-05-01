@@ -18,7 +18,6 @@ static var world = 1
 static var stomped = false
 static var consecutive = 0
 var pointsArray = [100, 200, 400, 500, 800, 1000, 2000, 4000, 5000, 8000]
-var checkpoints = [162*16, 194*16]
 
 func changeLevel():
 	level_changed.emit()

@@ -1,20 +1,40 @@
-[gd_scene load_steps=5 format=3 uid="uid://cufyiqnpkdraj"]
+[gd_scene load_steps=9 format=3 uid="uid://cufyiqnpkdraj"]
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_a8chd"]
 [ext_resource type="Texture2D" uid="uid://34q27t0vrnxb" path="res://images/coin_an0.png" id="2_xtbr8"]
+[ext_resource type="Texture2D" uid="uid://e3t4e0y4837s" path="res://images/coin_an1.png" id="3_ewcyf"]
+[ext_resource type="Texture2D" uid="uid://c25eqsgarwx2s" path="res://images/coin_an2.png" id="4_xcg3j"]
+[ext_resource type="Texture2D" uid="uid://wa0rrulb65qp" path="res://images/coin_an3.png" id="5_ypjnp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u3jf"]
 size = Vector2(18, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5tnr"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_wfqkj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xtbr8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ewcyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xcg3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ypjnp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Pickup" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_a8chd")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_xtbr8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4u3jf")
@@ -25,3 +45,7 @@ shape = SubResource("RectangleShape2D_k5tnr")
 target_position = Vector2(0, 0)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wfqkj")
+frame_progress = 0.528438

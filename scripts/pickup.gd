@@ -65,8 +65,10 @@ func _process(delta: float) -> void:
 		if cooldown == true:
 			await get_tree().create_timer(2.0).timeout
 			cooldown = false
-			
-	#else
+	
+	else:
+		$AnimatedSprite2D.play()		
+	
 func on_block_below_hit():
 	if allow_horizontal_movement and item_type == ItemType.MUSHROOM:
 		flip_direction()
