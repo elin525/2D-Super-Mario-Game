@@ -369,7 +369,7 @@ func _on_death() -> void:
 		if sounds.is_playing():
 			await sounds.finished
 		await get_tree().create_timer(0.2).timeout
-		var title = load("res://title_screen.tscn").instantiate()
+		var title = load("res://game_over.tscn").instantiate()
 		get_tree().root.add_child(title)
 		get_tree().root.remove_child(l)
 		l.queue_free()

@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://b87fhvmvugvps"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_faxwl"]
+[ext_resource type="FontFile" uid="uid://bpqaukui6hvul" path="res://fonts/emulogic.ttf" id="1_wkgpw"]
+[ext_resource type="Texture2D" uid="uid://i5n21l8nribn" path="res://images/mario/mario_death.png" id="2_gs1ak"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocuhx"]
+corner_detail = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkg5i"]
+corner_detail = 12
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource("1_faxwl")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1152, 878)
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="game_over" type="Label" parent="."]
+offset_left = 415.0
+offset_top = 222.0
+offset_right = 730.0
+offset_bottom = 270.0
+theme_override_fonts/font = ExtResource("1_wkgpw")
+theme_override_font_sizes/font_size = 35
+text = "Game Over"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577, 352)
+scale = Vector2(2, 2)
+texture = ExtResource("2_gs1ak")
+
+[node name="continue" type="Button" parent="."]
+offset_left = 459.0
+offset_top = 457.0
+offset_right = 691.0
+offset_bottom = 501.0
+theme_override_fonts/font = ExtResource("1_wkgpw")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxFlat_ocuhx")
+text = "Continue"
+
+[node name="exit" type="Button" parent="."]
+offset_left = 463.0
+offset_top = 550.0
+offset_right = 583.0
+offset_bottom = 594.0
+theme_override_fonts/font = ExtResource("1_wkgpw")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/hover = SubResource("StyleBoxFlat_wkg5i")
+text = "Exit"
