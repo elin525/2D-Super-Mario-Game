@@ -37,37 +37,53 @@ func _ready() -> void:
 			sound.stream = load("res://sounds/mushroomappear.wav")
 			sound.playing = true
 			spawn_tween.tween_callback(func (): allow_horizontal_movement = true)
+		elif item_type == ItemType.STAR:
+			sound.playing = true
+			spawn_tween.tween_callback(func (): allow_horizontal_movement = true)
 	
 func _process(delta: float) -> void:
 	if item_type != ItemType.COIN:
 		if item_type == ItemType.FIREPLANT:
 			$AnimatedSprite2D.play()
-		
+
 		if allow_horizontal_movement:
-			if direction == 1:
-				position.x += delta * horizonal_speed
+			# 水平移动
+			if item_type == ItemType.STAR:
+				var star_speed = horizonal_speed * 1.4
+				position.x += delta * star_speed * direction
 			else:
-				position.x -= delta * horizonal_speed
-	
-		if !shape_cast_2d.is_colliding() && allow_horizontal_movement:
-			vertical_speed = lerpf(vertical_speed, max_vertical_speed, vertical_velocity_gain)
-			position.y += delta * vertical_speed
-		else:
-			vertical_speed = 0
-			
-		if has_overlapping_areas() and cooldown == false:
-			for i in get_overlapping_areas():
-				if i.get_parent().name != "Question_Blocks" and i.get_parent().name != "Bricks":
-					flip_direction()
-					cooldown = true
-					break
-			
-		if cooldown == true:
-			await get_tree().create_timer(2.0).timeout
-			cooldown = false
-	
+				position.x += delta * horizonal_speed * direction
+
+			if item_type == ItemType.STAR:
+				vertical_speed += vertical_velocity_gain * 45
+				if vertical_speed > max_vertical_speed:
+					vertical_speed = max_vertical_speed
+				position.y += delta * vertical_speed
+
+				if shape_cast_2d.is_colliding():
+					vertical_speed = -180
+			elif item_type == ItemType.MUSHROOM or item_type == ItemType.ONEUP:
+				# 仅做下落，不弹跳
+				if !shape_cast_2d.is_colliding():
+					vertical_speed = lerpf(vertical_speed, max_vertical_speed, vertical_velocity_gain)
+					position.y += delta * vertical_speed
+				else:
+					vertical_speed = 0
+
+			if has_overlapping_areas() and cooldown == false:
+				for i in get_overlapping_areas():
+					if i.get_parent().name != "Question_Blocks" and i.get_parent().name != "Bricks":
+						flip_direction()
+						cooldown = true
+						break
+
+			if cooldown:
+				await get_tree().create_timer(0.2).timeout
+				cooldown = false
+
 	else:
-		$AnimatedSprite2D.play()		
+		$AnimatedSprite2D.play()
+
 	
 func on_block_below_hit():
 	if allow_horizontal_movement and item_type == ItemType.MUSHROOM:

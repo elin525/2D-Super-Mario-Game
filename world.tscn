@@ -379,6 +379,7 @@ position = Vector2(3538, -112)
 
 [node name="Question_Block10" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
 position = Vector2(3442, -240)
+item_type = 4
 
 [node name="Question_Block11" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
 position = Vector2(4082, -240)
