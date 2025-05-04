@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://08ys5xca31gt"]
+[gd_scene load_steps=40 format=3 uid="uid://08ys5xca31gt"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_ox1jm"]
 [ext_resource type="Texture2D" uid="uid://j325jhul6ci6" path="res://images/mario/mario1_end.png" id="1_yi2v6"]
@@ -30,9 +30,26 @@
 [ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="18_ic7hh"]
 [ext_resource type="Texture2D" uid="uid://3kh5q6rp3l6h" path="res://images/mario/mario_st.png" id="19_jlahf"]
 [ext_resource type="Script" path="res://scripts/camera.gd" id="20_c0a4k"]
+[ext_resource type="Texture2D" uid="uid://cxm0r0be6usxr" path="res://images/mario_states_ref.png" id="20_f66xd"]
 [ext_resource type="Texture2D" uid="uid://88m08s7e7i45" path="res://images/mario/small_crouch.png" id="22_5w075"]
 [ext_resource type="Shape2D" uid="uid://dpn6aeokrgk15" path="res://resources/collisionShapes/player_big_collision_shape.tres" id="29_gjf0b"]
 [ext_resource type="Shape2D" uid="uid://b7mpq3y4um6lb" path="res://resources/collisionShapes/player_small_collision_shape.tres" id="30_d2nqf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ddagi"]
+atlas = ExtResource("20_f66xd")
+region = Rect2(80, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37u7a"]
+atlas = ExtResource("20_f66xd")
+region = Rect2(80, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_un0kv"]
+atlas = ExtResource("20_f66xd")
+region = Rect2(80, 224, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkdec"]
+atlas = ExtResource("20_f66xd")
+region = Rect2(80, 272, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_173b7"]
 resource_local_to_scene = true
@@ -153,7 +170,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": null
+"texture": SubResource("AtlasTexture_ddagi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37u7a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_un0kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkdec")
 }],
 "loop": true,
 "name": &"invisible",
@@ -266,7 +292,7 @@ script = ExtResource("1_ox1jm")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_173b7")
-animation = &"big_crouch"
+animation = &"invisible"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.65, 1.65)

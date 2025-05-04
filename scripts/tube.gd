@@ -40,6 +40,9 @@ func _process(delta: float) -> void:
 				camera.limit_right = 3740
 				camera.furthest_x = 3000
 				await exit_pipe(3200, 250)
+				get_node("../Tube1").visible = false
+				get_node("../Tube2").visible = false
+				get_node("../Tube3").visible = false
 				
 	elif accessable and Input.is_action_pressed("ui_right"):
 		match tube_type:
@@ -73,6 +76,9 @@ func _process(delta: float) -> void:
 				camera.limit_right = 6650
 				camera.furthest_x = 0
 				await exit_pipe(3640, -70)
+				get_node("../Tube1").visible = true
+				get_node("../Tube2").visible = true
+				get_node("../Tube3").visible = true
 
 func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
 	if area.get_parent().name == "player":

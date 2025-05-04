@@ -18,7 +18,6 @@ script = ExtResource("1_oamip")
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
 position = Vector2(-62.5, 17.6)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ya21r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -29,7 +28,6 @@ shape = SubResource("RectangleShape2D_85714")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-35, -17.3)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_t8vir")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

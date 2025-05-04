@@ -4,21 +4,21 @@
 [ext_resource type="Texture2D" uid="uid://d30t4yegd7237" path="res://images/tube.png" id="1_tu6v1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vuwf"]
-size = Vector2(32.25, 7)
+size = Vector2(19, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ggvoq"]
-size = Vector2(64, 207.75)
+size = Vector2(62, 206.75)
 
 [node name="Area2D_Tube_01" type="Area2D"]
 position = Vector2(864, 192)
 script = ExtResource("1_cgyee")
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
-position = Vector2(0, -259)
+position = Vector2(4, -260)
 shape = SubResource("RectangleShape2D_7vuwf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -152.125)
+position = Vector2(1, -151.625)
 shape = SubResource("RectangleShape2D_ggvoq")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
