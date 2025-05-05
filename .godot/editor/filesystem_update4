@@ -1,6 +1,6 @@
+res://pickups/star.tscn
 res://world.tscn
 res://blocks/brick_block.tscn
-res://blocks/question_block.tscn
 res://map1-2.tscn
 res://tubes/tube.tscn
 res://enemies/piranha_plant.tscn
@@ -11,4 +11,9 @@ res://pickups/coin.tscn
 res://pickups/mushroom.tscn
 res://pickups/fireplant.tscn
 res://canvas_layer.tscn
-res://scripts/brick_area.gd
+res://blocks/question_block.tscn
+res://enemies/goomba.tscn
+res://enemies/koopa.tscn
+res://scripts/enemy.gd
+res://scripts/koopa.gd
+res://scripts/goomba.gd

@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch7irned3qj80"]
+[gd_scene load_steps=10 format=3 uid="uid://ch7irned3qj80"]
 
 [ext_resource type="Script" path="res://scripts/goomba.gd" id="1_ed62v"]
 [ext_resource type="Texture2D" uid="uid://dmvx0g4vnobvm" path="res://images/goombas_dead.png" id="1_rbfcq"]
 [ext_resource type="Texture2D" uid="uid://dy31s47tens6p" path="res://images/goombas_0.png" id="2_xyqsq"]
 [ext_resource type="Texture2D" uid="uid://k7xolqslipmw" path="res://images/goombas_1.png" id="3_1gsun"]
+[ext_resource type="Texture2D" uid="uid://b78ru24ltxl8y" path="res://images/goombas_dark_dead.png" id="3_nt2mq"]
+[ext_resource type="Texture2D" uid="uid://mipwdicedmtl" path="res://images/goombas_dark_0.png" id="6_6aptt"]
+[ext_resource type="Texture2D" uid="uid://bbe14qn8tqykj" path="res://images/goombas_dark_1.png" id="7_4rxo2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q4pde"]
 animations = [{
@@ -17,6 +20,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_nt2mq")
+}],
+"loop": true,
+"name": &"dead_dark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_xyqsq")
 }, {
 "duration": 1.0,
@@ -24,6 +35,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_6aptt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4rxo2")
+}],
+"loop": true,
+"name": &"walk_dark",
 "speed": 5.0
 }]
 
@@ -37,10 +59,7 @@ script = ExtResource("1_ed62v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q4pde")
-animation = &"walk"
-autoplay = "walk"
-frame = 1
-frame_progress = 0.551051
+animation = &"dead_dark"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3

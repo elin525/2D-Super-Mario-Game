@@ -2,6 +2,11 @@ extends Area2D
 
 class_name Enemy
 
+enum ColorType {
+	NORMAL,
+	UNDERGROUD
+}
+
 const POINTS_LABEL_SCENE = preload("res://UI/points_label.tscn")
 
 var is_on_screen = false
@@ -12,6 +17,7 @@ var once = false
 @export var horizontal_speed = 30 
 @export var vertical_speed = 100
 @export var kill_points = 100
+@export var color_type: ColorType = ColorType.NORMAL
 
 @onready var ray_cast_2d = $RayCast2D as RayCast2D
 @onready var animated_sprite_2d = $AnimatedSprite2D as AnimatedSprite2D
@@ -19,6 +25,13 @@ var once = false
 @onready var world = get_node("../..")
 @onready var player = get_node("../../TileMap/player")
 
+
+func _ready():
+	if color_type == ColorType.NORMAL:
+		animated_sprite_2d.play("walk")
+	else:
+		animated_sprite_2d.play("walk_dark")
+		
 func _process(delta):
 	if is_on_screen:
 		
@@ -71,7 +84,10 @@ func _process(delta):
 func die():
 	horizontal_speed = 0
 	vertical_speed = 0 
-	animated_sprite_2d.play("dead")
+	if color_type == ColorType.NORMAL:
+		animated_sprite_2d.play("dead")
+	else:
+		animated_sprite_2d.play("dead_dark")
 	var sound = get_node("../../Animation Sounds")
 	sound.stream = load("res://sounds/smb_stomp.wav")
 	sound.playing = true

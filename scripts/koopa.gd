@@ -13,7 +13,8 @@ const KOOPA_SHELL_COLLISION_SHAPE = preload("res://resources/collisionShapes/koo
 
 @export var slide_speed = 200
 
-func _ready() -> void:
+func _ready():
+	super._ready()
 	collision_shape_2d.shape = KOOPA_FULL_COLLISION_SHAPE
 	kill_points = 150
 

@@ -18,12 +18,10 @@ script = ExtResource("1_2gmjp")
 
 [node name="Interaction" type="CollisionShape2D" parent="."]
 position = Vector2(-62.5, 22.8)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ya21r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-12.5, -17.5)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_85714")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

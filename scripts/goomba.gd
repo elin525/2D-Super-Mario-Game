@@ -1,6 +1,7 @@
 extends Enemy
 
 func _ready():
+	super._ready()
 	kill_points = 100
 
 func die():

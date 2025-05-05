@@ -1581,74 +1581,92 @@ position = Vector2(3506, 465)
 [node name="Goomba" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(465, -22)
+color_type = 1
 
 [node name="Goomba2" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(500, -49)
+color_type = 1
 
 [node name="Goomba3" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(883, -17)
+color_type = 1
 
 [node name="Koopa" parent="Enemies" instance=ExtResource("14_jay0q")]
 z_index = 1
 position = Vector2(1363, -24)
+color_type = 1
 
 [node name="Koopa2" parent="Enemies" instance=ExtResource("14_jay0q")]
 z_index = 1
 position = Vector2(1411, -24)
+color_type = 1
 
 [node name="Koopa3" parent="Enemies" instance=ExtResource("14_jay0q")]
 z_index = 1
 position = Vector2(1843, -24)
+color_type = 1
 
 [node name="Goomba4" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(1939, -17)
+color_type = 1
 
 [node name="Goomba5" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(2003, -17)
+color_type = 1
 
 [node name="Goomba6" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(2292, -272)
+color_type = 1
 
 [node name="Goomba7" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(2387, -144)
+color_type = 1
 
 [node name="Goomba8" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(2435, -144)
+color_type = 1
 
 [node name="Goomba9" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(3123, -17)
+color_type = 1
 
 [node name="Goomba10" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(3171, -17)
+color_type = 1
 
 [node name="Goomba11" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(3215, -17)
+color_type = 1
 
 [node name="Goomba12" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(3571, -17)
+color_type = 1
 
 [node name="Goomba13" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(4275, -112)
+color_type = 1
 
 [node name="Goomba14" parent="Enemies" instance=ExtResource("13_oklvh")]
 z_index = 1
 position = Vector2(4323, -144)
+color_type = 1
 
 [node name="Koopa4" parent="Enemies" instance=ExtResource("14_jay0q")]
 z_index = 1
 position = Vector2(4627, -24)
+color_type = 1
 
 [node name="Fireworks" type="Node" parent="."]
 

@@ -1,12 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://seygj6r4j0b8"]
+[gd_scene load_steps=7 format=3 uid="uid://seygj6r4j0b8"]
 
 [ext_resource type="Script" path="res://scripts/pickup.gd" id="1_tcvr8"]
-[ext_resource type="Texture2D" uid="uid://br4k46pmnv6si" path="res://images/star.png" id="2_cbdxi"]
+[ext_resource type="Texture2D" uid="uid://br4k46pmnv6si" path="res://images/star 0.png" id="2_cbdxi"]
+[ext_resource type="Texture2D" uid="uid://byrf4av0gjy2t" path="res://images/star 1.png" id="3_iiahb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4u3jf"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k5tnr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wg406"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_cbdxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_iiahb")
+}],
+"loop": true,
+"name": &"active",
+"speed": 10.0
+}]
 
 [node name="Pickup" type="Area2D"]
 collision_layer = 3
@@ -26,3 +41,9 @@ shape = SubResource("RectangleShape2D_k5tnr")
 target_position = Vector2(0, 0)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wg406")
+animation = &"active"
+autoplay = "active"
+frame = 1

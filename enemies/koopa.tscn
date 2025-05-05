@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ba4mo4clfbxjc"]
+[gd_scene load_steps=10 format=3 uid="uid://ba4mo4clfbxjc"]
 
 [ext_resource type="Script" path="res://scripts/koopa.gd" id="1_1hbll"]
 [ext_resource type="Texture2D" uid="uid://bb2c6aaosjtq1" path="res://images/koopa_dead.png" id="1_foegv"]
 [ext_resource type="Texture2D" uid="uid://dbxpafqvjd07s" path="res://images/koopa_0.png" id="2_idjhi"]
+[ext_resource type="Texture2D" uid="uid://8orj03rb3vlu" path="res://images/koopa_dark_dead.png" id="3_1c238"]
 [ext_resource type="Texture2D" uid="uid://bgh3oby1qekye" path="res://images/koopa_1.png" id="3_scfia"]
 [ext_resource type="Shape2D" uid="uid://bwm4gcfqpsm5j" path="res://resources/collisionShapes/koopa_full_collision_shape.tres" id="5_b734r"]
+[ext_resource type="Texture2D" uid="uid://dv7r4v2gade5n" path="res://images/koopa_dark_0.png" id="6_l3mte"]
+[ext_resource type="Texture2D" uid="uid://jmmlyf7aro03" path="res://images/koopa_dark_1.png" id="7_vm2mn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s3flg"]
 animations = [{
@@ -18,6 +21,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("3_1c238")
+}],
+"loop": true,
+"name": &"dead_dark",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_idjhi")
 }, {
 "duration": 1.0,
@@ -25,6 +36,17 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_l3mte")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_vm2mn")
+}],
+"loop": true,
+"name": &"walk_dark",
 "speed": 5.0
 }]
 
@@ -35,8 +57,7 @@ script = ExtResource("1_1hbll")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_s3flg")
-animation = &"walk"
-autoplay = "walk"
+animation = &"walk_dark"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2.125)
