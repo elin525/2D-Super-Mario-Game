@@ -28,8 +28,8 @@ func die():
 	in_a_shell = true
 
 func on_stomp(player_position: Vector2):
-	set_collision_mask_value(1, false)
-	set_collision_layer_value(1, false)
+	set_collision_mask_value(2, false)
+	set_collision_layer_value(2, false)
 	
 	var movement_direction = 1 if player_position.x <= global_position.x else - 1
 	horizontal_speed = -movement_direction * slide_speed

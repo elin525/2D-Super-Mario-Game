@@ -47,7 +47,6 @@ func _process(delta: float) -> void:
 			$AnimatedSprite2D.play()
 
 		if allow_horizontal_movement:
-			# 水平移动
 			if item_type == ItemType.STAR:
 				var star_speed = horizonal_speed * 1.4
 				position.x += delta * star_speed * direction
@@ -63,7 +62,6 @@ func _process(delta: float) -> void:
 				if shape_cast_2d.is_colliding():
 					vertical_speed = -180
 			elif item_type == ItemType.MUSHROOM or item_type == ItemType.ONEUP:
-				# 仅做下落，不弹跳
 				if !shape_cast_2d.is_colliding():
 					vertical_speed = lerpf(vertical_speed, max_vertical_speed, vertical_velocity_gain)
 					position.y += delta * vertical_speed
@@ -84,7 +82,6 @@ func _process(delta: float) -> void:
 	else:
 		$AnimatedSprite2D.play()
 
-	
 func on_block_below_hit():
 	if allow_horizontal_movement and item_type == ItemType.MUSHROOM:
 		flip_direction()

@@ -26,6 +26,20 @@ var cooldown = false
 var jumped_after_enemy = false
 var is_crouching = false
 
+var is_invincible = false
+var invincibility_colors = [
+	Color(1, 1, 1),
+	Color(1.0, 0.6, 0.2),
+	Color(0.3, 0.5, 0.9),
+	Color(0.9, 0.3, 0.4),
+	Color(0.3, 0.8, 0.3)
+]
+
+var invincibility_color_index = 0
+var invincibility_color_timer = 0.12  
+var invincibility_elapsed = 0.0
+
+
 # state prefix for animation
 var current_state = "small"
 
@@ -96,7 +110,14 @@ func _physics_process(delta):
 
 		# handle collisions
 		handle_collision()
-			
+	
+	if is_invincible:
+		invincibility_elapsed += delta
+		if invincibility_elapsed >= invincibility_color_timer:
+			invincibility_elapsed = 0.0
+			invincibility_color_index = (invincibility_color_index + 1) % invincibility_colors.size()
+			sprite.modulate = invincibility_colors[invincibility_color_index]
+	
 	if flag.initial_touched == true:
 		handle_flag_animation()
 
@@ -405,22 +426,40 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 func handle_enemy_collision(enemy: Enemy):
 	if enemy == null:
 		return
-	
-	if is_instance_of(enemy, Koopa) && (enemy as Koopa).in_a_shell:
-		(enemy as Koopa).on_stomp(global_position)
-	
+
+	if is_invincible:
+		enemy.die_from_hit()
+		spawn_enemy_points_label(enemy)
+		return
+
+	if is_instance_of(enemy, Koopa):
+		var koopa = enemy as Koopa
+		if koopa.in_a_shell:
+			if koopa.horizontal_speed == 0:
+				# shell is not moving now, if mario stomp on shell, the shell start to moving
+				koopa.on_stomp(global_position)
+			else:
+				# nario will get hurt if hit by shell
+				hurt()
+		else:
+			# normal koopa
+			var angle_of_collision = rad_to_deg(position.angle_to_point(enemy.position))
+			if angle_of_collision > min_stomp_degree && angle_of_collision < max_stomp_degree:
+				enemy.die()
+				on_enemy_stomped()
+				spawn_enemy_points_label(enemy)
+			else:
+				hurt()
 	else:
-		var angle_of_collisison = rad_to_deg(position.angle_to_point(enemy.position))
-		
-		if angle_of_collisison == null:
-			return
-	
-		if angle_of_collisison > min_stomp_degree && max_stomp_degree > angle_of_collisison and world.death == false: 
+		# handle other enemy collision
+		var angle_of_collision = rad_to_deg(position.angle_to_point(enemy.position))
+		if angle_of_collision > min_stomp_degree && angle_of_collision < max_stomp_degree:
 			enemy.die()
 			on_enemy_stomped()
 			spawn_enemy_points_label(enemy)
-		else: 
+		else:
 			hurt()
+
 
 func on_enemy_stomped():
 	velocity.y = stomp_y_velocity
@@ -449,6 +488,9 @@ func handle_pickup_collision(pickup: Pickup):
 	
 	if pickup.item_type == pickup.ItemType.FIREPLANT:
 		handle_fireplant_collision(pickup)
+		
+	if pickup.item_type == pickup.ItemType.STAR:
+		handle_star_collision(pickup)
 	
 func handle_mushroom_collision(pickup: Pickup):
 	if pickup.item_type == pickup.ItemType.ONEUP:
@@ -492,7 +534,26 @@ func handle_fireplant_collision(pickup: Pickup):
 		call_deferred("change_state", player_state.BIG)
 		set_player_collision_shape(false)
 		
+func start_invincibility():
+	is_invincible = true
+	invincibility_elapsed = 0.0
+	invincibility_color_index = 0
+	
+	var timer = Timer.new()
+	timer.wait_time = 10.0
+	timer.one_shot = true
+	timer.connect("timeout", Callable(self, "_on_invincibility_timeout")) 
+	add_child(timer)
+	timer.start()
 
+func _on_invincibility_timeout():
+	is_invincible = false
+	sprite.modulate = Color(1, 1, 1)
+	
+func handle_star_collision(pickup:Pickup):
+	start_invincibility()
+	
+		
 func spawn_enemy_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
 	if ResourceLoad.consecutive >= ResourceLoad.pointsArray.size():
