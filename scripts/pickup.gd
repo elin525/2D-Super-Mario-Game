@@ -33,11 +33,8 @@ func _ready() -> void:
 		var spawn_tween = get_tree().create_tween()
 		spawn_tween.tween_property(self, "position", position + Vector2(0, -23), 0.6)
 	
-		if item_type == ItemType.MUSHROOM || item_type == ItemType.ONEUP:
-			sound.stream = load("res://sounds/mushroomappear.wav")
-			sound.playing = true
-			spawn_tween.tween_callback(func (): allow_horizontal_movement = true)
-		elif item_type == ItemType.STAR:
+		if item_type == ItemType.MUSHROOM || item_type == ItemType.ONEUP || item_type == ItemType.FIREPLANT || item_type == ItemType.STAR:
+			sound.stream = load("res://sounds/item_appear.wav")
 			sound.playing = true
 			spawn_tween.tween_callback(func (): allow_horizontal_movement = true)
 	

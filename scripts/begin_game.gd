@@ -78,3 +78,7 @@ func _on_hurry_up() -> void:
 		$AudioStreamPlayer2D.stream = mpsound
 		
 	$AudioStreamPlayer2D.playing = true
+
+
+func _on_invincible_finished() -> void:
+	pass # Replace with function body.

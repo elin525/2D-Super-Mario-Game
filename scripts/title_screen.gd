@@ -5,9 +5,12 @@ signal mouse_click
 var clickable = false
 
 @onready var lives = $Lives
+@onready var music = get_node("AudioStreamPlayer2D")
+
 
 func _ready():
 	lives.visible = false
+	music.play()
 	
 func _input(event):
 	
@@ -19,4 +22,5 @@ func _input(event):
 	if event is InputEventMouseButton and event.is_pressed() and clickable and get_node("ColorRect") != null:
 		get_node("ColorRect").free()
 		lives.visible = true
+		music.stop()
 		mouse_click.emit()

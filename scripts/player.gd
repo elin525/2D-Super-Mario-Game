@@ -50,6 +50,7 @@ var current_state = "small"
 @onready var body_collision = $BodyCollisionShape
 @onready var sounds = get_node("../../Animation Sounds")
 @onready var music = get_node("../../AudioStreamPlayer2D")
+@onready var invincible = get_node("../../Invincible")
 @onready var hud = get_node("../../HUD")
 @onready var map = get_node("..")
 @onready var flag = get_node("../../Flag Pole/Flag")
@@ -286,8 +287,10 @@ func end_level():
 func hurt():
 	if cooldown == false:
 		if state == player_state.FIRE:
+			play_sound("pipe")
 			call_deferred("change_state", player_state.BIG)
 		elif state == player_state.BIG:
+			play_sound("pipe")
 			call_deferred("change_state", player_state.SMALL)
 			set_player_collision_shape(true)
 		else:
@@ -494,6 +497,7 @@ func handle_pickup_collision(pickup: Pickup):
 	
 func handle_mushroom_collision(pickup: Pickup):
 	if pickup.item_type == pickup.ItemType.ONEUP:
+		play_sound("1-up")
 		ResourceLoad.LiveScene.lives += 1
 		var points_label = POINTS_LABEL_SCENE.instantiate()
 		points_label.text = "1-UP"
@@ -505,7 +509,7 @@ func handle_mushroom_collision(pickup: Pickup):
 	if state == player_state.SMALL:
 		sprite.play("level_up")
 		level_up = true
-		sounds.stream = load("res://sounds/mushroomeat.wav")
+		sounds.stream = load("res://sounds/power_up.wav")
 		sounds.playing = true
 		await sprite.animation_finished
 		level_up = false
@@ -522,6 +526,8 @@ func handle_mushroom_collision(pickup: Pickup):
 
 func handle_fireplant_collision(pickup: Pickup):
 	if state == player_state.BIG:
+		sounds.stream = load("res://sounds/power_up.wav")
+		sounds.playing = true
 		call_deferred("change_state", player_state.FIRE)
 		hud.score += 1000
 		hud.update_score()
@@ -535,12 +541,18 @@ func handle_fireplant_collision(pickup: Pickup):
 		set_player_collision_shape(false)
 		
 func start_invincibility():
+
 	is_invincible = true
 	invincibility_elapsed = 0.0
 	invincibility_color_index = 0
 	
+	music.stop()
+
+	invincible.play()
+	invincible.playing = true
+
 	var timer = Timer.new()
-	timer.wait_time = 10.0
+	timer.wait_time = 12.5
 	timer.one_shot = true
 	timer.connect("timeout", Callable(self, "_on_invincibility_timeout")) 
 	add_child(timer)
@@ -549,10 +561,24 @@ func start_invincibility():
 func _on_invincibility_timeout():
 	is_invincible = false
 	sprite.modulate = Color(1, 1, 1)
+
+	invincible.stop()
+
+	music.play()
+	music.playing = true
+
 	
 func handle_star_collision(pickup:Pickup):
 	start_invincibility()
 	
+	hud.score += 1200
+	hud.update_score()
+
+	var points_label = POINTS_LABEL_SCENE.instantiate()
+	points_label.text = "1200"
+	points_label.position = self.position + Vector2(-20, -20)
+	points_label.setPosition(points_label.position)
+	get_tree().root.add_child(points_label)
 		
 func spawn_enemy_points_label(enemy):
 	var points_label = POINTS_LABEL_SCENE.instantiate()
