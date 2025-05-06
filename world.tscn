@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b2j864xcgbasm"]
+[gd_scene load_steps=29 format=3 uid="uid://b2j864xcgbasm"]
 
 [ext_resource type="Texture2D" uid="uid://dtqgo7675xb4m" path="res://images/reference/map1-1.png" id="1_6br88"]
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_l4ws2"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://scripts/fireworks.gd" id="20_5htwi"]
 [ext_resource type="PackedScene" uid="uid://cufyiqnpkdraj" path="res://pickups/coin.tscn" id="20_jgqon"]
 [ext_resource type="PackedScene" uid="uid://b5mgsd8kwldmn" path="res://tubes/tube.tscn" id="21_mbfjl"]
+[ext_resource type="AudioStream" uid="uid://dqs643po6sxts" path="res://sounds/invincible.wav" id="22_v3tsk"]
 [ext_resource type="PackedScene" uid="uid://bhqc7eq5ow8f6" path="res://blocks/koopa_shell_stop_point.tscn" id="22_w4hc1"]
 [ext_resource type="AudioStream" uid="uid://c5ov5egak3cef" path="res://sounds/overworld.wav" id="24_2i5hb"]
 [ext_resource type="AudioStream" uid="uid://cumwuvhc3kd4g" path="res://sounds/jump.wav" id="25_mn1yf"]
@@ -248,6 +249,12 @@ max_distance = 10000.0
 stream = ExtResource("25_mn1yf")
 max_distance = 10000.0
 
+[node name="Invincible" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, -2)
+stream = ExtResource("22_v3tsk")
+volume_db = 3.279
+max_distance = 10000.0
+
 [node name="Bricks" type="Node" parent="."]
 
 [node name="Brick_Block1" parent="Bricks" instance=ExtResource("18_fodhn")]
@@ -379,7 +386,6 @@ position = Vector2(3538, -112)
 
 [node name="Question_Block10" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
 position = Vector2(3442, -240)
-item_type = 4
 
 [node name="Question_Block11" parent="Question_Blocks" instance=ExtResource("25_uq6a1")]
 position = Vector2(4082, -240)
@@ -551,3 +557,4 @@ shape = SubResource("RectangleShape2D_326u1")
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
+[connection signal="finished" from="Invincible" to="." method="_on_invincible_finished"]
