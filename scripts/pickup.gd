@@ -54,13 +54,13 @@ func _process(delta: float) -> void:
 				position.x += delta * horizonal_speed * direction
 
 			if item_type == ItemType.STAR:
-				vertical_speed += vertical_velocity_gain * 45
+				vertical_speed += vertical_velocity_gain * 50
 				if vertical_speed > max_vertical_speed:
 					vertical_speed = max_vertical_speed
 				position.y += delta * vertical_speed
 
 				if shape_cast_2d.is_colliding():
-					vertical_speed = -180
+					vertical_speed = -150
 			elif item_type == ItemType.MUSHROOM or item_type == ItemType.ONEUP:
 				if !shape_cast_2d.is_colliding():
 					vertical_speed = lerpf(vertical_speed, max_vertical_speed, vertical_velocity_gain)
