@@ -13,6 +13,16 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
+	if lives < 0:
+		lives = 3
+		ResourceLoad.checkpoint_reached = false
+		ResourceLoad.level = "map1-1"
+		ResourceLoad.completed = 0
+		ResourceLoad.world = 1
+		
+		ResourceLoad.coins = 0
+			
+	
 	if ResourceLoad.level != "map1-1" and triggered == true:
 		
 		var l = "res://map" + str(ResourceLoad.world) + "-" + str(ResourceLoad.completed+1) + ".tscn"

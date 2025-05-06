@@ -397,6 +397,7 @@ func _on_death() -> void:
 		get_tree().root.add_child(title)
 		get_tree().root.remove_child(l)
 		l.queue_free()
+		get_node("../..").queue_free()
 
 	var tree = get_tree()
 	l.lives -= 1
