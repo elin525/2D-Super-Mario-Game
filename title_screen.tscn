@@ -1,14 +1,98 @@
-[gd_scene load_steps=10 format=3 uid="uid://d0k05vnvvvkkb"]
+[gd_scene load_steps=30 format=3 uid="uid://d0k05vnvvvkkb"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_qbve6"]
 [ext_resource type="FontFile" uid="uid://bpqaukui6hvul" path="res://fonts/emulogic.ttf" id="2_wnsjx"]
-[ext_resource type="Texture2D" uid="uid://cuq6gnbc8c5v2" path="res://images/super_mario_bros.png" id="3_h40my"]
 [ext_resource type="Texture2D" uid="uid://dy31s47tens6p" path="res://images/goombas_0.png" id="4_ox8p7"]
 [ext_resource type="Texture2D" uid="uid://dbxpafqvjd07s" path="res://images/koopa_0.png" id="5_2s4c2"]
 [ext_resource type="Texture2D" uid="uid://jm2n8x2hsq4s" path="res://images/mushroom.png" id="6_x6knc"]
+[ext_resource type="Texture2D" uid="uid://2m1u6yck1wjb" path="res://images/logo.png" id="7_1u4se"]
 [ext_resource type="Texture2D" uid="uid://cd2qlyetsmiry" path="res://images/flower_0.png" id="7_6jk6i"]
+[ext_resource type="Texture2D" uid="uid://br4k46pmnv6si" path="res://images/star 0.png" id="8_4htiw"]
 [ext_resource type="PackedScene" uid="uid://bkghrchtg4y4l" path="res://LivesScene.tscn" id="8_ulfr4"]
 [ext_resource type="AudioStream" uid="uid://dxvhjlyh3f4u4" path="res://sounds/title.wav" id="9_d88u2"]
+[ext_resource type="Texture2D" uid="uid://xr2pmwr08lhx" path="res://images/mario/mario_move0.png" id="12_ua324"]
+[ext_resource type="Texture2D" uid="uid://cmdjh8ull18y4" path="res://images/mario/mario_move1.png" id="13_ugobs"]
+[ext_resource type="Texture2D" uid="uid://c2kqtqujsg8g" path="res://images/mario/mario_s0_move0.bmp" id="14_2xrka"]
+[ext_resource type="Texture2D" uid="uid://blgq82qvtrrpk" path="res://images/mario/mario_move2.png" id="14_uxnsi"]
+[ext_resource type="Texture2D" uid="uid://dx7ojn3il6n8e" path="res://images/mario/mario_s0_move1.bmp" id="15_m7y4i"]
+[ext_resource type="Texture2D" uid="uid://b3btbd85f4p8n" path="res://images/mario/mario_s0_move2.bmp" id="16_dy85m"]
+[ext_resource type="Texture2D" uid="uid://qp2636f71e5j" path="res://images/mario/mario1_move0.png" id="17_xqqly"]
+[ext_resource type="Texture2D" uid="uid://datlxd6fbd8j8" path="res://images/mario/mario1_move1.png" id="18_555sl"]
+[ext_resource type="Texture2D" uid="uid://dew6evkf4qili" path="res://images/mario/mario1_move2.png" id="19_wr8rg"]
+[ext_resource type="Texture2D" uid="uid://7qyftf0xd8g2" path="res://images/mario/mario2s_move0.bmp" id="20_bvpav"]
+[ext_resource type="Texture2D" uid="uid://30mouaniuc4s" path="res://images/mario/mario2_move0.png" id="20_dexbr"]
+[ext_resource type="Texture2D" uid="uid://d2i8ctytudqn2" path="res://images/mario/mario2_move1.png" id="21_5krx3"]
+[ext_resource type="Texture2D" uid="uid://cnh81yyhix6ec" path="res://images/mario/mario2s_move1.bmp" id="21_v7xt0"]
+[ext_resource type="Texture2D" uid="uid://cet34h4lj776j" path="res://images/mario/mario2s_move2.bmp" id="22_awmwg"]
+[ext_resource type="Texture2D" uid="uid://cbyfigerh3lrd" path="res://images/mario/mario2_move2.png" id="22_uwtk4"]
+[ext_resource type="Texture2D" uid="uid://fqo2jbvfg1f3" path="res://images/mario/mario_s1_move0.bmp" id="26_f85wk"]
+[ext_resource type="Texture2D" uid="uid://de52mksukmsnf" path="res://images/mario/mario_s1_move1.bmp" id="27_n0wnr"]
+[ext_resource type="Texture2D" uid="uid://o4cex2knihfx" path="res://images/mario/mario_s1_move2.bmp" id="28_oyxfi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqg8s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ua324")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ugobs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_uxnsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_xqqly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_555sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_wr8rg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dexbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_5krx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_uwtk4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2xrka")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m7y4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dy85m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_bvpav")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_v7xt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_awmwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_f85wk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_n0wnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_n0wnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_oyxfi")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_qbve6")
@@ -29,11 +113,12 @@ offset_bottom = 468.0
 theme_override_fonts/font = ExtResource("2_wnsjx")
 theme_override_font_sizes/font_size = 32
 text = "Play Game"
+uppercase = true
 
 [node name="Fire Flower" type="Label" parent="ColorRect/Features"]
-offset_left = 148.0
+offset_left = 240.0
 offset_top = 765.0
-offset_right = 468.0
+offset_right = 560.0
 offset_bottom = 828.0
 theme_override_fonts/font = ExtResource("2_wnsjx")
 theme_override_font_sizes/font_size = 30
@@ -87,9 +172,30 @@ scale = Vector2(2, 2)
 texture = ExtResource("4_ox8p7")
 
 [node name="SuperMarioBros" type="Sprite2D" parent="ColorRect/Features"]
-position = Vector2(597, 170)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_h40my")
+position = Vector2(597, 190)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_1u4se")
+
+[node name="Star" type="Sprite2D" parent="ColorRect/Features"]
+position = Vector2(190, 790)
+scale = Vector2(2, 2)
+texture = ExtResource("8_4htiw")
+
+[node name="Or" type="Label" parent="ColorRect/Features"]
+offset_left = 115.0
+offset_top = 765.0
+offset_right = 435.0
+offset_bottom = 828.0
+theme_override_fonts/font = ExtResource("2_wnsjx")
+theme_override_font_sizes/font_size = 34
+text = "/"
+
+[node name="Mario" type="AnimatedSprite2D" parent="ColorRect/Features"]
+position = Vector2(760, 630)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_eqg8s")
+animation = &"walk"
+speed_scale = 0.8
 
 [node name="Lives" parent="." instance=ExtResource("8_ulfr4")]
 

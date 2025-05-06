@@ -571,11 +571,11 @@ func _on_invincibility_timeout():
 func handle_star_collision(pickup:Pickup):
 	start_invincibility()
 	
-	hud.score += 1200
+	hud.score += 1000
 	hud.update_score()
 
 	var points_label = POINTS_LABEL_SCENE.instantiate()
-	points_label.text = "1200"
+	points_label.text = "1000"
 	points_label.position = self.position + Vector2(-20, -20)
 	points_label.setPosition(points_label.position)
 	get_tree().root.add_child(points_label)

@@ -6,11 +6,14 @@ var clickable = false
 
 @onready var lives = $Lives
 @onready var music = get_node("AudioStreamPlayer2D")
+@onready var mario = get_node("ColorRect/Features/Mario")
 
 
 func _ready():
 	lives.visible = false
 	music.play()
+	
+	mario.play("walk")
 	
 func _input(event):
 	
