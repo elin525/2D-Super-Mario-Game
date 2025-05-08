@@ -7,8 +7,8 @@ This project recreates classic Mario gameplay mechanics including power-ups, ene
 
 ## 📸 Demo Preview
 
-![Gameplay Walkthrough Video]( https://youtu.be/VXTAsLg7kE4)  
-*Mario collecting coins, defeating enemies, and reaching the flagpole!*
+[![Watch the demo on YouTube](https://youtu.be/VXTAsLg7kE4)  
+*Click to watch Mario collecting coins, defeating enemies, and reaching the flagpole!*
 
 ---
 
