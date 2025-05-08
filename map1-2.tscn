@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bc3hr1j4bstwc"]
+[gd_scene load_steps=32 format=3 uid="uid://bc3hr1j4bstwc"]
 
 [ext_resource type="Script" path="res://scripts/begin_game.gd" id="1_iucqg"]
 [ext_resource type="Texture2D" uid="uid://djyl8u2fju5fd" path="res://images/reference/map1-2.png" id="2_hmvd6"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://lmp34td6edeg" path="res://enemies/piranha_plant.tscn" id="23_154oa"]
 [ext_resource type="PackedScene" uid="uid://l3bo4apx67lw" path="res://side_tube.tscn" id="24_tq0xp"]
 [ext_resource type="PackedScene" uid="uid://b22brb3tbn44x" path="res://blocks/mushroom_stop_point.tscn" id="27_rtnie"]
+[ext_resource type="AudioStream" uid="uid://dqs643po6sxts" path="res://sounds/invincible.wav" id="28_m7ij4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ay6rm"]
 texture = ExtResource("4_mk105")
@@ -1738,6 +1739,12 @@ position = Vector2(3651, -41)
 
 [node name="MushroomStopPoint" parent="Mushroom_Stop_Point" instance=ExtResource("27_rtnie")]
 position = Vector2(495, -24)
+
+[node name="Invincible" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-1, -2)
+stream = ExtResource("28_m7ij4")
+volume_db = 3.279
+max_distance = 10000.0
 
 [connection signal="hurry_up" from="." to="." method="_on_hurry_up"]
 [connection signal="death" from="TileMap/player" to="TileMap/player" method="_on_death"]
